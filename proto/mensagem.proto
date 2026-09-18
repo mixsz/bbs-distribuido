@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+message LoginRequest {
+  string usuario = 1;
+  int64 timestamp = 2;
+}
+
+message LoginResponse {
+  bool sucesso = 1;
+  string erro = 2;
+  int64 timestamp = 3;
+}
+
+message CriarCanalRequest {
+  string nome_canal = 1;
+  int64 timestamp = 2;
+}
+
+message CriarCanalResponse {
+  bool sucesso = 1;
+  string erro = 2;
+  int64 timestamp = 3;
+}
+
+message ListarCanaisRequest {
+  int64 timestamp = 1;
+}
+
+message ListarCanaisResponse {
+  repeated string canais = 1;
+  int64 timestamp = 2;
+}
+
+// protoc --proto_path=proto --python_out=python proto/mensagem.proto
+// pip install protobuf
+// pip install pyzmq
