@@ -19,7 +19,7 @@ context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5555")
 
-print("servidor rodando na porta 5555...", flush=True)
+print("servidor python rodando na porta 5555...", flush=True)
 
 dados = carregar_dados()
 
