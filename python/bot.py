@@ -15,7 +15,7 @@ context = zmq.Context()
 
 
 def fmt(ts):
-    return datetime.fromtimestamp(ts / 1000).strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
+    return datetime.fromtimestamp(ts / 1000).strftime("%H:%M:%S")
 
 def novo_socket():
     s = context.socket(zmq.REQ)
