@@ -1,0 +1,19 @@
+services:
+  servidor-python:
+    build: ./python
+    environment:
+      DADOS_PATH: /data/dados.json
+    volumes:
+      - dados-python:/data
+
+  bot-python:
+    build: ./python
+    command: python bot.py
+    environment:
+      SERVIDOR_ENDERECO: tcp://servidor-python:5555
+      USUARIO: bot-python-1
+    depends_on:
+      - servidor-python
+
+volumes:
+  dados-python:

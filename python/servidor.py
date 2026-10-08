@@ -3,7 +3,7 @@ import mensagem_pb2
 import json
 import os
 
-ARQUIVO_DADOS = "dados.json"
+ARQUIVO_DADOS = os.environ.get("DADOS_PATH", "dados.json")
 
 def carregar_dados():
     if os.path.exists(ARQUIVO_DADOS):
