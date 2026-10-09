@@ -8,23 +8,33 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 // mvn exec:java "-Dexec.mainClass=Servidor"
 
 public class Servidor {
     private static final String ARQUIVO_DADOS = System.getenv().getOrDefault("DADOS_PATH", "dados.json");
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final DateTimeFormatter FMT =
+            DateTimeFormatter.ofPattern("HH:mm:ss").withZone(ZoneId.systemDefault());
+
+    static String fmt(long ts) {
+        return FMT.format(Instant.ofEpochMilli(ts));
+    }
 
     public static void main(String[] args) {
         try (ZContext context = new ZContext()) {
             ZMQ.Socket socket = context.createSocket(SocketType.REP);
-            socket.bind("tcp://*:5555");
+            String broker = System.getenv().getOrDefault("BROKER_ENDERECO", "tcp://localhost:5556");
+            socket.connect(broker);
 
-            System.out.println("servidor java rodando na porta 5555...");
+            System.out.println("servidor java conectado ao broker em " + broker);
 
             Dados dados = carregarDados();
 
@@ -37,7 +47,9 @@ public class Servidor {
                 if (tipo.equals("login")) {
                     try {
                         Mensagem.LoginRequest loginReq = Mensagem.LoginRequest.parseFrom(dadosBytes);
-                        System.out.println("login recebido: " + loginReq.getUsuario());
+                        pausa();
+                        System.out.println("[RECEBIDO] login | usuario=" + loginReq.getUsuario()
+                                + " | timestamp=" + fmt(loginReq.getTimestamp()));
 
                         Mensagem.LoginResponse.Builder resposta = Mensagem.LoginResponse.newBuilder();
                         if (loginReq.getUsuario().trim().isEmpty()) {
@@ -51,6 +63,11 @@ public class Servidor {
                         }
                         resposta.setTimestamp(loginReq.getTimestamp());
 
+                        System.out.println("[ENVIADO] login | sucesso=" + resposta.getSucesso()
+                                + " | erro='" + resposta.getErro()
+                                + "' | timestamp=" + fmt(resposta.getTimestamp()));
+                        pausa();
+
                         ZMsg respostaMsg = new ZMsg();
                         respostaMsg.add("login");
                         respostaMsg.add(resposta.build().toByteArray());
@@ -63,7 +80,9 @@ public class Servidor {
                 } else if (tipo.equals("criar_canal")) {
                     try {
                         Mensagem.CriarCanalRequest canalReq = Mensagem.CriarCanalRequest.parseFrom(dadosBytes);
-                        System.out.println("canal a ser criado: " + canalReq.getNomeCanal());
+                        pausa();
+                        System.out.println("[RECEBIDO] criar_canal | nome_canal=" + canalReq.getNomeCanal()
+                                + " | timestamp=" + fmt(canalReq.getTimestamp()));
 
                         Mensagem.CriarCanalResponse.Builder resposta = Mensagem.CriarCanalResponse.newBuilder();
                         if (canalReq.getNomeCanal().trim().isEmpty()) {
@@ -80,6 +99,11 @@ public class Servidor {
                         }
                         resposta.setTimestamp(canalReq.getTimestamp());
 
+                        System.out.println("[ENVIADO] criar_canal | sucesso=" + resposta.getSucesso()
+                                + " | erro='" + resposta.getErro()
+                                + "' | timestamp=" + fmt(resposta.getTimestamp()));
+                        pausa();
+
                         ZMsg respostaMsg = new ZMsg();
                         respostaMsg.add("criar_canal");
                         respostaMsg.add(resposta.build().toByteArray());
@@ -92,11 +116,16 @@ public class Servidor {
                 } else if (tipo.equals("listar_canais")) {
                     try {
                         Mensagem.ListarCanaisRequest listarReq = Mensagem.ListarCanaisRequest.parseFrom(dadosBytes);
-                        System.out.println("listar canais recebido");
+                        pausa();
+                        System.out.println("[RECEBIDO] listar_canais | timestamp=" + fmt(listarReq.getTimestamp()));
 
                         Mensagem.ListarCanaisResponse.Builder resposta = Mensagem.ListarCanaisResponse.newBuilder();
                         resposta.addAllCanais(dados.canais);
                         resposta.setTimestamp(listarReq.getTimestamp());
+
+                        System.out.println("[ENVIADO] listar_canais | canais=" + resposta.getCanaisList()
+                                + " | timestamp=" + fmt(resposta.getTimestamp()));
+                        pausa();
 
                         ZMsg respostaMsg = new ZMsg();
                         respostaMsg.add("listar_canais");
@@ -128,6 +157,14 @@ public class Servidor {
             gson.toJson(dados, writer);
         } catch (IOException e) {
             System.out.println("erro ao salvar dados: " + e.getMessage());
+        }
+    }
+
+    static void pausa() {
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 }

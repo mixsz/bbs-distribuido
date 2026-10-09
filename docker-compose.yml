@@ -1,36 +1,54 @@
 services:
+  broker:
+    build: ./python
+    command: python broker.py
+    environment:
+      TZ: America/Sao_Paulo
+
   servidor-python:
     build: ./python
     environment:
+      TZ: America/Sao_Paulo
       DADOS_PATH: /data/dados.json
+      BROKER_ENDERECO: tcp://broker:5556
     volumes:
       - dados-python:/data
+    depends_on:
+      - broker
 
   servidor-java:
     build: ./java
     environment:
+      TZ: America/Sao_Paulo
       DADOS_PATH: /data/dados.json
+      BROKER_ENDERECO: tcp://broker:5556
     volumes:
       - dados-java:/data
+    depends_on:
+      - broker
 
   bot-python:
     build: ./python
     command: python bot.py
     environment:
       TZ: America/Sao_Paulo
-      SERVIDOR_ENDERECO: tcp://servidor-python:5555
+      SERVIDOR_ENDERECO: tcp://broker:5555
       USUARIO: bot-python-1
     depends_on:
+      - broker
       - servidor-python
+      - servidor-java
 
   bot-java:
     build: ./java
     command: ["java", "-cp", "target/classes:target/lib/*", "Bot"]
     environment:
       TZ: America/Sao_Paulo
-      SERVIDOR_ENDERECO: tcp://servidor-java:5555
+      SERVIDOR_ENDERECO: tcp://broker:5555
       USUARIO: bot-java-1
     depends_on:
+      - broker
+      - servidor-python
       - servidor-java
 
 volumes:
