@@ -16,15 +16,15 @@ import java.io.IOException;
 // mvn exec:java "-Dexec.mainClass=Servidor"
 
 public class Servidor {
-    private static final String ARQUIVO_DADOS = "dados.json";
+    private static final String ARQUIVO_DADOS = System.getenv().getOrDefault("DADOS_PATH", "dados.json");
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public static void main(String[] args) {
         try (ZContext context = new ZContext()) {
             ZMQ.Socket socket = context.createSocket(SocketType.REP);
-            socket.bind("tcp://*:5556");
+            socket.bind("tcp://*:5555");
 
-            System.out.println("servidor java rodando na porta 5556...");
+            System.out.println("servidor java rodando na porta 5555...");
 
             Dados dados = carregarDados();
 

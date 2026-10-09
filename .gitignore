@@ -5,3 +5,4 @@ venv/
 *.class
 target/
 *.jar
+dados.json

@@ -6,14 +6,33 @@ services:
     volumes:
       - dados-python:/data
 
+  servidor-java:
+    build: ./java
+    environment:
+      DADOS_PATH: /data/dados.json
+    volumes:
+      - dados-java:/data
+
   bot-python:
     build: ./python
     command: python bot.py
     environment:
+      TZ: America/Sao_Paulo
       SERVIDOR_ENDERECO: tcp://servidor-python:5555
       USUARIO: bot-python-1
     depends_on:
       - servidor-python
 
+  bot-java:
+    build: ./java
+    command: ["java", "-cp", "target/classes:target/lib/*", "Bot"]
+    environment:
+      TZ: America/Sao_Paulo
+      SERVIDOR_ENDERECO: tcp://servidor-java:5555
+      USUARIO: bot-java-1
+    depends_on:
+      - servidor-java
+
 volumes:
   dados-python:
+  dados-java:
