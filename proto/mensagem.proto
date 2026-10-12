@@ -31,6 +31,26 @@ message ListarCanaisResponse {
   int64 timestamp = 2;
 }
 
-// protoc --proto_path=proto --python_out=python proto/mensagem.proto
+message PublicarRequest {
+  string usuario = 1;
+  string canal = 2;
+  string mensagem = 3;
+  int64 timestamp = 4;
+}
+
+message PublicarResponse {
+  bool sucesso = 1;
+  string erro = 2;
+  int64 timestamp = 3;
+}
+
+message Publicacao {
+  string canal = 1;
+  string mensagem = 2;
+  string usuario = 3;
+  int64 timestamp = 4;
+}
+
+// protoc --proto_path=proto --python_out=python --java_out=java/src/main/java proto/mensagem.proto
 // pip install protobuf
 // pip install pyzmq

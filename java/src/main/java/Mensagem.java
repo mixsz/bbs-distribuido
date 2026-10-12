@@ -3627,6 +3627,2441 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
 
   }
 
+  public interface PublicarRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PublicarRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string usuario = 1;</code>
+     * @return The usuario.
+     */
+    java.lang.String getUsuario();
+    /**
+     * <code>string usuario = 1;</code>
+     * @return The bytes for usuario.
+     */
+    com.google.protobuf.ByteString
+        getUsuarioBytes();
+
+    /**
+     * <code>string canal = 2;</code>
+     * @return The canal.
+     */
+    java.lang.String getCanal();
+    /**
+     * <code>string canal = 2;</code>
+     * @return The bytes for canal.
+     */
+    com.google.protobuf.ByteString
+        getCanalBytes();
+
+    /**
+     * <code>string mensagem = 3;</code>
+     * @return The mensagem.
+     */
+    java.lang.String getMensagem();
+    /**
+     * <code>string mensagem = 3;</code>
+     * @return The bytes for mensagem.
+     */
+    com.google.protobuf.ByteString
+        getMensagemBytes();
+
+    /**
+     * <code>int64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+  }
+  /**
+   * Protobuf type {@code PublicarRequest}
+   */
+  public static final class PublicarRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:PublicarRequest)
+      PublicarRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "PublicarRequest");
+    }
+    // Use PublicarRequest.newBuilder() to construct.
+    private PublicarRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private PublicarRequest() {
+      usuario_ = "";
+      canal_ = "";
+      mensagem_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_PublicarRequest_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_PublicarRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_PublicarRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.PublicarRequest.class, Mensagem.PublicarRequest.Builder.class);
+    }
+
+    public static final int USUARIO_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object usuario_ = "";
+    /**
+     * <code>string usuario = 1;</code>
+     * @return The usuario.
+     */
+    @java.lang.Override
+    public java.lang.String getUsuario() {
+      java.lang.Object ref = usuario_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        usuario_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string usuario = 1;</code>
+     * @return The bytes for usuario.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUsuarioBytes() {
+      java.lang.Object ref = usuario_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        usuario_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CANAL_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object canal_ = "";
+    /**
+     * <code>string canal = 2;</code>
+     * @return The canal.
+     */
+    @java.lang.Override
+    public java.lang.String getCanal() {
+      java.lang.Object ref = canal_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        canal_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string canal = 2;</code>
+     * @return The bytes for canal.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCanalBytes() {
+      java.lang.Object ref = canal_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        canal_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MENSAGEM_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object mensagem_ = "";
+    /**
+     * <code>string mensagem = 3;</code>
+     * @return The mensagem.
+     */
+    @java.lang.Override
+    public java.lang.String getMensagem() {
+      java.lang.Object ref = mensagem_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        mensagem_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string mensagem = 3;</code>
+     * @return The bytes for mensagem.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMensagemBytes() {
+      java.lang.Object ref = mensagem_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        mensagem_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 4;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(usuario_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, usuario_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(canal_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, canal_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(mensagem_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, mensagem_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(4, timestamp_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(usuario_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, usuario_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(canal_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, canal_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(mensagem_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, mensagem_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, timestamp_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.PublicarRequest)) {
+        return super.equals(obj);
+      }
+      Mensagem.PublicarRequest other = (Mensagem.PublicarRequest) obj;
+
+      if (!getUsuario()
+          .equals(other.getUsuario())) return false;
+      if (!getCanal()
+          .equals(other.getCanal())) return false;
+      if (!getMensagem()
+          .equals(other.getMensagem())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USUARIO_FIELD_NUMBER;
+      hash = (53 * hash) + getUsuario().hashCode();
+      hash = (37 * hash) + CANAL_FIELD_NUMBER;
+      hash = (53 * hash) + getCanal().hashCode();
+      hash = (37 * hash) + MENSAGEM_FIELD_NUMBER;
+      hash = (53 * hash) + getMensagem().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.PublicarRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.PublicarRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.PublicarRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.PublicarRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.PublicarRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.PublicarRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.PublicarRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.PublicarRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.PublicarRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.PublicarRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.PublicarRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.PublicarRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.PublicarRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code PublicarRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:PublicarRequest)
+        Mensagem.PublicarRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_PublicarRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_PublicarRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.PublicarRequest.class, Mensagem.PublicarRequest.Builder.class);
+      }
+
+      // Construct using Mensagem.PublicarRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        usuario_ = "";
+        canal_ = "";
+        mensagem_ = "";
+        timestamp_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_PublicarRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.PublicarRequest getDefaultInstanceForType() {
+        return Mensagem.PublicarRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.PublicarRequest build() {
+        Mensagem.PublicarRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.PublicarRequest buildPartial() {
+        Mensagem.PublicarRequest result = new Mensagem.PublicarRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.PublicarRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.usuario_ = usuario_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.canal_ = canal_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.mensagem_ = mensagem_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.PublicarRequest) {
+          return mergeFrom((Mensagem.PublicarRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.PublicarRequest other) {
+        if (other == Mensagem.PublicarRequest.getDefaultInstance()) return this;
+        if (!other.getUsuario().isEmpty()) {
+          usuario_ = other.usuario_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getCanal().isEmpty()) {
+          canal_ = other.canal_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (!other.getMensagem().isEmpty()) {
+          mensagem_ = other.mensagem_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                usuario_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                canal_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                mensagem_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 32: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object usuario_ = "";
+      /**
+       * <code>string usuario = 1;</code>
+       * @return The usuario.
+       */
+      public java.lang.String getUsuario() {
+        java.lang.Object ref = usuario_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          usuario_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string usuario = 1;</code>
+       * @return The bytes for usuario.
+       */
+      public com.google.protobuf.ByteString
+          getUsuarioBytes() {
+        java.lang.Object ref = usuario_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          usuario_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string usuario = 1;</code>
+       * @param value The usuario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsuario(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        usuario_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string usuario = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUsuario() {
+        usuario_ = getDefaultInstance().getUsuario();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string usuario = 1;</code>
+       * @param value The bytes for usuario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsuarioBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        usuario_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object canal_ = "";
+      /**
+       * <code>string canal = 2;</code>
+       * @return The canal.
+       */
+      public java.lang.String getCanal() {
+        java.lang.Object ref = canal_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          canal_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string canal = 2;</code>
+       * @return The bytes for canal.
+       */
+      public com.google.protobuf.ByteString
+          getCanalBytes() {
+        java.lang.Object ref = canal_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          canal_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string canal = 2;</code>
+       * @param value The canal to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCanal(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        canal_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string canal = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCanal() {
+        canal_ = getDefaultInstance().getCanal();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string canal = 2;</code>
+       * @param value The bytes for canal to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCanalBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        canal_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object mensagem_ = "";
+      /**
+       * <code>string mensagem = 3;</code>
+       * @return The mensagem.
+       */
+      public java.lang.String getMensagem() {
+        java.lang.Object ref = mensagem_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          mensagem_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string mensagem = 3;</code>
+       * @return The bytes for mensagem.
+       */
+      public com.google.protobuf.ByteString
+          getMensagemBytes() {
+        java.lang.Object ref = mensagem_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          mensagem_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string mensagem = 3;</code>
+       * @param value The mensagem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMensagem(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        mensagem_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string mensagem = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMensagem() {
+        mensagem_ = getDefaultInstance().getMensagem();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string mensagem = 3;</code>
+       * @param value The bytes for mensagem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMensagemBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        mensagem_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:PublicarRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:PublicarRequest)
+    private static final Mensagem.PublicarRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.PublicarRequest();
+    }
+
+    public static Mensagem.PublicarRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PublicarRequest>
+        PARSER = new com.google.protobuf.AbstractParser<PublicarRequest>() {
+      @java.lang.Override
+      public PublicarRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<PublicarRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PublicarRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.PublicarRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PublicarResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PublicarResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>bool sucesso = 1;</code>
+     * @return The sucesso.
+     */
+    boolean getSucesso();
+
+    /**
+     * <code>string erro = 2;</code>
+     * @return The erro.
+     */
+    java.lang.String getErro();
+    /**
+     * <code>string erro = 2;</code>
+     * @return The bytes for erro.
+     */
+    com.google.protobuf.ByteString
+        getErroBytes();
+
+    /**
+     * <code>int64 timestamp = 3;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+  }
+  /**
+   * Protobuf type {@code PublicarResponse}
+   */
+  public static final class PublicarResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:PublicarResponse)
+      PublicarResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "PublicarResponse");
+    }
+    // Use PublicarResponse.newBuilder() to construct.
+    private PublicarResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private PublicarResponse() {
+      erro_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_PublicarResponse_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_PublicarResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_PublicarResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.PublicarResponse.class, Mensagem.PublicarResponse.Builder.class);
+    }
+
+    public static final int SUCESSO_FIELD_NUMBER = 1;
+    private boolean sucesso_ = false;
+    /**
+     * <code>bool sucesso = 1;</code>
+     * @return The sucesso.
+     */
+    @java.lang.Override
+    public boolean getSucesso() {
+      return sucesso_;
+    }
+
+    public static final int ERRO_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object erro_ = "";
+    /**
+     * <code>string erro = 2;</code>
+     * @return The erro.
+     */
+    @java.lang.Override
+    public java.lang.String getErro() {
+      java.lang.Object ref = erro_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        erro_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string erro = 2;</code>
+     * @return The bytes for erro.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getErroBytes() {
+      java.lang.Object ref = erro_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        erro_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 3;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 3;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (sucesso_ != false) {
+        output.writeBool(1, sucesso_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(erro_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, erro_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(3, timestamp_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (sucesso_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, sucesso_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(erro_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, erro_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, timestamp_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.PublicarResponse)) {
+        return super.equals(obj);
+      }
+      Mensagem.PublicarResponse other = (Mensagem.PublicarResponse) obj;
+
+      if (getSucesso()
+          != other.getSucesso()) return false;
+      if (!getErro()
+          .equals(other.getErro())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SUCESSO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getSucesso());
+      hash = (37 * hash) + ERRO_FIELD_NUMBER;
+      hash = (53 * hash) + getErro().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.PublicarResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.PublicarResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.PublicarResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.PublicarResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.PublicarResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.PublicarResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.PublicarResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.PublicarResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.PublicarResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.PublicarResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.PublicarResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.PublicarResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.PublicarResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code PublicarResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:PublicarResponse)
+        Mensagem.PublicarResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_PublicarResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_PublicarResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.PublicarResponse.class, Mensagem.PublicarResponse.Builder.class);
+      }
+
+      // Construct using Mensagem.PublicarResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        sucesso_ = false;
+        erro_ = "";
+        timestamp_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_PublicarResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.PublicarResponse getDefaultInstanceForType() {
+        return Mensagem.PublicarResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.PublicarResponse build() {
+        Mensagem.PublicarResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.PublicarResponse buildPartial() {
+        Mensagem.PublicarResponse result = new Mensagem.PublicarResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.PublicarResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.sucesso_ = sucesso_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.erro_ = erro_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.PublicarResponse) {
+          return mergeFrom((Mensagem.PublicarResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.PublicarResponse other) {
+        if (other == Mensagem.PublicarResponse.getDefaultInstance()) return this;
+        if (other.getSucesso() != false) {
+          setSucesso(other.getSucesso());
+        }
+        if (!other.getErro().isEmpty()) {
+          erro_ = other.erro_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                sucesso_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                erro_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean sucesso_ ;
+      /**
+       * <code>bool sucesso = 1;</code>
+       * @return The sucesso.
+       */
+      @java.lang.Override
+      public boolean getSucesso() {
+        return sucesso_;
+      }
+      /**
+       * <code>bool sucesso = 1;</code>
+       * @param value The sucesso to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSucesso(boolean value) {
+
+        sucesso_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool sucesso = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSucesso() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        sucesso_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object erro_ = "";
+      /**
+       * <code>string erro = 2;</code>
+       * @return The erro.
+       */
+      public java.lang.String getErro() {
+        java.lang.Object ref = erro_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          erro_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string erro = 2;</code>
+       * @return The bytes for erro.
+       */
+      public com.google.protobuf.ByteString
+          getErroBytes() {
+        java.lang.Object ref = erro_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          erro_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string erro = 2;</code>
+       * @param value The erro to set.
+       * @return This builder for chaining.
+       */
+      public Builder setErro(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        erro_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string erro = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearErro() {
+        erro_ = getDefaultInstance().getErro();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string erro = 2;</code>
+       * @param value The bytes for erro to set.
+       * @return This builder for chaining.
+       */
+      public Builder setErroBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        erro_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 3;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 3;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:PublicarResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:PublicarResponse)
+    private static final Mensagem.PublicarResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.PublicarResponse();
+    }
+
+    public static Mensagem.PublicarResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PublicarResponse>
+        PARSER = new com.google.protobuf.AbstractParser<PublicarResponse>() {
+      @java.lang.Override
+      public PublicarResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<PublicarResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PublicarResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.PublicarResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PublicacaoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Publicacao)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string canal = 1;</code>
+     * @return The canal.
+     */
+    java.lang.String getCanal();
+    /**
+     * <code>string canal = 1;</code>
+     * @return The bytes for canal.
+     */
+    com.google.protobuf.ByteString
+        getCanalBytes();
+
+    /**
+     * <code>string mensagem = 2;</code>
+     * @return The mensagem.
+     */
+    java.lang.String getMensagem();
+    /**
+     * <code>string mensagem = 2;</code>
+     * @return The bytes for mensagem.
+     */
+    com.google.protobuf.ByteString
+        getMensagemBytes();
+
+    /**
+     * <code>string usuario = 3;</code>
+     * @return The usuario.
+     */
+    java.lang.String getUsuario();
+    /**
+     * <code>string usuario = 3;</code>
+     * @return The bytes for usuario.
+     */
+    com.google.protobuf.ByteString
+        getUsuarioBytes();
+
+    /**
+     * <code>int64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+  }
+  /**
+   * Protobuf type {@code Publicacao}
+   */
+  public static final class Publicacao extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:Publicacao)
+      PublicacaoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "Publicacao");
+    }
+    // Use Publicacao.newBuilder() to construct.
+    private Publicacao(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Publicacao() {
+      canal_ = "";
+      mensagem_ = "";
+      usuario_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_Publicacao_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_Publicacao_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_Publicacao_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.Publicacao.class, Mensagem.Publicacao.Builder.class);
+    }
+
+    public static final int CANAL_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object canal_ = "";
+    /**
+     * <code>string canal = 1;</code>
+     * @return The canal.
+     */
+    @java.lang.Override
+    public java.lang.String getCanal() {
+      java.lang.Object ref = canal_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        canal_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string canal = 1;</code>
+     * @return The bytes for canal.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCanalBytes() {
+      java.lang.Object ref = canal_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        canal_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MENSAGEM_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object mensagem_ = "";
+    /**
+     * <code>string mensagem = 2;</code>
+     * @return The mensagem.
+     */
+    @java.lang.Override
+    public java.lang.String getMensagem() {
+      java.lang.Object ref = mensagem_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        mensagem_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string mensagem = 2;</code>
+     * @return The bytes for mensagem.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMensagemBytes() {
+      java.lang.Object ref = mensagem_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        mensagem_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int USUARIO_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object usuario_ = "";
+    /**
+     * <code>string usuario = 3;</code>
+     * @return The usuario.
+     */
+    @java.lang.Override
+    public java.lang.String getUsuario() {
+      java.lang.Object ref = usuario_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        usuario_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string usuario = 3;</code>
+     * @return The bytes for usuario.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUsuarioBytes() {
+      java.lang.Object ref = usuario_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        usuario_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 4;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(canal_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, canal_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(mensagem_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, mensagem_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(usuario_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, usuario_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(4, timestamp_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(canal_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, canal_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(mensagem_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, mensagem_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(usuario_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, usuario_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, timestamp_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.Publicacao)) {
+        return super.equals(obj);
+      }
+      Mensagem.Publicacao other = (Mensagem.Publicacao) obj;
+
+      if (!getCanal()
+          .equals(other.getCanal())) return false;
+      if (!getMensagem()
+          .equals(other.getMensagem())) return false;
+      if (!getUsuario()
+          .equals(other.getUsuario())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CANAL_FIELD_NUMBER;
+      hash = (53 * hash) + getCanal().hashCode();
+      hash = (37 * hash) + MENSAGEM_FIELD_NUMBER;
+      hash = (53 * hash) + getMensagem().hashCode();
+      hash = (37 * hash) + USUARIO_FIELD_NUMBER;
+      hash = (53 * hash) + getUsuario().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.Publicacao parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.Publicacao parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.Publicacao parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.Publicacao parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.Publicacao parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.Publicacao parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.Publicacao parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.Publicacao parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.Publicacao parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.Publicacao parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.Publicacao parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.Publicacao parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.Publicacao prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Publicacao}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Publicacao)
+        Mensagem.PublicacaoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_Publicacao_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_Publicacao_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.Publicacao.class, Mensagem.Publicacao.Builder.class);
+      }
+
+      // Construct using Mensagem.Publicacao.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        canal_ = "";
+        mensagem_ = "";
+        usuario_ = "";
+        timestamp_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_Publicacao_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.Publicacao getDefaultInstanceForType() {
+        return Mensagem.Publicacao.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.Publicacao build() {
+        Mensagem.Publicacao result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.Publicacao buildPartial() {
+        Mensagem.Publicacao result = new Mensagem.Publicacao(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.Publicacao result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.canal_ = canal_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.mensagem_ = mensagem_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.usuario_ = usuario_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.Publicacao) {
+          return mergeFrom((Mensagem.Publicacao)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.Publicacao other) {
+        if (other == Mensagem.Publicacao.getDefaultInstance()) return this;
+        if (!other.getCanal().isEmpty()) {
+          canal_ = other.canal_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getMensagem().isEmpty()) {
+          mensagem_ = other.mensagem_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (!other.getUsuario().isEmpty()) {
+          usuario_ = other.usuario_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                canal_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                mensagem_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                usuario_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 32: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object canal_ = "";
+      /**
+       * <code>string canal = 1;</code>
+       * @return The canal.
+       */
+      public java.lang.String getCanal() {
+        java.lang.Object ref = canal_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          canal_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string canal = 1;</code>
+       * @return The bytes for canal.
+       */
+      public com.google.protobuf.ByteString
+          getCanalBytes() {
+        java.lang.Object ref = canal_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          canal_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string canal = 1;</code>
+       * @param value The canal to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCanal(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        canal_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string canal = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCanal() {
+        canal_ = getDefaultInstance().getCanal();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string canal = 1;</code>
+       * @param value The bytes for canal to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCanalBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        canal_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object mensagem_ = "";
+      /**
+       * <code>string mensagem = 2;</code>
+       * @return The mensagem.
+       */
+      public java.lang.String getMensagem() {
+        java.lang.Object ref = mensagem_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          mensagem_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string mensagem = 2;</code>
+       * @return The bytes for mensagem.
+       */
+      public com.google.protobuf.ByteString
+          getMensagemBytes() {
+        java.lang.Object ref = mensagem_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          mensagem_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string mensagem = 2;</code>
+       * @param value The mensagem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMensagem(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        mensagem_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string mensagem = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMensagem() {
+        mensagem_ = getDefaultInstance().getMensagem();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string mensagem = 2;</code>
+       * @param value The bytes for mensagem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMensagemBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        mensagem_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object usuario_ = "";
+      /**
+       * <code>string usuario = 3;</code>
+       * @return The usuario.
+       */
+      public java.lang.String getUsuario() {
+        java.lang.Object ref = usuario_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          usuario_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string usuario = 3;</code>
+       * @return The bytes for usuario.
+       */
+      public com.google.protobuf.ByteString
+          getUsuarioBytes() {
+        java.lang.Object ref = usuario_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          usuario_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string usuario = 3;</code>
+       * @param value The usuario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsuario(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        usuario_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string usuario = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUsuario() {
+        usuario_ = getDefaultInstance().getUsuario();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string usuario = 3;</code>
+       * @param value The bytes for usuario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsuarioBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        usuario_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:Publicacao)
+    }
+
+    // @@protoc_insertion_point(class_scope:Publicacao)
+    private static final Mensagem.Publicacao DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.Publicacao();
+    }
+
+    public static Mensagem.Publicacao getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Publicacao>
+        PARSER = new com.google.protobuf.AbstractParser<Publicacao>() {
+      @java.lang.Override
+      public Publicacao parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<Publicacao> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Publicacao> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.Publicacao getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_LoginRequest_descriptor;
   private static final 
@@ -3657,6 +6092,21 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ListarCanaisResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PublicarRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_PublicarRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PublicarResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_PublicarResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Publicacao_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_Publicacao_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3675,7 +6125,13 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       "ro\030\002 \001(\t\022\021\n\ttimestamp\030\003 \001(\003\"(\n\023ListarCan" +
       "aisRequest\022\021\n\ttimestamp\030\001 \001(\003\"9\n\024ListarC" +
       "anaisResponse\022\016\n\006canais\030\001 \003(\t\022\021\n\ttimesta" +
-      "mp\030\002 \001(\003b\006proto3"
+      "mp\030\002 \001(\003\"V\n\017PublicarRequest\022\017\n\007usuario\030\001" +
+      " \001(\t\022\r\n\005canal\030\002 \001(\t\022\020\n\010mensagem\030\003 \001(\t\022\021\n" +
+      "\ttimestamp\030\004 \001(\003\"D\n\020PublicarResponse\022\017\n\007" +
+      "sucesso\030\001 \001(\010\022\014\n\004erro\030\002 \001(\t\022\021\n\ttimestamp" +
+      "\030\003 \001(\003\"Q\n\nPublicacao\022\r\n\005canal\030\001 \001(\t\022\020\n\010m" +
+      "ensagem\030\002 \001(\t\022\017\n\007usuario\030\003 \001(\t\022\021\n\ttimest" +
+      "amp\030\004 \001(\003b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3717,6 +6173,24 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ListarCanaisResponse_descriptor,
         new java.lang.String[] { "Canais", "Timestamp", });
+    internal_static_PublicarRequest_descriptor =
+      getDescriptor().getMessageType(6);
+    internal_static_PublicarRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_PublicarRequest_descriptor,
+        new java.lang.String[] { "Usuario", "Canal", "Mensagem", "Timestamp", });
+    internal_static_PublicarResponse_descriptor =
+      getDescriptor().getMessageType(7);
+    internal_static_PublicarResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_PublicarResponse_descriptor,
+        new java.lang.String[] { "Sucesso", "Erro", "Timestamp", });
+    internal_static_Publicacao_descriptor =
+      getDescriptor().getMessageType(8);
+    internal_static_Publicacao_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Publicacao_descriptor,
+        new java.lang.String[] { "Canal", "Mensagem", "Usuario", "Timestamp", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

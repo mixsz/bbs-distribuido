@@ -5,16 +5,24 @@ services:
     environment:
       TZ: America/Sao_Paulo
 
+  proxy:
+    build: ./python
+    command: python proxy.py
+    environment:
+      TZ: America/Sao_Paulo
+
   servidor-python:
     build: ./python
     environment:
       TZ: America/Sao_Paulo
       DADOS_PATH: /data/dados.json
       BROKER_ENDERECO: tcp://broker:5556
+      PROXY_PUB_ENDERECO: tcp://proxy:5557
     volumes:
       - dados-python:/data
     depends_on:
       - broker
+      - proxy
 
   servidor-java:
     build: ./java
@@ -22,10 +30,12 @@ services:
       TZ: America/Sao_Paulo
       DADOS_PATH: /data/dados.json
       BROKER_ENDERECO: tcp://broker:5556
+      PROXY_PUB_ENDERECO: tcp://proxy:5557
     volumes:
       - dados-java:/data
     depends_on:
       - broker
+      - proxy
 
   bot-python:
     build: ./python
@@ -33,9 +43,11 @@ services:
     environment:
       TZ: America/Sao_Paulo
       SERVIDOR_ENDERECO: tcp://broker:5555
+      PROXY_SUB_ENDERECO: tcp://proxy:5558
       USUARIO: bot-python-1
     depends_on:
       - broker
+      - proxy
       - servidor-python
       - servidor-java
 
@@ -45,9 +57,11 @@ services:
     environment:
       TZ: America/Sao_Paulo
       SERVIDOR_ENDERECO: tcp://broker:5555
+      PROXY_SUB_ENDERECO: tcp://proxy:5558
       USUARIO: bot-java-1
     depends_on:
       - broker
+      - proxy
       - servidor-python
       - servidor-java
 

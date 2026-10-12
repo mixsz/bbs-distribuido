@@ -8,29 +8,33 @@ import mensagem_pb2
 
 ARQUIVO_DADOS = os.environ.get("DADOS_PATH", "dados.json")
 BROKER = os.environ.get("BROKER_ENDERECO", "tcp://localhost:5556")
-
+PROXY_PUB = os.environ.get("PROXY_PUB_ENDERECO", "tcp://localhost:5557")
 
 def fmt(ts):
     return datetime.fromtimestamp(ts / 1000).strftime("%H:%M:%S")
 
+def agora():
+    return int(time.time() * 1000)
 
 def carregar_dados():
+    dados = {"logins": [], "canais": [], "publicacoes": []}
     if os.path.exists(ARQUIVO_DADOS):
         with open(ARQUIVO_DADOS, "r") as f:
-            return json.load(f)
-    return {"logins": [], "canais": []}
-
+            dados.update(json.load(f))
+    return dados
 
 def salvar_dados(dados):
     with open(ARQUIVO_DADOS, "w") as f:
         json.dump(dados, f, indent=2)
 
-
 context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.connect(BROKER)
 
-print(f"servidor python conectado ao broker em {BROKER}", flush=True)
+pub = context.socket(zmq.PUB)
+pub.connect(PROXY_PUB)
+
+print(f"servidor python conectado ao broker em {BROKER} e ao proxy em {PROXY_PUB}", flush=True)
 
 dados = carregar_dados()
 
@@ -95,3 +99,41 @@ while True:
         print(f"[ENVIADO] listar_canais | canais={list(resposta.canais)} | timestamp={fmt(resposta.timestamp)}", flush=True)
         time.sleep(0.2)
         socket.send_multipart([b"listar_canais", resposta.SerializeToString()])
+
+    elif tipo == b"publicar":
+        pub_req = mensagem_pb2.PublicarRequest()
+        pub_req.ParseFromString(msg_dados)
+        time.sleep(0.2)
+        print(f"[RECEBIDO] publicar | usuario={pub_req.usuario} | canal={pub_req.canal} | mensagem='{pub_req.mensagem}' | timestamp={fmt(pub_req.timestamp)}", flush=True)
+
+        resposta = mensagem_pb2.PublicarResponse()
+        if pub_req.canal.strip() == "":
+            resposta.sucesso = False
+            resposta.erro = "canal vazio"
+        elif pub_req.mensagem.strip() == "":
+            resposta.sucesso = False
+            resposta.erro = "mensagem vazia"
+        else:
+            publicacao = mensagem_pb2.Publicacao(
+                canal=pub_req.canal,
+                mensagem=pub_req.mensagem,
+                usuario=pub_req.usuario,
+                timestamp=agora(),
+            )
+            pub.send_multipart([pub_req.canal.encode(), publicacao.SerializeToString()])
+            print(f"[PUBLICADO] canal={publicacao.canal} | mensagem='{publicacao.mensagem}' | usuario={publicacao.usuario} | timestamp={fmt(publicacao.timestamp)}", flush=True)
+
+            dados["publicacoes"].append({
+                "canal": publicacao.canal,
+                "mensagem": publicacao.mensagem,
+                "usuario": publicacao.usuario,
+                "timestamp": publicacao.timestamp,
+            })
+            salvar_dados(dados)
+            resposta.sucesso = True
+            resposta.erro = ""
+        resposta.timestamp = pub_req.timestamp
+
+        print(f"[ENVIADO] publicar | sucesso={resposta.sucesso} | erro='{resposta.erro}' | timestamp={fmt(resposta.timestamp)}", flush=True)
+        time.sleep(0.2)
+        socket.send_multipart([b"publicar", resposta.SerializeToString()])
