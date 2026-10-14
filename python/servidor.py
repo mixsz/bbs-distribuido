@@ -11,7 +11,7 @@ BROKER = os.environ.get("BROKER_ENDERECO", "tcp://localhost:5556")
 PROXY_PUB = os.environ.get("PROXY_PUB_ENDERECO", "tcp://localhost:5557")
 
 def fmt(ts):
-    return datetime.fromtimestamp(ts / 1000).strftime("%H:%M:%S")
+    return datetime.fromtimestamp(ts / 1000).strftime("%H:%M:%S.%f")[:-3]
 
 def agora():
     return int(time.time() * 1000)
@@ -135,5 +135,4 @@ while True:
         resposta.timestamp = pub_req.timestamp
 
         print(f"[ENVIADO] publicar | sucesso={resposta.sucesso} | erro='{resposta.erro}' | timestamp={fmt(resposta.timestamp)}", flush=True)
-        time.sleep(0.2)
         socket.send_multipart([b"publicar", resposta.SerializeToString()])

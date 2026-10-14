@@ -6,3 +6,4 @@ venv/
 target/
 *.jar
 dados.json
+dados/

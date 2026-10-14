@@ -41,7 +41,7 @@ sub = context.socket(zmq.SUB)
 sub.connect(PROXY_SUB)
 inscritos = set()
 
-def fmt_ms(ts):
+def fmt(ts):
     return datetime.fromtimestamp(ts / 1000).strftime("%H:%M:%S.%f")[:-3]
 
 def agora():
@@ -67,7 +67,7 @@ def processar_publicacoes():
             continue
         publicacao = mensagem_pb2.Publicacao()
         publicacao.ParseFromString(dados)
-        print(f"[PUBLICACAO] canal={publicacao.canal} | mensagem='{publicacao.mensagem}' | usuario={publicacao.usuario} | enviada={fmt_ms(publicacao.timestamp)} | recebida={fmt_ms(agora())}", flush=True)
+        print(f"[PUBLICACAO] canal={publicacao.canal} | mensagem='{publicacao.mensagem}' | usuario={publicacao.usuario} | enviada={fmt(publicacao.timestamp)} | recebida={fmt(agora())}", flush=True)
 
 def esperar(segundos):
     fim = time.time() + segundos
@@ -82,31 +82,31 @@ def login():
     req = mensagem_pb2.LoginRequest()
     req.usuario = USUARIO
     req.timestamp = agora()
-    print(f"[ENVIADO] login | usuario={req.usuario} | timestamp={fmt_ms(req.timestamp)}", flush=True)
+    print(f"[ENVIADO] login | usuario={req.usuario} | timestamp={fmt(req.timestamp)}", flush=True)
     _, dados = enviar(b"login", req.SerializeToString())
     resp = mensagem_pb2.LoginResponse()
     resp.ParseFromString(dados)
-    print(f"[RECEBIDO] login | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt_ms(resp.timestamp)}", flush=True)
+    print(f"[RECEBIDO] login | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt(resp.timestamp)}", flush=True)
 
 def listar_canais():
     req = mensagem_pb2.ListarCanaisRequest()
     req.timestamp = agora()
-    print(f"[ENVIADO] listar_canais | timestamp={fmt_ms(req.timestamp)}", flush=True)
+    print(f"[ENVIADO] listar_canais | timestamp={fmt(req.timestamp)}", flush=True)
     _, dados = enviar(b"listar_canais", req.SerializeToString())
     resp = mensagem_pb2.ListarCanaisResponse()
     resp.ParseFromString(dados)
-    print(f"[RECEBIDO] listar_canais | canais={list(resp.canais)} | timestamp={fmt_ms(resp.timestamp)}", flush=True)
+    print(f"[RECEBIDO] listar_canais | canais={list(resp.canais)} | timestamp={fmt(resp.timestamp)}", flush=True)
     return list(resp.canais)
 
 def criar_canal(nome):
     req = mensagem_pb2.CriarCanalRequest()
     req.nome_canal = nome
     req.timestamp = agora()
-    print(f"[ENVIADO] criar_canal | nome_canal={req.nome_canal} | timestamp={fmt_ms(req.timestamp)}", flush=True)
+    print(f"[ENVIADO] criar_canal | nome_canal={req.nome_canal} | timestamp={fmt(req.timestamp)}", flush=True)
     _, dados = enviar(b"criar_canal", req.SerializeToString())
     resp = mensagem_pb2.CriarCanalResponse()
     resp.ParseFromString(dados)
-    print(f"[RECEBIDO] criar_canal | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt_ms(resp.timestamp)}", flush=True)
+    print(f"[RECEBIDO] criar_canal | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt(resp.timestamp)}", flush=True)
     return resp.sucesso
 
 def publicar(canal, mensagem):
@@ -115,11 +115,11 @@ def publicar(canal, mensagem):
     req.canal = canal
     req.mensagem = mensagem
     req.timestamp = agora()
-    print(f"[ENVIADO] publicar | canal={req.canal} | mensagem='{req.mensagem}' | timestamp={fmt_ms(req.timestamp)}", flush=True)
+    print(f"[ENVIADO] publicar | canal={req.canal} | mensagem='{req.mensagem}' | timestamp={fmt(req.timestamp)}", flush=True)
     _, dados = enviar(b"publicar", req.SerializeToString())
     resp = mensagem_pb2.PublicarResponse()
     resp.ParseFromString(dados)
-    print(f"[RECEBIDO] publicar | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt_ms(resp.timestamp)}", flush=True)
+    print(f"[RECEBIDO] publicar | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt(resp.timestamp)}", flush=True)
 
 login()
 esperar(1)

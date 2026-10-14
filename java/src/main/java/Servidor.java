@@ -22,7 +22,7 @@ public class Servidor {
     private static final String ARQUIVO_DADOS = System.getenv().getOrDefault("DADOS_PATH", "dados.json");
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final DateTimeFormatter FMT =
-            DateTimeFormatter.ofPattern("HH:mm:ss").withZone(ZoneId.systemDefault());
+            DateTimeFormatter.ofPattern("HH:mm:ss.SSS").withZone(ZoneId.systemDefault());
 
     static String fmt(long ts) {
         return FMT.format(Instant.ofEpochMilli(ts));
@@ -34,7 +34,11 @@ public class Servidor {
             String broker = System.getenv().getOrDefault("BROKER_ENDERECO", "tcp://localhost:5556");
             socket.connect(broker);
 
-            System.out.println("servidor java conectado ao broker em " + broker);
+            ZMQ.Socket pub = context.createSocket(SocketType.PUB);
+            String proxyPub = System.getenv().getOrDefault("PROXY_PUB_ENDERECO", "tcp://localhost:5557");
+            pub.connect(proxyPub);
+
+            System.out.println("servidor java conectado ao broker em " + broker + " e ao proxy em " + proxyPub);
 
             Dados dados = carregarDados();
 
@@ -135,6 +139,69 @@ public class Servidor {
                     } catch (InvalidProtocolBufferException e) {
                         System.out.println("erro ao desserializar: " + e.getMessage());
                     }
+
+                } else if (tipo.equals("publicar")) {
+                    try {
+                        Mensagem.PublicarRequest pubReq = Mensagem.PublicarRequest.parseFrom(dadosBytes);
+                        pausa();
+                        System.out.println("[RECEBIDO] publicar | usuario=" + pubReq.getUsuario()
+                                + " | canal=" + pubReq.getCanal()
+                                + " | mensagem='" + pubReq.getMensagem()
+                                + "' | timestamp=" + fmt(pubReq.getTimestamp()));
+
+                        Mensagem.PublicarResponse.Builder resposta = Mensagem.PublicarResponse.newBuilder();
+                        if (pubReq.getCanal().trim().isEmpty()) {
+                            resposta.setSucesso(false);
+                            resposta.setErro("canal vazio");
+                        } else if (pubReq.getMensagem().trim().isEmpty()) {
+                            resposta.setSucesso(false);
+                            resposta.setErro("mensagem vazia");
+                        } else {
+                            Mensagem.Publicacao publicacao = Mensagem.Publicacao.newBuilder()
+                                    .setCanal(pubReq.getCanal())
+                                    .setMensagem(pubReq.getMensagem())
+                                    .setUsuario(pubReq.getUsuario())
+                                    .setTimestamp(System.currentTimeMillis())
+                                    .build();
+
+                            ZMsg pubMsg = new ZMsg();
+                            pubMsg.add(publicacao.getCanal());
+                            pubMsg.add(publicacao.toByteArray());
+                            pubMsg.send(pub);
+
+                            System.out.println("[PUBLICADO] canal=" + publicacao.getCanal()
+                                    + " | mensagem='" + publicacao.getMensagem()
+                                    + "' | usuario=" + publicacao.getUsuario()
+                                    + " | timestamp=" + fmt(publicacao.getTimestamp()));
+
+                            dados.publicacoes.add(new Dados.PublicacaoSalva(
+                                    publicacao.getCanal(), publicacao.getMensagem(),
+                                    publicacao.getUsuario(), publicacao.getTimestamp()));
+                            salvarDados(dados);
+                            resposta.setSucesso(true);
+                            resposta.setErro("");
+                        }
+                        resposta.setTimestamp(pubReq.getTimestamp());
+
+                        System.out.println("[ENVIADO] publicar | sucesso=" + resposta.getSucesso()
+                                + " | erro='" + resposta.getErro()
+                                + "' | timestamp=" + fmt(resposta.getTimestamp()));
+
+                        ZMsg respostaMsg = new ZMsg();
+                        respostaMsg.add("publicar");
+                        respostaMsg.add(resposta.build().toByteArray());
+                        respostaMsg.send(socket);
+
+                    } catch (InvalidProtocolBufferException e) {
+                        System.out.println("erro ao desserializar: " + e.getMessage());
+                    }
+
+                } else {
+                    System.out.println("tipo de mensagem desconhecido: " + tipo);
+                    ZMsg respostaMsg = new ZMsg();
+                    respostaMsg.add(tipo);
+                    respostaMsg.add(new byte[0]);
+                    respostaMsg.send(socket);
                 }
             }
         }
@@ -144,7 +211,10 @@ public class Servidor {
         File arquivo = new File(ARQUIVO_DADOS);
         if (arquivo.exists()) {
             try (FileReader reader = new FileReader(arquivo)) {
-                return gson.fromJson(reader, Dados.class);
+                Dados dados = gson.fromJson(reader, Dados.class);
+                if (dados != null) {
+                    return dados;
+                }
             } catch (IOException e) {
                 System.out.println("erro ao carregar dados: " + e.getMessage());
             }

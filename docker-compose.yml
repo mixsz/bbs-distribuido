@@ -19,7 +19,7 @@ services:
       BROKER_ENDERECO: tcp://broker:5556
       PROXY_PUB_ENDERECO: tcp://proxy:5557
     volumes:
-      - dados-python:/data
+      - ./dados/python:/data
     depends_on:
       - broker
       - proxy
@@ -32,7 +32,7 @@ services:
       BROKER_ENDERECO: tcp://broker:5556
       PROXY_PUB_ENDERECO: tcp://proxy:5557
     volumes:
-      - dados-java:/data
+      - ./dados/java:/data
     depends_on:
       - broker
       - proxy
@@ -64,7 +64,3 @@ services:
       - proxy
       - servidor-python
       - servidor-java
-
-volumes:
-  dados-python:
-  dados-java:
