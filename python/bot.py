@@ -125,6 +125,7 @@ login()
 esperar(1)
 
 while True:
+    esperar(random.uniform(0, 1.5))
     canais = listar_canais()
 
     if len(canais) < MIN_CANAIS:

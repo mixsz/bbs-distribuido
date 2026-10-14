@@ -170,6 +170,7 @@ public class Bot {
         esperar(1000);
 
         while (true) {
+            esperar((long) (random.nextDouble() * 1500));
             List<String> canais = listarCanais();
 
             if (canais.size() < MIN_CANAIS) {
