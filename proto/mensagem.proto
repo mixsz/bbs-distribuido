@@ -1,34 +1,43 @@
 syntax = "proto3";
 
+// timestamp: relogio fisico de quem envia
+// relogio: relogio logico (contador) de quem envia
+
 message LoginRequest {
   string usuario = 1;
   int64 timestamp = 2;
+  int64 relogio = 3;
 }
 
 message LoginResponse {
   bool sucesso = 1;
   string erro = 2;
   int64 timestamp = 3;
+  int64 relogio = 4;
 }
 
 message CriarCanalRequest {
   string nome_canal = 1;
   int64 timestamp = 2;
+  int64 relogio = 3;
 }
 
 message CriarCanalResponse {
   bool sucesso = 1;
   string erro = 2;
   int64 timestamp = 3;
+  int64 relogio = 4;
 }
 
 message ListarCanaisRequest {
   int64 timestamp = 1;
+  int64 relogio = 2;
 }
 
 message ListarCanaisResponse {
   repeated string canais = 1;
   int64 timestamp = 2;
+  int64 relogio = 3;
 }
 
 message PublicarRequest {
@@ -36,12 +45,14 @@ message PublicarRequest {
   string canal = 2;
   string mensagem = 3;
   int64 timestamp = 4;
+  int64 relogio = 5;
 }
 
 message PublicarResponse {
   bool sucesso = 1;
   string erro = 2;
   int64 timestamp = 3;
+  int64 relogio = 4;
 }
 
 message Publicacao {
@@ -49,6 +60,48 @@ message Publicacao {
   string mensagem = 2;
   string usuario = 3;
   int64 timestamp = 4;
+  int64 relogio = 5;
+}
+
+message RankRequest {
+  string nome = 1;
+  int64 timestamp = 2;
+  int64 relogio = 3;
+}
+
+message RankResponse {
+  int32 rank = 1;
+  int64 timestamp = 2;
+  int64 relogio = 3;
+}
+
+message ServidorInfo {
+  string nome = 1;
+  int32 rank = 2;
+}
+
+message ListaServidoresRequest {
+  int64 timestamp = 1;
+  int64 relogio = 2;
+}
+
+message ListaServidoresResponse {
+  repeated ServidorInfo servidores = 1;
+  int64 timestamp = 2;
+  int64 relogio = 3;
+}
+
+message HeartbeatRequest {
+  string nome = 1;
+  int64 timestamp = 2;
+  int64 relogio = 3;
+}
+
+// timestamp aqui e a hora correta do relogio da referencia no momento do envio!!!!!!!!!
+message HeartbeatResponse {
+  bool ok = 1;
+  int64 timestamp = 2;
+  int64 relogio = 3;
 }
 
 // protoc --proto_path=proto --python_out=python --java_out=java/src/main/java proto/mensagem.proto

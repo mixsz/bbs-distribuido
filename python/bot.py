@@ -27,6 +27,8 @@ FRASES = [
     "urso",
 ]
 
+relogio = 0
+
 context = zmq.Context()
 
 def novo_socket():
@@ -46,6 +48,15 @@ def fmt(ts):
 
 def agora():
     return int(time.time() * 1000)
+
+def proximo_relogio():
+    global relogio
+    relogio += 1
+    return relogio
+
+def atualizar_relogio(recebido):
+    global relogio
+    relogio = max(relogio, recebido)
 
 def enviar(tipo, payload):
     global socket
@@ -67,7 +78,8 @@ def processar_publicacoes():
             continue
         publicacao = mensagem_pb2.Publicacao()
         publicacao.ParseFromString(dados)
-        print(f"[PUBLICACAO] canal={publicacao.canal} | mensagem='{publicacao.mensagem}' | usuario={publicacao.usuario} | enviada={fmt(publicacao.timestamp)} | recebida={fmt(agora())}", flush=True)
+        atualizar_relogio(publicacao.relogio)
+        print(f"[PUBLICACAO] canal={publicacao.canal} | mensagem='{publicacao.mensagem}' | usuario={publicacao.usuario} | enviada={fmt(publicacao.timestamp)} | recebida={fmt(agora())} | relogio={publicacao.relogio} | local={relogio}", flush=True)
 
 def esperar(segundos):
     fim = time.time() + segundos
@@ -82,31 +94,37 @@ def login():
     req = mensagem_pb2.LoginRequest()
     req.usuario = USUARIO
     req.timestamp = agora()
-    print(f"[ENVIADO] login | usuario={req.usuario} | timestamp={fmt(req.timestamp)}", flush=True)
+    req.relogio = proximo_relogio()
+    print(f"[ENVIADO] login | usuario={req.usuario} | timestamp={fmt(req.timestamp)} | relogio={req.relogio}", flush=True)
     _, dados = enviar(b"login", req.SerializeToString())
     resp = mensagem_pb2.LoginResponse()
     resp.ParseFromString(dados)
-    print(f"[RECEBIDO] login | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt(resp.timestamp)}", flush=True)
+    atualizar_relogio(resp.relogio)
+    print(f"[RECEBIDO] login | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
 
 def listar_canais():
     req = mensagem_pb2.ListarCanaisRequest()
     req.timestamp = agora()
-    print(f"[ENVIADO] listar_canais | timestamp={fmt(req.timestamp)}", flush=True)
+    req.relogio = proximo_relogio()
+    print(f"[ENVIADO] listar_canais | timestamp={fmt(req.timestamp)} | relogio={req.relogio}", flush=True)
     _, dados = enviar(b"listar_canais", req.SerializeToString())
     resp = mensagem_pb2.ListarCanaisResponse()
     resp.ParseFromString(dados)
-    print(f"[RECEBIDO] listar_canais | canais={list(resp.canais)} | timestamp={fmt(resp.timestamp)}", flush=True)
+    atualizar_relogio(resp.relogio)
+    print(f"[RECEBIDO] listar_canais | canais={list(resp.canais)} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
     return list(resp.canais)
 
 def criar_canal(nome):
     req = mensagem_pb2.CriarCanalRequest()
     req.nome_canal = nome
     req.timestamp = agora()
-    print(f"[ENVIADO] criar_canal | nome_canal={req.nome_canal} | timestamp={fmt(req.timestamp)}", flush=True)
+    req.relogio = proximo_relogio()
+    print(f"[ENVIADO] criar_canal | nome_canal={req.nome_canal} | timestamp={fmt(req.timestamp)} | relogio={req.relogio}", flush=True)
     _, dados = enviar(b"criar_canal", req.SerializeToString())
     resp = mensagem_pb2.CriarCanalResponse()
     resp.ParseFromString(dados)
-    print(f"[RECEBIDO] criar_canal | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt(resp.timestamp)}", flush=True)
+    atualizar_relogio(resp.relogio)
+    print(f"[RECEBIDO] criar_canal | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
     return resp.sucesso
 
 def publicar(canal, mensagem):
@@ -115,11 +133,13 @@ def publicar(canal, mensagem):
     req.canal = canal
     req.mensagem = mensagem
     req.timestamp = agora()
-    print(f"[ENVIADO] publicar | canal={req.canal} | mensagem='{req.mensagem}' | timestamp={fmt(req.timestamp)}", flush=True)
+    req.relogio = proximo_relogio()
+    print(f"[ENVIADO] publicar | canal={req.canal} | mensagem='{req.mensagem}' | timestamp={fmt(req.timestamp)} | relogio={req.relogio}", flush=True)
     _, dados = enviar(b"publicar", req.SerializeToString())
     resp = mensagem_pb2.PublicarResponse()
     resp.ParseFromString(dados)
-    print(f"[RECEBIDO] publicar | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt(resp.timestamp)}", flush=True)
+    atualizar_relogio(resp.relogio)
+    print(f"[RECEBIDO] publicar | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
 
 login()
 esperar(1)

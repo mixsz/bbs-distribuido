@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0emensagem.proto\"2\n\x0cLoginRequest\x12\x0f\n\x07usuario\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\"A\n\rLoginResponse\x12\x0f\n\x07sucesso\x18\x01 \x01(\x08\x12\x0c\n\x04\x65rro\x18\x02 \x01(\t\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\":\n\x11\x43riarCanalRequest\x12\x12\n\nnome_canal\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\"F\n\x12\x43riarCanalResponse\x12\x0f\n\x07sucesso\x18\x01 \x01(\x08\x12\x0c\n\x04\x65rro\x18\x02 \x01(\t\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\"(\n\x13ListarCanaisRequest\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\"9\n\x14ListarCanaisResponse\x12\x0e\n\x06\x63\x61nais\x18\x01 \x03(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\"V\n\x0fPublicarRequest\x12\x0f\n\x07usuario\x18\x01 \x01(\t\x12\r\n\x05\x63\x61nal\x18\x02 \x01(\t\x12\x10\n\x08mensagem\x18\x03 \x01(\t\x12\x11\n\ttimestamp\x18\x04 \x01(\x03\"D\n\x10PublicarResponse\x12\x0f\n\x07sucesso\x18\x01 \x01(\x08\x12\x0c\n\x04\x65rro\x18\x02 \x01(\t\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\"Q\n\nPublicacao\x12\r\n\x05\x63\x61nal\x18\x01 \x01(\t\x12\x10\n\x08mensagem\x18\x02 \x01(\t\x12\x0f\n\x07usuario\x18\x03 \x01(\t\x12\x11\n\ttimestamp\x18\x04 \x01(\x03\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0emensagem.proto\"C\n\x0cLoginRequest\x12\x0f\n\x07usuario\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07relogio\x18\x03 \x01(\x03\"R\n\rLoginResponse\x12\x0f\n\x07sucesso\x18\x01 \x01(\x08\x12\x0c\n\x04\x65rro\x18\x02 \x01(\t\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\x12\x0f\n\x07relogio\x18\x04 \x01(\x03\"K\n\x11\x43riarCanalRequest\x12\x12\n\nnome_canal\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07relogio\x18\x03 \x01(\x03\"W\n\x12\x43riarCanalResponse\x12\x0f\n\x07sucesso\x18\x01 \x01(\x08\x12\x0c\n\x04\x65rro\x18\x02 \x01(\t\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\x12\x0f\n\x07relogio\x18\x04 \x01(\x03\"9\n\x13ListarCanaisRequest\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\x12\x0f\n\x07relogio\x18\x02 \x01(\x03\"J\n\x14ListarCanaisResponse\x12\x0e\n\x06\x63\x61nais\x18\x01 \x03(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07relogio\x18\x03 \x01(\x03\"g\n\x0fPublicarRequest\x12\x0f\n\x07usuario\x18\x01 \x01(\t\x12\r\n\x05\x63\x61nal\x18\x02 \x01(\t\x12\x10\n\x08mensagem\x18\x03 \x01(\t\x12\x11\n\ttimestamp\x18\x04 \x01(\x03\x12\x0f\n\x07relogio\x18\x05 \x01(\x03\"U\n\x10PublicarResponse\x12\x0f\n\x07sucesso\x18\x01 \x01(\x08\x12\x0c\n\x04\x65rro\x18\x02 \x01(\t\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\x12\x0f\n\x07relogio\x18\x04 \x01(\x03\"b\n\nPublicacao\x12\r\n\x05\x63\x61nal\x18\x01 \x01(\t\x12\x10\n\x08mensagem\x18\x02 \x01(\t\x12\x0f\n\x07usuario\x18\x03 \x01(\t\x12\x11\n\ttimestamp\x18\x04 \x01(\x03\x12\x0f\n\x07relogio\x18\x05 \x01(\x03\"?\n\x0bRankRequest\x12\x0c\n\x04nome\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07relogio\x18\x03 \x01(\x03\"@\n\x0cRankResponse\x12\x0c\n\x04rank\x18\x01 \x01(\x05\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07relogio\x18\x03 \x01(\x03\"*\n\x0cServidorInfo\x12\x0c\n\x04nome\x18\x01 \x01(\t\x12\x0c\n\x04rank\x18\x02 \x01(\x05\"<\n\x16ListaServidoresRequest\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\x12\x0f\n\x07relogio\x18\x02 \x01(\x03\"`\n\x17ListaServidoresResponse\x12!\n\nservidores\x18\x01 \x03(\x0b\x32\r.ServidorInfo\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07relogio\x18\x03 \x01(\x03\"D\n\x10HeartbeatRequest\x12\x0c\n\x04nome\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07relogio\x18\x03 \x01(\x03\"C\n\x11HeartbeatResponse\x12\n\n\x02ok\x18\x01 \x01(\x08\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07relogio\x18\x03 \x01(\x03\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,21 +32,35 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'mensagem_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_LOGINREQUEST']._serialized_start=18
-  _globals['_LOGINREQUEST']._serialized_end=68
-  _globals['_LOGINRESPONSE']._serialized_start=70
-  _globals['_LOGINRESPONSE']._serialized_end=135
-  _globals['_CRIARCANALREQUEST']._serialized_start=137
-  _globals['_CRIARCANALREQUEST']._serialized_end=195
-  _globals['_CRIARCANALRESPONSE']._serialized_start=197
-  _globals['_CRIARCANALRESPONSE']._serialized_end=267
-  _globals['_LISTARCANAISREQUEST']._serialized_start=269
-  _globals['_LISTARCANAISREQUEST']._serialized_end=309
-  _globals['_LISTARCANAISRESPONSE']._serialized_start=311
-  _globals['_LISTARCANAISRESPONSE']._serialized_end=368
-  _globals['_PUBLICARREQUEST']._serialized_start=370
-  _globals['_PUBLICARREQUEST']._serialized_end=456
-  _globals['_PUBLICARRESPONSE']._serialized_start=458
-  _globals['_PUBLICARRESPONSE']._serialized_end=526
-  _globals['_PUBLICACAO']._serialized_start=528
-  _globals['_PUBLICACAO']._serialized_end=609
+  _globals['_LOGINREQUEST']._serialized_end=85
+  _globals['_LOGINRESPONSE']._serialized_start=87
+  _globals['_LOGINRESPONSE']._serialized_end=169
+  _globals['_CRIARCANALREQUEST']._serialized_start=171
+  _globals['_CRIARCANALREQUEST']._serialized_end=246
+  _globals['_CRIARCANALRESPONSE']._serialized_start=248
+  _globals['_CRIARCANALRESPONSE']._serialized_end=335
+  _globals['_LISTARCANAISREQUEST']._serialized_start=337
+  _globals['_LISTARCANAISREQUEST']._serialized_end=394
+  _globals['_LISTARCANAISRESPONSE']._serialized_start=396
+  _globals['_LISTARCANAISRESPONSE']._serialized_end=470
+  _globals['_PUBLICARREQUEST']._serialized_start=472
+  _globals['_PUBLICARREQUEST']._serialized_end=575
+  _globals['_PUBLICARRESPONSE']._serialized_start=577
+  _globals['_PUBLICARRESPONSE']._serialized_end=662
+  _globals['_PUBLICACAO']._serialized_start=664
+  _globals['_PUBLICACAO']._serialized_end=762
+  _globals['_RANKREQUEST']._serialized_start=764
+  _globals['_RANKREQUEST']._serialized_end=827
+  _globals['_RANKRESPONSE']._serialized_start=829
+  _globals['_RANKRESPONSE']._serialized_end=893
+  _globals['_SERVIDORINFO']._serialized_start=895
+  _globals['_SERVIDORINFO']._serialized_end=937
+  _globals['_LISTASERVIDORESREQUEST']._serialized_start=939
+  _globals['_LISTASERVIDORESREQUEST']._serialized_end=999
+  _globals['_LISTASERVIDORESRESPONSE']._serialized_start=1001
+  _globals['_LISTASERVIDORESRESPONSE']._serialized_end=1097
+  _globals['_HEARTBEATREQUEST']._serialized_start=1099
+  _globals['_HEARTBEATREQUEST']._serialized_end=1167
+  _globals['_HEARTBEATRESPONSE']._serialized_start=1169
+  _globals['_HEARTBEATRESPONSE']._serialized_end=1236
 # @@protoc_insertion_point(module_scope)

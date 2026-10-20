@@ -11,31 +11,49 @@ services:
     environment:
       TZ: America/Sao_Paulo
 
+  referencia:
+    build: ./python
+    command: python referencia.py
+    environment:
+      TZ: America/Sao_Paulo
+      TIMEOUT_SERVIDOR: "30"
+      PAUSA_MS: "200"
+
   servidor-python:
     build: ./python
     environment:
       TZ: America/Sao_Paulo
+      NOME_SERVIDOR: servidor-python
+      DESVIO_RELOGIO_MS: "0"
+      PAUSA_MS: "200"
       DADOS_PATH: /data/dados.json
       BROKER_ENDERECO: tcp://broker:5556
       PROXY_PUB_ENDERECO: tcp://proxy:5557
+      REFERENCIA_ENDERECO: tcp://referencia:5559
     volumes:
       - ./dados/python:/data
     depends_on:
       - broker
       - proxy
+      - referencia
 
   servidor-java:
     build: ./java
     environment:
       TZ: America/Sao_Paulo
+      NOME_SERVIDOR: servidor-java
+      DESVIO_RELOGIO_MS: "4000"
+      PAUSA_MS: "200"
       DADOS_PATH: /data/dados.json
       BROKER_ENDERECO: tcp://broker:5556
       PROXY_PUB_ENDERECO: tcp://proxy:5557
+      REFERENCIA_ENDERECO: tcp://referencia:5559
     volumes:
       - ./dados/java:/data
     depends_on:
       - broker
       - proxy
+      - referencia
 
   bot-python:
     build: ./python

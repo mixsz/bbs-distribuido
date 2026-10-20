@@ -45,6 +45,12 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
      * @return The timestamp.
      */
     long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
   }
   /**
    * Protobuf type {@code LoginRequest}
@@ -139,6 +145,17 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       return timestamp_;
     }
 
+    public static final int RELOGIO_FIELD_NUMBER = 3;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -159,6 +176,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         output.writeInt64(2, timestamp_);
       }
+      if (relogio_ != 0L) {
+        output.writeInt64(3, relogio_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -169,6 +189,10 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, relogio_);
       }
       return size;
     }
@@ -198,6 +222,8 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
           .equals(other.getUsuario())) return false;
       if (getTimestamp()
           != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -214,6 +240,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -347,6 +376,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         bitField0_ = 0;
         usuario_ = "";
         timestamp_ = 0L;
+        relogio_ = 0L;
         return this;
       }
 
@@ -386,6 +416,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.timestamp_ = timestamp_;
         }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.relogio_ = relogio_;
+        }
       }
 
       @java.lang.Override
@@ -407,6 +440,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         }
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -442,6 +478,11 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000002;
                 break;
               } // case 16
+              case 24: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -563,6 +604,38 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         return this;
       }
 
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:LoginRequest)
     }
 
@@ -641,6 +714,12 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
      * @return The timestamp.
      */
     long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 4;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
   }
   /**
    * Protobuf type {@code LoginResponse}
@@ -746,6 +825,17 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       return timestamp_;
     }
 
+    public static final int RELOGIO_FIELD_NUMBER = 4;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 4;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -769,6 +859,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         output.writeInt64(3, timestamp_);
       }
+      if (relogio_ != 0L) {
+        output.writeInt64(4, relogio_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -783,6 +876,10 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(3, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, relogio_);
       }
       return size;
     }
@@ -814,6 +911,8 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
           .equals(other.getErro())) return false;
       if (getTimestamp()
           != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -833,6 +932,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -967,6 +1069,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         sucesso_ = false;
         erro_ = "";
         timestamp_ = 0L;
+        relogio_ = 0L;
         return this;
       }
 
@@ -1009,6 +1112,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.timestamp_ = timestamp_;
         }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.relogio_ = relogio_;
+        }
       }
 
       @java.lang.Override
@@ -1033,6 +1139,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         }
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -1073,6 +1182,11 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000004;
                 break;
               } // case 24
+              case 32: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1226,6 +1340,38 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         return this;
       }
 
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 4;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 4;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:LoginResponse)
     }
 
@@ -1298,6 +1444,12 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
      * @return The timestamp.
      */
     long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
   }
   /**
    * Protobuf type {@code CriarCanalRequest}
@@ -1392,6 +1544,17 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       return timestamp_;
     }
 
+    public static final int RELOGIO_FIELD_NUMBER = 3;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1412,6 +1575,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         output.writeInt64(2, timestamp_);
       }
+      if (relogio_ != 0L) {
+        output.writeInt64(3, relogio_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -1422,6 +1588,10 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, relogio_);
       }
       return size;
     }
@@ -1451,6 +1621,8 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
           .equals(other.getNomeCanal())) return false;
       if (getTimestamp()
           != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1467,6 +1639,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1600,6 +1775,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         bitField0_ = 0;
         nomeCanal_ = "";
         timestamp_ = 0L;
+        relogio_ = 0L;
         return this;
       }
 
@@ -1639,6 +1815,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.timestamp_ = timestamp_;
         }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.relogio_ = relogio_;
+        }
       }
 
       @java.lang.Override
@@ -1660,6 +1839,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         }
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -1695,6 +1877,11 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000002;
                 break;
               } // case 16
+              case 24: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1816,6 +2003,38 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         return this;
       }
 
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:CriarCanalRequest)
     }
 
@@ -1894,6 +2113,12 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
      * @return The timestamp.
      */
     long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 4;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
   }
   /**
    * Protobuf type {@code CriarCanalResponse}
@@ -1999,6 +2224,17 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       return timestamp_;
     }
 
+    public static final int RELOGIO_FIELD_NUMBER = 4;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 4;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2022,6 +2258,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         output.writeInt64(3, timestamp_);
       }
+      if (relogio_ != 0L) {
+        output.writeInt64(4, relogio_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -2036,6 +2275,10 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(3, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, relogio_);
       }
       return size;
     }
@@ -2067,6 +2310,8 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
           .equals(other.getErro())) return false;
       if (getTimestamp()
           != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2086,6 +2331,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2220,6 +2468,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         sucesso_ = false;
         erro_ = "";
         timestamp_ = 0L;
+        relogio_ = 0L;
         return this;
       }
 
@@ -2262,6 +2511,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.timestamp_ = timestamp_;
         }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.relogio_ = relogio_;
+        }
       }
 
       @java.lang.Override
@@ -2286,6 +2538,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         }
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -2326,6 +2581,11 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000004;
                 break;
               } // case 24
+              case 32: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2479,6 +2739,38 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         return this;
       }
 
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 4;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 4;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:CriarCanalResponse)
     }
 
@@ -2539,6 +2831,12 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
      * @return The timestamp.
      */
     long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 2;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
   }
   /**
    * Protobuf type {@code ListarCanaisRequest}
@@ -2593,6 +2891,17 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       return timestamp_;
     }
 
+    public static final int RELOGIO_FIELD_NUMBER = 2;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 2;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2610,6 +2919,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         output.writeInt64(1, timestamp_);
       }
+      if (relogio_ != 0L) {
+        output.writeInt64(2, relogio_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -2617,6 +2929,10 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(1, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, relogio_);
       }
       return size;
     }
@@ -2644,6 +2960,8 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
 
       if (getTimestamp()
           != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2658,6 +2976,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2790,6 +3111,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         super.clear();
         bitField0_ = 0;
         timestamp_ = 0L;
+        relogio_ = 0L;
         return this;
       }
 
@@ -2826,6 +3148,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.timestamp_ = timestamp_;
         }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.relogio_ = relogio_;
+        }
       }
 
       @java.lang.Override
@@ -2842,6 +3167,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         if (other == Mensagem.ListarCanaisRequest.getDefaultInstance()) return this;
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -2872,6 +3200,11 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000001;
                 break;
               } // case 8
+              case 16: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2917,6 +3250,38 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       public Builder clearTimestamp() {
         bitField0_ = (bitField0_ & ~0x00000001);
         timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 2;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 2;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        relogio_ = 0L;
         onChanged();
         return this;
       }
@@ -3006,6 +3371,12 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
      * @return The timestamp.
      */
     long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
   }
   /**
    * Protobuf type {@code ListarCanaisResponse}
@@ -3099,6 +3470,17 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       return timestamp_;
     }
 
+    public static final int RELOGIO_FIELD_NUMBER = 3;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3119,6 +3501,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         output.writeInt64(2, timestamp_);
       }
+      if (relogio_ != 0L) {
+        output.writeInt64(3, relogio_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -3134,6 +3519,10 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, relogio_);
       }
       return size;
     }
@@ -3163,6 +3552,8 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
           .equals(other.getCanaisList())) return false;
       if (getTimestamp()
           != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -3181,6 +3572,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3315,6 +3709,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         canais_ =
             com.google.protobuf.LazyStringArrayList.emptyList();
         timestamp_ = 0L;
+        relogio_ = 0L;
         return this;
       }
 
@@ -3355,6 +3750,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.timestamp_ = timestamp_;
         }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.relogio_ = relogio_;
+        }
       }
 
       @java.lang.Override
@@ -3381,6 +3779,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         }
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -3416,6 +3817,11 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000002;
                 break;
               } // case 16
+              case 24: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3576,6 +3982,38 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         return this;
       }
 
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ListarCanaisResponse)
     }
 
@@ -3672,6 +4110,12 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
      * @return The timestamp.
      */
     long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 5;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
   }
   /**
    * Protobuf type {@code PublicarRequest}
@@ -3846,6 +4290,17 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       return timestamp_;
     }
 
+    public static final int RELOGIO_FIELD_NUMBER = 5;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 5;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3872,6 +4327,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         output.writeInt64(4, timestamp_);
       }
+      if (relogio_ != 0L) {
+        output.writeInt64(5, relogio_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -3888,6 +4346,10 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(4, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, relogio_);
       }
       return size;
     }
@@ -3921,6 +4383,8 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
           .equals(other.getMensagem())) return false;
       if (getTimestamp()
           != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -3941,6 +4405,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4076,6 +4543,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         canal_ = "";
         mensagem_ = "";
         timestamp_ = 0L;
+        relogio_ = 0L;
         return this;
       }
 
@@ -4121,6 +4589,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.timestamp_ = timestamp_;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.relogio_ = relogio_;
+        }
       }
 
       @java.lang.Override
@@ -4152,6 +4623,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         }
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -4197,6 +4671,11 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 32
+              case 40: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4462,6 +4941,38 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         return this;
       }
 
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 5;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 5;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:PublicarRequest)
     }
 
@@ -4540,6 +5051,12 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
      * @return The timestamp.
      */
     long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 4;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
   }
   /**
    * Protobuf type {@code PublicarResponse}
@@ -4645,6 +5162,17 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       return timestamp_;
     }
 
+    public static final int RELOGIO_FIELD_NUMBER = 4;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 4;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -4668,6 +5196,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         output.writeInt64(3, timestamp_);
       }
+      if (relogio_ != 0L) {
+        output.writeInt64(4, relogio_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -4682,6 +5213,10 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(3, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, relogio_);
       }
       return size;
     }
@@ -4713,6 +5248,8 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
           .equals(other.getErro())) return false;
       if (getTimestamp()
           != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -4732,6 +5269,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4866,6 +5406,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         sucesso_ = false;
         erro_ = "";
         timestamp_ = 0L;
+        relogio_ = 0L;
         return this;
       }
 
@@ -4908,6 +5449,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.timestamp_ = timestamp_;
         }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.relogio_ = relogio_;
+        }
       }
 
       @java.lang.Override
@@ -4932,6 +5476,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         }
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -4972,6 +5519,11 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000004;
                 break;
               } // case 24
+              case 32: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -5125,6 +5677,38 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         return this;
       }
 
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 4;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 4;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:PublicarResponse)
     }
 
@@ -5221,6 +5805,12 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
      * @return The timestamp.
      */
     long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 5;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
   }
   /**
    * Protobuf type {@code Publicacao}
@@ -5395,6 +5985,17 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       return timestamp_;
     }
 
+    public static final int RELOGIO_FIELD_NUMBER = 5;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 5;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5421,6 +6022,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         output.writeInt64(4, timestamp_);
       }
+      if (relogio_ != 0L) {
+        output.writeInt64(5, relogio_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -5437,6 +6041,10 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (timestamp_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(4, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, relogio_);
       }
       return size;
     }
@@ -5470,6 +6078,8 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
           .equals(other.getUsuario())) return false;
       if (getTimestamp()
           != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -5490,6 +6100,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5625,6 +6238,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         mensagem_ = "";
         usuario_ = "";
         timestamp_ = 0L;
+        relogio_ = 0L;
         return this;
       }
 
@@ -5670,6 +6284,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.timestamp_ = timestamp_;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.relogio_ = relogio_;
+        }
       }
 
       @java.lang.Override
@@ -5701,6 +6318,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         }
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -5746,6 +6366,11 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 32
+              case 40: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -6011,6 +6636,38 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         return this;
       }
 
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 5;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 5;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:Publicacao)
     }
 
@@ -6062,6 +6719,4511 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
 
   }
 
+  public interface RankRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:RankRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string nome = 1;</code>
+     * @return The nome.
+     */
+    java.lang.String getNome();
+    /**
+     * <code>string nome = 1;</code>
+     * @return The bytes for nome.
+     */
+    com.google.protobuf.ByteString
+        getNomeBytes();
+
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
+  }
+  /**
+   * Protobuf type {@code RankRequest}
+   */
+  public static final class RankRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:RankRequest)
+      RankRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "RankRequest");
+    }
+    // Use RankRequest.newBuilder() to construct.
+    private RankRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private RankRequest() {
+      nome_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_RankRequest_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_RankRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_RankRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.RankRequest.class, Mensagem.RankRequest.Builder.class);
+    }
+
+    public static final int NOME_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object nome_ = "";
+    /**
+     * <code>string nome = 1;</code>
+     * @return The nome.
+     */
+    @java.lang.Override
+    public java.lang.String getNome() {
+      java.lang.Object ref = nome_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nome_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string nome = 1;</code>
+     * @return The bytes for nome.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNomeBytes() {
+      java.lang.Object ref = nome_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nome_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 2;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    public static final int RELOGIO_FIELD_NUMBER = 3;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(nome_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, nome_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        output.writeInt64(3, relogio_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(nome_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, nome_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, relogio_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.RankRequest)) {
+        return super.equals(obj);
+      }
+      Mensagem.RankRequest other = (Mensagem.RankRequest) obj;
+
+      if (!getNome()
+          .equals(other.getNome())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NOME_FIELD_NUMBER;
+      hash = (53 * hash) + getNome().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.RankRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.RankRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.RankRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.RankRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.RankRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.RankRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.RankRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.RankRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.RankRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.RankRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.RankRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.RankRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.RankRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code RankRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:RankRequest)
+        Mensagem.RankRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_RankRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_RankRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.RankRequest.class, Mensagem.RankRequest.Builder.class);
+      }
+
+      // Construct using Mensagem.RankRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        nome_ = "";
+        timestamp_ = 0L;
+        relogio_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_RankRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.RankRequest getDefaultInstanceForType() {
+        return Mensagem.RankRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.RankRequest build() {
+        Mensagem.RankRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.RankRequest buildPartial() {
+        Mensagem.RankRequest result = new Mensagem.RankRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.RankRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.nome_ = nome_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.relogio_ = relogio_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.RankRequest) {
+          return mergeFrom((Mensagem.RankRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.RankRequest other) {
+        if (other == Mensagem.RankRequest.getDefaultInstance()) return this;
+        if (!other.getNome().isEmpty()) {
+          nome_ = other.nome_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                nome_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object nome_ = "";
+      /**
+       * <code>string nome = 1;</code>
+       * @return The nome.
+       */
+      public java.lang.String getNome() {
+        java.lang.Object ref = nome_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nome_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @return The bytes for nome.
+       */
+      public com.google.protobuf.ByteString
+          getNomeBytes() {
+        java.lang.Object ref = nome_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nome_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @param value The nome to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNome(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        nome_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNome() {
+        nome_ = getDefaultInstance().getNome();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @param value The bytes for nome to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNomeBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        nome_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:RankRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:RankRequest)
+    private static final Mensagem.RankRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.RankRequest();
+    }
+
+    public static Mensagem.RankRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RankRequest>
+        PARSER = new com.google.protobuf.AbstractParser<RankRequest>() {
+      @java.lang.Override
+      public RankRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<RankRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RankRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.RankRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface RankResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:RankResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 rank = 1;</code>
+     * @return The rank.
+     */
+    int getRank();
+
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
+  }
+  /**
+   * Protobuf type {@code RankResponse}
+   */
+  public static final class RankResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:RankResponse)
+      RankResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "RankResponse");
+    }
+    // Use RankResponse.newBuilder() to construct.
+    private RankResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private RankResponse() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_RankResponse_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_RankResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_RankResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.RankResponse.class, Mensagem.RankResponse.Builder.class);
+    }
+
+    public static final int RANK_FIELD_NUMBER = 1;
+    private int rank_ = 0;
+    /**
+     * <code>int32 rank = 1;</code>
+     * @return The rank.
+     */
+    @java.lang.Override
+    public int getRank() {
+      return rank_;
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 2;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    public static final int RELOGIO_FIELD_NUMBER = 3;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (rank_ != 0) {
+        output.writeInt32(1, rank_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        output.writeInt64(3, relogio_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (rank_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, rank_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, relogio_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.RankResponse)) {
+        return super.equals(obj);
+      }
+      Mensagem.RankResponse other = (Mensagem.RankResponse) obj;
+
+      if (getRank()
+          != other.getRank()) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RANK_FIELD_NUMBER;
+      hash = (53 * hash) + getRank();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.RankResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.RankResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.RankResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.RankResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.RankResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.RankResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.RankResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.RankResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.RankResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.RankResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.RankResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.RankResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.RankResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code RankResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:RankResponse)
+        Mensagem.RankResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_RankResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_RankResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.RankResponse.class, Mensagem.RankResponse.Builder.class);
+      }
+
+      // Construct using Mensagem.RankResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        rank_ = 0;
+        timestamp_ = 0L;
+        relogio_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_RankResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.RankResponse getDefaultInstanceForType() {
+        return Mensagem.RankResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.RankResponse build() {
+        Mensagem.RankResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.RankResponse buildPartial() {
+        Mensagem.RankResponse result = new Mensagem.RankResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.RankResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.rank_ = rank_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.relogio_ = relogio_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.RankResponse) {
+          return mergeFrom((Mensagem.RankResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.RankResponse other) {
+        if (other == Mensagem.RankResponse.getDefaultInstance()) return this;
+        if (other.getRank() != 0) {
+          setRank(other.getRank());
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                rank_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int rank_ ;
+      /**
+       * <code>int32 rank = 1;</code>
+       * @return The rank.
+       */
+      @java.lang.Override
+      public int getRank() {
+        return rank_;
+      }
+      /**
+       * <code>int32 rank = 1;</code>
+       * @param value The rank to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRank(int value) {
+
+        rank_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 rank = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRank() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        rank_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:RankResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:RankResponse)
+    private static final Mensagem.RankResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.RankResponse();
+    }
+
+    public static Mensagem.RankResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RankResponse>
+        PARSER = new com.google.protobuf.AbstractParser<RankResponse>() {
+      @java.lang.Override
+      public RankResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<RankResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RankResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.RankResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ServidorInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ServidorInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string nome = 1;</code>
+     * @return The nome.
+     */
+    java.lang.String getNome();
+    /**
+     * <code>string nome = 1;</code>
+     * @return The bytes for nome.
+     */
+    com.google.protobuf.ByteString
+        getNomeBytes();
+
+    /**
+     * <code>int32 rank = 2;</code>
+     * @return The rank.
+     */
+    int getRank();
+  }
+  /**
+   * Protobuf type {@code ServidorInfo}
+   */
+  public static final class ServidorInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ServidorInfo)
+      ServidorInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "ServidorInfo");
+    }
+    // Use ServidorInfo.newBuilder() to construct.
+    private ServidorInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ServidorInfo() {
+      nome_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_ServidorInfo_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_ServidorInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_ServidorInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.ServidorInfo.class, Mensagem.ServidorInfo.Builder.class);
+    }
+
+    public static final int NOME_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object nome_ = "";
+    /**
+     * <code>string nome = 1;</code>
+     * @return The nome.
+     */
+    @java.lang.Override
+    public java.lang.String getNome() {
+      java.lang.Object ref = nome_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nome_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string nome = 1;</code>
+     * @return The bytes for nome.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNomeBytes() {
+      java.lang.Object ref = nome_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nome_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RANK_FIELD_NUMBER = 2;
+    private int rank_ = 0;
+    /**
+     * <code>int32 rank = 2;</code>
+     * @return The rank.
+     */
+    @java.lang.Override
+    public int getRank() {
+      return rank_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(nome_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, nome_);
+      }
+      if (rank_ != 0) {
+        output.writeInt32(2, rank_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(nome_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, nome_);
+      }
+      if (rank_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, rank_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.ServidorInfo)) {
+        return super.equals(obj);
+      }
+      Mensagem.ServidorInfo other = (Mensagem.ServidorInfo) obj;
+
+      if (!getNome()
+          .equals(other.getNome())) return false;
+      if (getRank()
+          != other.getRank()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NOME_FIELD_NUMBER;
+      hash = (53 * hash) + getNome().hashCode();
+      hash = (37 * hash) + RANK_FIELD_NUMBER;
+      hash = (53 * hash) + getRank();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.ServidorInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.ServidorInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.ServidorInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.ServidorInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.ServidorInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.ServidorInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.ServidorInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.ServidorInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.ServidorInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.ServidorInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.ServidorInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.ServidorInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.ServidorInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ServidorInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ServidorInfo)
+        Mensagem.ServidorInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_ServidorInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_ServidorInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.ServidorInfo.class, Mensagem.ServidorInfo.Builder.class);
+      }
+
+      // Construct using Mensagem.ServidorInfo.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        nome_ = "";
+        rank_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_ServidorInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.ServidorInfo getDefaultInstanceForType() {
+        return Mensagem.ServidorInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.ServidorInfo build() {
+        Mensagem.ServidorInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.ServidorInfo buildPartial() {
+        Mensagem.ServidorInfo result = new Mensagem.ServidorInfo(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.ServidorInfo result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.nome_ = nome_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.rank_ = rank_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.ServidorInfo) {
+          return mergeFrom((Mensagem.ServidorInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.ServidorInfo other) {
+        if (other == Mensagem.ServidorInfo.getDefaultInstance()) return this;
+        if (!other.getNome().isEmpty()) {
+          nome_ = other.nome_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getRank() != 0) {
+          setRank(other.getRank());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                nome_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                rank_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object nome_ = "";
+      /**
+       * <code>string nome = 1;</code>
+       * @return The nome.
+       */
+      public java.lang.String getNome() {
+        java.lang.Object ref = nome_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nome_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @return The bytes for nome.
+       */
+      public com.google.protobuf.ByteString
+          getNomeBytes() {
+        java.lang.Object ref = nome_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nome_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @param value The nome to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNome(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        nome_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNome() {
+        nome_ = getDefaultInstance().getNome();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @param value The bytes for nome to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNomeBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        nome_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private int rank_ ;
+      /**
+       * <code>int32 rank = 2;</code>
+       * @return The rank.
+       */
+      @java.lang.Override
+      public int getRank() {
+        return rank_;
+      }
+      /**
+       * <code>int32 rank = 2;</code>
+       * @param value The rank to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRank(int value) {
+
+        rank_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 rank = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRank() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        rank_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ServidorInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:ServidorInfo)
+    private static final Mensagem.ServidorInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.ServidorInfo();
+    }
+
+    public static Mensagem.ServidorInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ServidorInfo>
+        PARSER = new com.google.protobuf.AbstractParser<ServidorInfo>() {
+      @java.lang.Override
+      public ServidorInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ServidorInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ServidorInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.ServidorInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ListaServidoresRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ListaServidoresRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int64 timestamp = 1;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 2;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
+  }
+  /**
+   * Protobuf type {@code ListaServidoresRequest}
+   */
+  public static final class ListaServidoresRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ListaServidoresRequest)
+      ListaServidoresRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "ListaServidoresRequest");
+    }
+    // Use ListaServidoresRequest.newBuilder() to construct.
+    private ListaServidoresRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ListaServidoresRequest() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_ListaServidoresRequest_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_ListaServidoresRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_ListaServidoresRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.ListaServidoresRequest.class, Mensagem.ListaServidoresRequest.Builder.class);
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 1;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 1;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    public static final int RELOGIO_FIELD_NUMBER = 2;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 2;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (timestamp_ != 0L) {
+        output.writeInt64(1, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        output.writeInt64(2, relogio_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, relogio_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.ListaServidoresRequest)) {
+        return super.equals(obj);
+      }
+      Mensagem.ListaServidoresRequest other = (Mensagem.ListaServidoresRequest) obj;
+
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.ListaServidoresRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.ListaServidoresRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.ListaServidoresRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.ListaServidoresRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.ListaServidoresRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.ListaServidoresRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.ListaServidoresRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.ListaServidoresRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.ListaServidoresRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.ListaServidoresRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.ListaServidoresRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.ListaServidoresRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.ListaServidoresRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ListaServidoresRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ListaServidoresRequest)
+        Mensagem.ListaServidoresRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_ListaServidoresRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_ListaServidoresRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.ListaServidoresRequest.class, Mensagem.ListaServidoresRequest.Builder.class);
+      }
+
+      // Construct using Mensagem.ListaServidoresRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        timestamp_ = 0L;
+        relogio_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_ListaServidoresRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.ListaServidoresRequest getDefaultInstanceForType() {
+        return Mensagem.ListaServidoresRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.ListaServidoresRequest build() {
+        Mensagem.ListaServidoresRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.ListaServidoresRequest buildPartial() {
+        Mensagem.ListaServidoresRequest result = new Mensagem.ListaServidoresRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.ListaServidoresRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.relogio_ = relogio_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.ListaServidoresRequest) {
+          return mergeFrom((Mensagem.ListaServidoresRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.ListaServidoresRequest other) {
+        if (other == Mensagem.ListaServidoresRequest.getDefaultInstance()) return this;
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 1;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 1;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 2;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 2;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ListaServidoresRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:ListaServidoresRequest)
+    private static final Mensagem.ListaServidoresRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.ListaServidoresRequest();
+    }
+
+    public static Mensagem.ListaServidoresRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ListaServidoresRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ListaServidoresRequest>() {
+      @java.lang.Override
+      public ListaServidoresRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ListaServidoresRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ListaServidoresRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.ListaServidoresRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ListaServidoresResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ListaServidoresResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .ServidorInfo servidores = 1;</code>
+     */
+    java.util.List<Mensagem.ServidorInfo> 
+        getServidoresList();
+    /**
+     * <code>repeated .ServidorInfo servidores = 1;</code>
+     */
+    Mensagem.ServidorInfo getServidores(int index);
+    /**
+     * <code>repeated .ServidorInfo servidores = 1;</code>
+     */
+    int getServidoresCount();
+    /**
+     * <code>repeated .ServidorInfo servidores = 1;</code>
+     */
+    java.util.List<? extends Mensagem.ServidorInfoOrBuilder> 
+        getServidoresOrBuilderList();
+    /**
+     * <code>repeated .ServidorInfo servidores = 1;</code>
+     */
+    Mensagem.ServidorInfoOrBuilder getServidoresOrBuilder(
+        int index);
+
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
+  }
+  /**
+   * Protobuf type {@code ListaServidoresResponse}
+   */
+  public static final class ListaServidoresResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ListaServidoresResponse)
+      ListaServidoresResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "ListaServidoresResponse");
+    }
+    // Use ListaServidoresResponse.newBuilder() to construct.
+    private ListaServidoresResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ListaServidoresResponse() {
+      servidores_ = java.util.Collections.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_ListaServidoresResponse_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_ListaServidoresResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_ListaServidoresResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.ListaServidoresResponse.class, Mensagem.ListaServidoresResponse.Builder.class);
+    }
+
+    public static final int SERVIDORES_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private java.util.List<Mensagem.ServidorInfo> servidores_;
+    /**
+     * <code>repeated .ServidorInfo servidores = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<Mensagem.ServidorInfo> getServidoresList() {
+      return servidores_;
+    }
+    /**
+     * <code>repeated .ServidorInfo servidores = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends Mensagem.ServidorInfoOrBuilder> 
+        getServidoresOrBuilderList() {
+      return servidores_;
+    }
+    /**
+     * <code>repeated .ServidorInfo servidores = 1;</code>
+     */
+    @java.lang.Override
+    public int getServidoresCount() {
+      return servidores_.size();
+    }
+    /**
+     * <code>repeated .ServidorInfo servidores = 1;</code>
+     */
+    @java.lang.Override
+    public Mensagem.ServidorInfo getServidores(int index) {
+      return servidores_.get(index);
+    }
+    /**
+     * <code>repeated .ServidorInfo servidores = 1;</code>
+     */
+    @java.lang.Override
+    public Mensagem.ServidorInfoOrBuilder getServidoresOrBuilder(
+        int index) {
+      return servidores_.get(index);
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 2;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    public static final int RELOGIO_FIELD_NUMBER = 3;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < servidores_.size(); i++) {
+        output.writeMessage(1, servidores_.get(i));
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        output.writeInt64(3, relogio_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+
+          {
+            final int count = servidores_.size();
+            for (int i = 0; i < count; i++) {
+              size += com.google.protobuf.CodedOutputStream
+                .computeMessageSizeNoTag(servidores_.get(i));
+            }
+            size += 1 * count;
+          }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, relogio_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.ListaServidoresResponse)) {
+        return super.equals(obj);
+      }
+      Mensagem.ListaServidoresResponse other = (Mensagem.ListaServidoresResponse) obj;
+
+      if (!getServidoresList()
+          .equals(other.getServidoresList())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getServidoresCount() > 0) {
+        hash = (37 * hash) + SERVIDORES_FIELD_NUMBER;
+        hash = (53 * hash) + getServidoresList().hashCode();
+      }
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.ListaServidoresResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.ListaServidoresResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.ListaServidoresResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.ListaServidoresResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.ListaServidoresResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.ListaServidoresResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.ListaServidoresResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.ListaServidoresResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.ListaServidoresResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.ListaServidoresResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.ListaServidoresResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.ListaServidoresResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.ListaServidoresResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ListaServidoresResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ListaServidoresResponse)
+        Mensagem.ListaServidoresResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_ListaServidoresResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_ListaServidoresResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.ListaServidoresResponse.class, Mensagem.ListaServidoresResponse.Builder.class);
+      }
+
+      // Construct using Mensagem.ListaServidoresResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (servidoresBuilder_ == null) {
+          servidores_ = java.util.Collections.emptyList();
+        } else {
+          servidores_ = null;
+          servidoresBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        timestamp_ = 0L;
+        relogio_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_ListaServidoresResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.ListaServidoresResponse getDefaultInstanceForType() {
+        return Mensagem.ListaServidoresResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.ListaServidoresResponse build() {
+        Mensagem.ListaServidoresResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.ListaServidoresResponse buildPartial() {
+        Mensagem.ListaServidoresResponse result = new Mensagem.ListaServidoresResponse(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(Mensagem.ListaServidoresResponse result) {
+        if (servidoresBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            servidores_ = java.util.Collections.unmodifiableList(servidores_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.servidores_ = servidores_;
+        } else {
+          result.servidores_ = servidoresBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(Mensagem.ListaServidoresResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.relogio_ = relogio_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.ListaServidoresResponse) {
+          return mergeFrom((Mensagem.ListaServidoresResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.ListaServidoresResponse other) {
+        if (other == Mensagem.ListaServidoresResponse.getDefaultInstance()) return this;
+        if (servidoresBuilder_ == null) {
+          if (!other.servidores_.isEmpty()) {
+            if (servidores_.isEmpty()) {
+              servidores_ = other.servidores_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureServidoresIsMutable();
+              servidores_.addAll(other.servidores_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.servidores_.isEmpty()) {
+            if (servidoresBuilder_.isEmpty()) {
+              servidoresBuilder_.dispose();
+              servidoresBuilder_ = null;
+              servidores_ = other.servidores_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              servidoresBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   internalGetServidoresFieldBuilder() : null;
+            } else {
+              servidoresBuilder_.addAllMessages(other.servidores_);
+            }
+          }
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                Mensagem.ServidorInfo m =
+                    input.readMessage(
+                        Mensagem.ServidorInfo.parser(),
+                        extensionRegistry);
+                if (servidoresBuilder_ == null) {
+                  ensureServidoresIsMutable();
+                  servidores_.add(m);
+                } else {
+                  servidoresBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              case 16: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<Mensagem.ServidorInfo> servidores_ =
+        java.util.Collections.emptyList();
+      private void ensureServidoresIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          servidores_ = new java.util.ArrayList<Mensagem.ServidorInfo>(servidores_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Mensagem.ServidorInfo, Mensagem.ServidorInfo.Builder, Mensagem.ServidorInfoOrBuilder> servidoresBuilder_;
+
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public java.util.List<Mensagem.ServidorInfo> getServidoresList() {
+        if (servidoresBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(servidores_);
+        } else {
+          return servidoresBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public int getServidoresCount() {
+        if (servidoresBuilder_ == null) {
+          return servidores_.size();
+        } else {
+          return servidoresBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Mensagem.ServidorInfo getServidores(int index) {
+        if (servidoresBuilder_ == null) {
+          return servidores_.get(index);
+        } else {
+          return servidoresBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Builder setServidores(
+          int index, Mensagem.ServidorInfo value) {
+        if (servidoresBuilder_ == null) {
+          java.util.Objects.requireNonNull(value);
+          ensureServidoresIsMutable();
+          servidores_.set(index, value);
+          onChanged();
+        } else {
+          servidoresBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Builder setServidores(
+          int index, Mensagem.ServidorInfo.Builder builderForValue) {
+        if (servidoresBuilder_ == null) {
+          ensureServidoresIsMutable();
+          servidores_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          servidoresBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Builder addServidores(Mensagem.ServidorInfo value) {
+        if (servidoresBuilder_ == null) {
+          java.util.Objects.requireNonNull(value);
+          ensureServidoresIsMutable();
+          servidores_.add(value);
+          onChanged();
+        } else {
+          servidoresBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Builder addServidores(
+          int index, Mensagem.ServidorInfo value) {
+        if (servidoresBuilder_ == null) {
+          java.util.Objects.requireNonNull(value);
+          ensureServidoresIsMutable();
+          servidores_.add(index, value);
+          onChanged();
+        } else {
+          servidoresBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Builder addServidores(
+          Mensagem.ServidorInfo.Builder builderForValue) {
+        if (servidoresBuilder_ == null) {
+          ensureServidoresIsMutable();
+          servidores_.add(builderForValue.build());
+          onChanged();
+        } else {
+          servidoresBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Builder addServidores(
+          int index, Mensagem.ServidorInfo.Builder builderForValue) {
+        if (servidoresBuilder_ == null) {
+          ensureServidoresIsMutable();
+          servidores_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          servidoresBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Builder addAllServidores(
+          java.lang.Iterable<? extends Mensagem.ServidorInfo> values) {
+        if (servidoresBuilder_ == null) {
+          ensureServidoresIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, servidores_);
+          onChanged();
+        } else {
+          servidoresBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Builder clearServidores() {
+        if (servidoresBuilder_ == null) {
+          servidores_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          servidoresBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Builder removeServidores(int index) {
+        if (servidoresBuilder_ == null) {
+          ensureServidoresIsMutable();
+          servidores_.remove(index);
+          onChanged();
+        } else {
+          servidoresBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Mensagem.ServidorInfo.Builder getServidoresBuilder(
+          int index) {
+        return internalGetServidoresFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Mensagem.ServidorInfoOrBuilder getServidoresOrBuilder(
+          int index) {
+        if (servidoresBuilder_ == null) {
+          return servidores_.get(index);  } else {
+          return servidoresBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public java.util.List<? extends Mensagem.ServidorInfoOrBuilder> 
+           getServidoresOrBuilderList() {
+        if (servidoresBuilder_ != null) {
+          return servidoresBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(servidores_);
+        }
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Mensagem.ServidorInfo.Builder addServidoresBuilder() {
+        return internalGetServidoresFieldBuilder().addBuilder(
+            Mensagem.ServidorInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public Mensagem.ServidorInfo.Builder addServidoresBuilder(
+          int index) {
+        return internalGetServidoresFieldBuilder().addBuilder(
+            index, Mensagem.ServidorInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ServidorInfo servidores = 1;</code>
+       */
+      public java.util.List<Mensagem.ServidorInfo.Builder> 
+           getServidoresBuilderList() {
+        return internalGetServidoresFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Mensagem.ServidorInfo, Mensagem.ServidorInfo.Builder, Mensagem.ServidorInfoOrBuilder> 
+          internalGetServidoresFieldBuilder() {
+        if (servidoresBuilder_ == null) {
+          servidoresBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              Mensagem.ServidorInfo, Mensagem.ServidorInfo.Builder, Mensagem.ServidorInfoOrBuilder>(
+                  servidores_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          servidores_ = null;
+        }
+        return servidoresBuilder_;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ListaServidoresResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:ListaServidoresResponse)
+    private static final Mensagem.ListaServidoresResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.ListaServidoresResponse();
+    }
+
+    public static Mensagem.ListaServidoresResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ListaServidoresResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ListaServidoresResponse>() {
+      @java.lang.Override
+      public ListaServidoresResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ListaServidoresResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ListaServidoresResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.ListaServidoresResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface HeartbeatRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:HeartbeatRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string nome = 1;</code>
+     * @return The nome.
+     */
+    java.lang.String getNome();
+    /**
+     * <code>string nome = 1;</code>
+     * @return The bytes for nome.
+     */
+    com.google.protobuf.ByteString
+        getNomeBytes();
+
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
+  }
+  /**
+   * Protobuf type {@code HeartbeatRequest}
+   */
+  public static final class HeartbeatRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:HeartbeatRequest)
+      HeartbeatRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "HeartbeatRequest");
+    }
+    // Use HeartbeatRequest.newBuilder() to construct.
+    private HeartbeatRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private HeartbeatRequest() {
+      nome_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_HeartbeatRequest_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_HeartbeatRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_HeartbeatRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.HeartbeatRequest.class, Mensagem.HeartbeatRequest.Builder.class);
+    }
+
+    public static final int NOME_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object nome_ = "";
+    /**
+     * <code>string nome = 1;</code>
+     * @return The nome.
+     */
+    @java.lang.Override
+    public java.lang.String getNome() {
+      java.lang.Object ref = nome_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nome_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string nome = 1;</code>
+     * @return The bytes for nome.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNomeBytes() {
+      java.lang.Object ref = nome_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nome_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 2;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    public static final int RELOGIO_FIELD_NUMBER = 3;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(nome_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, nome_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        output.writeInt64(3, relogio_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(nome_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, nome_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, relogio_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.HeartbeatRequest)) {
+        return super.equals(obj);
+      }
+      Mensagem.HeartbeatRequest other = (Mensagem.HeartbeatRequest) obj;
+
+      if (!getNome()
+          .equals(other.getNome())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NOME_FIELD_NUMBER;
+      hash = (53 * hash) + getNome().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.HeartbeatRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.HeartbeatRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.HeartbeatRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.HeartbeatRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.HeartbeatRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.HeartbeatRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.HeartbeatRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.HeartbeatRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.HeartbeatRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.HeartbeatRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.HeartbeatRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.HeartbeatRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.HeartbeatRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HeartbeatRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:HeartbeatRequest)
+        Mensagem.HeartbeatRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_HeartbeatRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_HeartbeatRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.HeartbeatRequest.class, Mensagem.HeartbeatRequest.Builder.class);
+      }
+
+      // Construct using Mensagem.HeartbeatRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        nome_ = "";
+        timestamp_ = 0L;
+        relogio_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_HeartbeatRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.HeartbeatRequest getDefaultInstanceForType() {
+        return Mensagem.HeartbeatRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.HeartbeatRequest build() {
+        Mensagem.HeartbeatRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.HeartbeatRequest buildPartial() {
+        Mensagem.HeartbeatRequest result = new Mensagem.HeartbeatRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.HeartbeatRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.nome_ = nome_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.relogio_ = relogio_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.HeartbeatRequest) {
+          return mergeFrom((Mensagem.HeartbeatRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.HeartbeatRequest other) {
+        if (other == Mensagem.HeartbeatRequest.getDefaultInstance()) return this;
+        if (!other.getNome().isEmpty()) {
+          nome_ = other.nome_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                nome_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object nome_ = "";
+      /**
+       * <code>string nome = 1;</code>
+       * @return The nome.
+       */
+      public java.lang.String getNome() {
+        java.lang.Object ref = nome_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nome_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @return The bytes for nome.
+       */
+      public com.google.protobuf.ByteString
+          getNomeBytes() {
+        java.lang.Object ref = nome_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nome_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @param value The nome to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNome(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        nome_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNome() {
+        nome_ = getDefaultInstance().getNome();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @param value The bytes for nome to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNomeBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        nome_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HeartbeatRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:HeartbeatRequest)
+    private static final Mensagem.HeartbeatRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.HeartbeatRequest();
+    }
+
+    public static Mensagem.HeartbeatRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<HeartbeatRequest>
+        PARSER = new com.google.protobuf.AbstractParser<HeartbeatRequest>() {
+      @java.lang.Override
+      public HeartbeatRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<HeartbeatRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HeartbeatRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.HeartbeatRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface HeartbeatResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:HeartbeatResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>bool ok = 1;</code>
+     * @return The ok.
+     */
+    boolean getOk();
+
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
+  }
+  /**
+   * <pre>
+   * timestamp aqui e a hora correta do relogio da referencia no momento do envio!!!!!!!!!
+   * </pre>
+   *
+   * Protobuf type {@code HeartbeatResponse}
+   */
+  public static final class HeartbeatResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:HeartbeatResponse)
+      HeartbeatResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "HeartbeatResponse");
+    }
+    // Use HeartbeatResponse.newBuilder() to construct.
+    private HeartbeatResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private HeartbeatResponse() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_HeartbeatResponse_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_HeartbeatResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_HeartbeatResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.HeartbeatResponse.class, Mensagem.HeartbeatResponse.Builder.class);
+    }
+
+    public static final int OK_FIELD_NUMBER = 1;
+    private boolean ok_ = false;
+    /**
+     * <code>bool ok = 1;</code>
+     * @return The ok.
+     */
+    @java.lang.Override
+    public boolean getOk() {
+      return ok_;
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 2;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    public static final int RELOGIO_FIELD_NUMBER = 3;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ok_ != false) {
+        output.writeBool(1, ok_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        output.writeInt64(3, relogio_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (ok_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, ok_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, relogio_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.HeartbeatResponse)) {
+        return super.equals(obj);
+      }
+      Mensagem.HeartbeatResponse other = (Mensagem.HeartbeatResponse) obj;
+
+      if (getOk()
+          != other.getOk()) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + OK_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getOk());
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.HeartbeatResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.HeartbeatResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.HeartbeatResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.HeartbeatResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.HeartbeatResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.HeartbeatResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.HeartbeatResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.HeartbeatResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.HeartbeatResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.HeartbeatResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.HeartbeatResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.HeartbeatResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.HeartbeatResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * timestamp aqui e a hora correta do relogio da referencia no momento do envio!!!!!!!!!
+     * </pre>
+     *
+     * Protobuf type {@code HeartbeatResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:HeartbeatResponse)
+        Mensagem.HeartbeatResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_HeartbeatResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_HeartbeatResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.HeartbeatResponse.class, Mensagem.HeartbeatResponse.Builder.class);
+      }
+
+      // Construct using Mensagem.HeartbeatResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        ok_ = false;
+        timestamp_ = 0L;
+        relogio_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_HeartbeatResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.HeartbeatResponse getDefaultInstanceForType() {
+        return Mensagem.HeartbeatResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.HeartbeatResponse build() {
+        Mensagem.HeartbeatResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.HeartbeatResponse buildPartial() {
+        Mensagem.HeartbeatResponse result = new Mensagem.HeartbeatResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.HeartbeatResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.ok_ = ok_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.relogio_ = relogio_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.HeartbeatResponse) {
+          return mergeFrom((Mensagem.HeartbeatResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.HeartbeatResponse other) {
+        if (other == Mensagem.HeartbeatResponse.getDefaultInstance()) return this;
+        if (other.getOk() != false) {
+          setOk(other.getOk());
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                ok_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean ok_ ;
+      /**
+       * <code>bool ok = 1;</code>
+       * @return The ok.
+       */
+      @java.lang.Override
+      public boolean getOk() {
+        return ok_;
+      }
+      /**
+       * <code>bool ok = 1;</code>
+       * @param value The ok to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOk(boolean value) {
+
+        ok_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool ok = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOk() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        ok_ = false;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HeartbeatResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:HeartbeatResponse)
+    private static final Mensagem.HeartbeatResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.HeartbeatResponse();
+    }
+
+    public static Mensagem.HeartbeatResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<HeartbeatResponse>
+        PARSER = new com.google.protobuf.AbstractParser<HeartbeatResponse>() {
+      @java.lang.Override
+      public HeartbeatResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<HeartbeatResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HeartbeatResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.HeartbeatResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_LoginRequest_descriptor;
   private static final 
@@ -6107,6 +11269,41 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Publicacao_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_RankRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_RankRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_RankResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_RankResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ServidorInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ServidorInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ListaServidoresRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ListaServidoresRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ListaServidoresResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ListaServidoresResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_HeartbeatRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HeartbeatRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_HeartbeatResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HeartbeatResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6116,22 +11313,38 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016mensagem.proto\"2\n\014LoginRequest\022\017\n\007usua" +
-      "rio\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\"A\n\rLoginRes" +
-      "ponse\022\017\n\007sucesso\030\001 \001(\010\022\014\n\004erro\030\002 \001(\t\022\021\n\t" +
-      "timestamp\030\003 \001(\003\":\n\021CriarCanalRequest\022\022\n\n" +
-      "nome_canal\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\"F\n\022C" +
-      "riarCanalResponse\022\017\n\007sucesso\030\001 \001(\010\022\014\n\004er" +
-      "ro\030\002 \001(\t\022\021\n\ttimestamp\030\003 \001(\003\"(\n\023ListarCan" +
-      "aisRequest\022\021\n\ttimestamp\030\001 \001(\003\"9\n\024ListarC" +
-      "anaisResponse\022\016\n\006canais\030\001 \003(\t\022\021\n\ttimesta" +
-      "mp\030\002 \001(\003\"V\n\017PublicarRequest\022\017\n\007usuario\030\001" +
-      " \001(\t\022\r\n\005canal\030\002 \001(\t\022\020\n\010mensagem\030\003 \001(\t\022\021\n" +
-      "\ttimestamp\030\004 \001(\003\"D\n\020PublicarResponse\022\017\n\007" +
-      "sucesso\030\001 \001(\010\022\014\n\004erro\030\002 \001(\t\022\021\n\ttimestamp" +
-      "\030\003 \001(\003\"Q\n\nPublicacao\022\r\n\005canal\030\001 \001(\t\022\020\n\010m" +
-      "ensagem\030\002 \001(\t\022\017\n\007usuario\030\003 \001(\t\022\021\n\ttimest" +
-      "amp\030\004 \001(\003b\006proto3"
+      "\n\016mensagem.proto\"C\n\014LoginRequest\022\017\n\007usua" +
+      "rio\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007relogio\030" +
+      "\003 \001(\003\"R\n\rLoginResponse\022\017\n\007sucesso\030\001 \001(\010\022" +
+      "\014\n\004erro\030\002 \001(\t\022\021\n\ttimestamp\030\003 \001(\003\022\017\n\007relo" +
+      "gio\030\004 \001(\003\"K\n\021CriarCanalRequest\022\022\n\nnome_c" +
+      "anal\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007relogio" +
+      "\030\003 \001(\003\"W\n\022CriarCanalResponse\022\017\n\007sucesso\030" +
+      "\001 \001(\010\022\014\n\004erro\030\002 \001(\t\022\021\n\ttimestamp\030\003 \001(\003\022\017" +
+      "\n\007relogio\030\004 \001(\003\"9\n\023ListarCanaisRequest\022\021" +
+      "\n\ttimestamp\030\001 \001(\003\022\017\n\007relogio\030\002 \001(\003\"J\n\024Li" +
+      "starCanaisResponse\022\016\n\006canais\030\001 \003(\t\022\021\n\tti" +
+      "mestamp\030\002 \001(\003\022\017\n\007relogio\030\003 \001(\003\"g\n\017Public" +
+      "arRequest\022\017\n\007usuario\030\001 \001(\t\022\r\n\005canal\030\002 \001(" +
+      "\t\022\020\n\010mensagem\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\003\022\017" +
+      "\n\007relogio\030\005 \001(\003\"U\n\020PublicarResponse\022\017\n\007s" +
+      "ucesso\030\001 \001(\010\022\014\n\004erro\030\002 \001(\t\022\021\n\ttimestamp\030" +
+      "\003 \001(\003\022\017\n\007relogio\030\004 \001(\003\"b\n\nPublicacao\022\r\n\005" +
+      "canal\030\001 \001(\t\022\020\n\010mensagem\030\002 \001(\t\022\017\n\007usuario" +
+      "\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\003\022\017\n\007relogio\030\005 \001" +
+      "(\003\"?\n\013RankRequest\022\014\n\004nome\030\001 \001(\t\022\021\n\ttimes" +
+      "tamp\030\002 \001(\003\022\017\n\007relogio\030\003 \001(\003\"@\n\014RankRespo" +
+      "nse\022\014\n\004rank\030\001 \001(\005\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007" +
+      "relogio\030\003 \001(\003\"*\n\014ServidorInfo\022\014\n\004nome\030\001 " +
+      "\001(\t\022\014\n\004rank\030\002 \001(\005\"<\n\026ListaServidoresRequ" +
+      "est\022\021\n\ttimestamp\030\001 \001(\003\022\017\n\007relogio\030\002 \001(\003\"" +
+      "`\n\027ListaServidoresResponse\022!\n\nservidores" +
+      "\030\001 \003(\0132\r.ServidorInfo\022\021\n\ttimestamp\030\002 \001(\003" +
+      "\022\017\n\007relogio\030\003 \001(\003\"D\n\020HeartbeatRequest\022\014\n" +
+      "\004nome\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007relogi" +
+      "o\030\003 \001(\003\"C\n\021HeartbeatResponse\022\n\n\002ok\030\001 \001(\010" +
+      "\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007relogio\030\003 \001(\003b\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6142,55 +11355,97 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
     internal_static_LoginRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_LoginRequest_descriptor,
-        new java.lang.String[] { "Usuario", "Timestamp", });
+        new java.lang.String[] { "Usuario", "Timestamp", "Relogio", });
     internal_static_LoginResponse_descriptor =
       getDescriptor().getMessageType(1);
     internal_static_LoginResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_LoginResponse_descriptor,
-        new java.lang.String[] { "Sucesso", "Erro", "Timestamp", });
+        new java.lang.String[] { "Sucesso", "Erro", "Timestamp", "Relogio", });
     internal_static_CriarCanalRequest_descriptor =
       getDescriptor().getMessageType(2);
     internal_static_CriarCanalRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CriarCanalRequest_descriptor,
-        new java.lang.String[] { "NomeCanal", "Timestamp", });
+        new java.lang.String[] { "NomeCanal", "Timestamp", "Relogio", });
     internal_static_CriarCanalResponse_descriptor =
       getDescriptor().getMessageType(3);
     internal_static_CriarCanalResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CriarCanalResponse_descriptor,
-        new java.lang.String[] { "Sucesso", "Erro", "Timestamp", });
+        new java.lang.String[] { "Sucesso", "Erro", "Timestamp", "Relogio", });
     internal_static_ListarCanaisRequest_descriptor =
       getDescriptor().getMessageType(4);
     internal_static_ListarCanaisRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ListarCanaisRequest_descriptor,
-        new java.lang.String[] { "Timestamp", });
+        new java.lang.String[] { "Timestamp", "Relogio", });
     internal_static_ListarCanaisResponse_descriptor =
       getDescriptor().getMessageType(5);
     internal_static_ListarCanaisResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ListarCanaisResponse_descriptor,
-        new java.lang.String[] { "Canais", "Timestamp", });
+        new java.lang.String[] { "Canais", "Timestamp", "Relogio", });
     internal_static_PublicarRequest_descriptor =
       getDescriptor().getMessageType(6);
     internal_static_PublicarRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_PublicarRequest_descriptor,
-        new java.lang.String[] { "Usuario", "Canal", "Mensagem", "Timestamp", });
+        new java.lang.String[] { "Usuario", "Canal", "Mensagem", "Timestamp", "Relogio", });
     internal_static_PublicarResponse_descriptor =
       getDescriptor().getMessageType(7);
     internal_static_PublicarResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_PublicarResponse_descriptor,
-        new java.lang.String[] { "Sucesso", "Erro", "Timestamp", });
+        new java.lang.String[] { "Sucesso", "Erro", "Timestamp", "Relogio", });
     internal_static_Publicacao_descriptor =
       getDescriptor().getMessageType(8);
     internal_static_Publicacao_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Publicacao_descriptor,
-        new java.lang.String[] { "Canal", "Mensagem", "Usuario", "Timestamp", });
+        new java.lang.String[] { "Canal", "Mensagem", "Usuario", "Timestamp", "Relogio", });
+    internal_static_RankRequest_descriptor =
+      getDescriptor().getMessageType(9);
+    internal_static_RankRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_RankRequest_descriptor,
+        new java.lang.String[] { "Nome", "Timestamp", "Relogio", });
+    internal_static_RankResponse_descriptor =
+      getDescriptor().getMessageType(10);
+    internal_static_RankResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_RankResponse_descriptor,
+        new java.lang.String[] { "Rank", "Timestamp", "Relogio", });
+    internal_static_ServidorInfo_descriptor =
+      getDescriptor().getMessageType(11);
+    internal_static_ServidorInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ServidorInfo_descriptor,
+        new java.lang.String[] { "Nome", "Rank", });
+    internal_static_ListaServidoresRequest_descriptor =
+      getDescriptor().getMessageType(12);
+    internal_static_ListaServidoresRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ListaServidoresRequest_descriptor,
+        new java.lang.String[] { "Timestamp", "Relogio", });
+    internal_static_ListaServidoresResponse_descriptor =
+      getDescriptor().getMessageType(13);
+    internal_static_ListaServidoresResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ListaServidoresResponse_descriptor,
+        new java.lang.String[] { "Servidores", "Timestamp", "Relogio", });
+    internal_static_HeartbeatRequest_descriptor =
+      getDescriptor().getMessageType(14);
+    internal_static_HeartbeatRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_HeartbeatRequest_descriptor,
+        new java.lang.String[] { "Nome", "Timestamp", "Relogio", });
+    internal_static_HeartbeatResponse_descriptor =
+      getDescriptor().getMessageType(15);
+    internal_static_HeartbeatResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_HeartbeatResponse_descriptor,
+        new java.lang.String[] { "Ok", "Timestamp", "Relogio", });
     descriptor.resolveAllFeaturesImmutable();
   }
 
