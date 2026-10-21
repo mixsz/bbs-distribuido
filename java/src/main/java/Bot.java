@@ -37,6 +37,8 @@ public class Bot {
     static final DateTimeFormatter FMT_MS =
             DateTimeFormatter.ofPattern("HH:mm:ss.SSS").withZone(ZoneId.systemDefault());
 
+    static long relogio = 0;
+
     static ZContext context = new ZContext();
     static ZMQ.Socket socket = novoSocket();
     static ZMQ.Socket sub = novoSub();
@@ -59,6 +61,15 @@ public class Bot {
 
     static String fmt(long ts) {
         return FMT_MS.format(Instant.ofEpochMilli(ts));
+    }
+
+    static long proximoRelogio() {
+        relogio += 1;
+        return relogio;
+    }
+
+    static void atualizarRelogio(long recebido) {
+        relogio = Math.max(relogio, recebido);
     }
 
     static byte[] enviar(String tipo, byte[] payload) {
@@ -99,11 +110,14 @@ public class Bot {
                 continue;
             }
             Mensagem.Publicacao publicacao = Mensagem.Publicacao.parseFrom(dados);
+            atualizarRelogio(publicacao.getRelogio());
             System.out.println("[PUBLICACAO] canal=" + publicacao.getCanal()
                     + " | mensagem='" + publicacao.getMensagem()
                     + "' | usuario=" + publicacao.getUsuario()
                     + " | enviada=" + fmt(publicacao.getTimestamp())
-                    + " | recebida=" + fmt(System.currentTimeMillis()));
+                    + " | recebida=" + fmt(System.currentTimeMillis())
+                    + " | relogio=" + publicacao.getRelogio()
+                    + " | local=" + relogio);
         }
     }
 
@@ -111,25 +125,35 @@ public class Bot {
         Mensagem.LoginRequest req = Mensagem.LoginRequest.newBuilder()
                 .setUsuario(USUARIO)
                 .setTimestamp(System.currentTimeMillis())
+                .setRelogio(proximoRelogio())
                 .build();
         System.out.println("[ENVIADO] login | usuario=" + req.getUsuario()
-                + " | timestamp=" + fmt(req.getTimestamp()));
+                + " | timestamp=" + fmt(req.getTimestamp())
+                + " | relogio=" + req.getRelogio());
         Mensagem.LoginResponse resp =
                 Mensagem.LoginResponse.parseFrom(enviar("login", req.toByteArray()));
+        atualizarRelogio(resp.getRelogio());
         System.out.println("[RECEBIDO] login | sucesso=" + resp.getSucesso()
                 + " | erro='" + resp.getErro()
-                + "' | timestamp=" + fmt(resp.getTimestamp()));
+                + "' | timestamp=" + fmt(resp.getTimestamp())
+                + " | relogio=" + resp.getRelogio()
+                + " | local=" + relogio);
     }
 
     static List<String> listarCanais() throws Exception {
         Mensagem.ListarCanaisRequest req = Mensagem.ListarCanaisRequest.newBuilder()
                 .setTimestamp(System.currentTimeMillis())
+                .setRelogio(proximoRelogio())
                 .build();
-        System.out.println("[ENVIADO] listar_canais | timestamp=" + fmt(req.getTimestamp()));
+        System.out.println("[ENVIADO] listar_canais | timestamp=" + fmt(req.getTimestamp())
+                + " | relogio=" + req.getRelogio());
         Mensagem.ListarCanaisResponse resp =
                 Mensagem.ListarCanaisResponse.parseFrom(enviar("listar_canais", req.toByteArray()));
+        atualizarRelogio(resp.getRelogio());
         System.out.println("[RECEBIDO] listar_canais | canais=" + resp.getCanaisList()
-                + " | timestamp=" + fmt(resp.getTimestamp()));
+                + " | timestamp=" + fmt(resp.getTimestamp())
+                + " | relogio=" + resp.getRelogio()
+                + " | local=" + relogio);
         return new ArrayList<>(resp.getCanaisList());
     }
 
@@ -137,14 +161,19 @@ public class Bot {
         Mensagem.CriarCanalRequest req = Mensagem.CriarCanalRequest.newBuilder()
                 .setNomeCanal(nome)
                 .setTimestamp(System.currentTimeMillis())
+                .setRelogio(proximoRelogio())
                 .build();
         System.out.println("[ENVIADO] criar_canal | nome_canal=" + req.getNomeCanal()
-                + " | timestamp=" + fmt(req.getTimestamp()));
+                + " | timestamp=" + fmt(req.getTimestamp())
+                + " | relogio=" + req.getRelogio());
         Mensagem.CriarCanalResponse resp =
                 Mensagem.CriarCanalResponse.parseFrom(enviar("criar_canal", req.toByteArray()));
+        atualizarRelogio(resp.getRelogio());
         System.out.println("[RECEBIDO] criar_canal | sucesso=" + resp.getSucesso()
                 + " | erro='" + resp.getErro()
-                + "' | timestamp=" + fmt(resp.getTimestamp()));
+                + "' | timestamp=" + fmt(resp.getTimestamp())
+                + " | relogio=" + resp.getRelogio()
+                + " | local=" + relogio);
         return resp.getSucesso();
     }
 
@@ -154,15 +183,20 @@ public class Bot {
                 .setCanal(canal)
                 .setMensagem(mensagem)
                 .setTimestamp(System.currentTimeMillis())
+                .setRelogio(proximoRelogio())
                 .build();
         System.out.println("[ENVIADO] publicar | canal=" + req.getCanal()
                 + " | mensagem='" + req.getMensagem()
-                + "' | timestamp=" + fmt(req.getTimestamp()));
+                + "' | timestamp=" + fmt(req.getTimestamp())
+                + " | relogio=" + req.getRelogio());
         Mensagem.PublicarResponse resp =
                 Mensagem.PublicarResponse.parseFrom(enviar("publicar", req.toByteArray()));
+        atualizarRelogio(resp.getRelogio());
         System.out.println("[RECEBIDO] publicar | sucesso=" + resp.getSucesso()
                 + " | erro='" + resp.getErro()
-                + "' | timestamp=" + fmt(resp.getTimestamp()));
+                + "' | timestamp=" + fmt(resp.getTimestamp())
+                + " | relogio=" + resp.getRelogio()
+                + " | local=" + relogio);
     }
 
     public static void main(String[] args) throws Exception {
