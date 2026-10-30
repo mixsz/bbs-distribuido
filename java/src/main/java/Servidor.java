@@ -26,9 +26,15 @@ public class Servidor {
     static final String NOME = System.getenv().getOrDefault("NOME_SERVIDOR", "servidor-java");
     static final String REFERENCIA = System.getenv().getOrDefault("REFERENCIA_ENDERECO", "tcp://localhost:5559");
     static final long PAUSA_MS = Long.parseLong(System.getenv().getOrDefault("PAUSA_MS", "200"));
+    static final String PROXY_SUB = System.getenv().getOrDefault("PROXY_SUB_ENDERECO", "tcp://proxy:5558");
+    static final String PEER_PORTA = System.getenv().getOrDefault("PEER_PORTA", "5600");
+    static final String PEER_BIND = System.getenv().getOrDefault("PEER_BIND", "tcp://*:" + PEER_PORTA);
+    static final String TOPICO_SERVERS = "servers";
 
     static final int INTERVALO_HEARTBEAT = 10;
+    static final int INTERVALO_SINCRONIZACAO = 15;
     static final int TIMEOUT_MS = 3000;
+    static final int TIMEOUT_PAR_MS = 2000;
     static final int TENTATIVAS = 20;
 
     static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -38,9 +44,14 @@ public class Servidor {
     static long relogio = 0;
     static long desvio = Long.parseLong(System.getenv().getOrDefault("DESVIO_RELOGIO_MS", "0"));
     static int mensagensClientes = 0;
+    static int meuRank = 0;
+    static String coordenador = null; // nome do serv q sera coodenador
 
     static ZContext context;
     static ZMQ.Socket ref;
+    static ZMQ.Socket pub;
+    static ZMQ.Socket peer;
+    static ZMQ.Socket sub;
 
     static long agoraSistema() {
         return System.currentTimeMillis();
@@ -121,7 +132,7 @@ public class Servidor {
         return resp.getRank();
     }
 
-    static void listarServidores() throws InvalidProtocolBufferException {
+    static List<Mensagem.ServidorInfo> listarServidores() throws InvalidProtocolBufferException {
         Mensagem.ListaServidoresRequest req = Mensagem.ListaServidoresRequest.newBuilder()
                 .setTimestamp(agora())
                 .setRelogio(proximoRelogio())
@@ -139,6 +150,7 @@ public class Servidor {
                 + " | timestamp=" + fmt(resp.getTimestamp())
                 + " | relogio=" + resp.getRelogio()
                 + " | local=" + relogio);
+        return resp.getServidoresList();
     }
 
     static void heartbeat() throws InvalidProtocolBufferException {
@@ -151,27 +163,245 @@ public class Servidor {
                 + " | timestamp=" + fmt(req.getTimestamp())
                 + " | relogio=" + req.getRelogio());
 
-        long t0 = agoraSistema();
         byte[] dados = pedirReferencia("heartbeat", req.toByteArray());
-        long t1 = agoraSistema();
 
         Mensagem.HeartbeatResponse resp = Mensagem.HeartbeatResponse.parseFrom(dados);
         atualizarRelogio(resp.getRelogio());
         System.out.println("[RECEBIDO] heartbeat | ok=" + resp.getOk()
+                + " | relogio=" + resp.getRelogio()
+                + " | local=" + relogio);
+        pausa();
+    }
+
+    static byte[] pedirServidor(String nome, String tipo, byte[] payload) {
+        ZMQ.Socket s = context.createSocket(SocketType.REQ);
+        s.setReceiveTimeOut(TIMEOUT_PAR_MS);
+        s.setSendTimeOut(TIMEOUT_PAR_MS);
+        s.setLinger(0);
+        try {
+            s.connect("tcp://" + nome + ":" + PEER_PORTA);
+            ZMsg msg = new ZMsg();
+            msg.add(tipo);
+            msg.add(payload);
+            if (!msg.send(s)) {
+                return null;
+            }
+            ZMsg resposta = ZMsg.recvMsg(s);
+            if (resposta == null) {
+                return null;
+            }
+            resposta.popString();
+            return resposta.pop().getData();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            context.destroySocket(s);
+        }
+    }
+
+    static void definirCoordenador(String nome) {
+        coordenador = nome;
+        System.out.println("[COORDENADOR] coordenador=" + coordenador);
+    }
+
+    static void anunciarCoordenador() {
+        // espera um pouco por causa do pub/proxy
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        Mensagem.CoordenadorAnuncio anuncio = Mensagem.CoordenadorAnuncio.newBuilder()
+                .setNome(NOME)
+                .setTimestamp(agora())
+                .setRelogio(proximoRelogio())
+                .build();
+        ZMsg msg = new ZMsg();
+        msg.add(TOPICO_SERVERS);
+        msg.add(anuncio.toByteArray());
+        msg.send(pub);
+        System.out.println("[PUBLICADO] topico=" + TOPICO_SERVERS
+                + " | coordenador=" + anuncio.getNome()
+                + " | timestamp=" + fmt(anuncio.getTimestamp())
+                + " | relogio=" + anuncio.getRelogio());
+    }
+
+    static void iniciarEleicao() throws InvalidProtocolBufferException {
+        coordenador = null;
+        System.out.println("[ELEICAO] iniciada por " + NOME + " (rank=" + meuRank + ")");
+        List<Mensagem.ServidorInfo> superiores = new ArrayList<>();
+        for (Mensagem.ServidorInfo s : listarServidores()) {
+            if (s.getRank() > meuRank) {
+                superiores.add(s);
+            }
+        }
+        superiores.sort((a, b) -> Integer.compare(a.getRank(), b.getRank()));
+
+        boolean alguemRespondeu = false;
+        for (Mensagem.ServidorInfo s : superiores) {
+            Mensagem.EleicaoRequest req = Mensagem.EleicaoRequest.newBuilder()
+                    .setNome(NOME)
+                    .setRank(meuRank)
+                    .setTimestamp(agora())
+                    .setRelogio(proximoRelogio())
+                    .build();
+            System.out.println("[ENVIADO] eleicao | para=" + s.getNome()
+                    + " | rank=" + req.getRank()
+                    + " | timestamp=" + fmt(req.getTimestamp())
+                    + " | relogio=" + req.getRelogio());
+            byte[] dados = pedirServidor(s.getNome(), "eleicao", req.toByteArray());
+            if (dados == null) {
+                System.out.println("[ELEICAO] " + s.getNome() + " nao respondeu");
+                continue;
+            }
+            Mensagem.EleicaoResponse resp = Mensagem.EleicaoResponse.parseFrom(dados);
+            atualizarRelogio(resp.getRelogio());
+            System.out.println("[RECEBIDO] eleicao | de=" + s.getNome()
+                    + " | resposta=" + resp.getResposta()
+                    + " | timestamp=" + fmt(resp.getTimestamp())
+                    + " | relogio=" + resp.getRelogio()
+                    + " | local=" + relogio);
+            alguemRespondeu = true;
+        }
+
+        if (alguemRespondeu) {
+            System.out.println("[ELEICAO] " + NOME + " aguarda o anuncio do coordenador");
+            return;
+        }
+
+        definirCoordenador(NOME);
+        anunciarCoordenador();
+    }
+
+    static void sincronizarRelogio() throws InvalidProtocolBufferException {
+        if (coordenador == null) {
+            iniciarEleicao();
+            return;
+        }
+        if (coordenador.equals(NOME)) {
+            System.out.println("[SINCRONIZACAO] " + NOME + " e o coordenador, mantem o proprio relogio");
+            return;
+        }
+
+        Mensagem.RelogioRequest req = Mensagem.RelogioRequest.newBuilder()
+                .setNome(NOME)
+                .setTimestamp(agora())
+                .setRelogio(proximoRelogio())
+                .build();
+        System.out.println("[ENVIADO] relogio | para=" + coordenador
+                + " | timestamp=" + fmt(req.getTimestamp())
+                + " | relogio=" + req.getRelogio());
+
+        long t0 = agoraSistema();
+        byte[] dados = pedirServidor(coordenador, "relogio", req.toByteArray());
+        long t1 = agoraSistema();
+
+        if (dados == null) {
+            System.out.println("[COORDENADOR] " + coordenador + " indisponivel");
+            iniciarEleicao();
+            return;
+        }
+
+        Mensagem.RelogioResponse resp = Mensagem.RelogioResponse.parseFrom(dados);
+        atualizarRelogio(resp.getRelogio());
+        System.out.println("[RECEBIDO] relogio | de=" + coordenador
                 + " | timestamp=" + fmt(resp.getTimestamp())
                 + " | relogio=" + resp.getRelogio()
                 + " | local=" + relogio);
 
-        // hora correta estimada = hora da referencia + metade do tempo de ida e volta (igual o do py (pra lembrar))
         long estimada = resp.getTimestamp() + (t1 - t0) / 2;
         long novoDesvio = estimada - t1;
         long ajuste = novoDesvio - desvio;
         desvio = novoDesvio;
-        System.out.println("[SINCRONIZACAO] referencia=" + fmt(resp.getTimestamp())
+        System.out.println("[SINCRONIZACAO] coordenador=" + coordenador
+                + " | hora=" + fmt(resp.getTimestamp())
                 + " | rtt=" + (t1 - t0) + "ms"
                 + " | ajuste=" + String.format("%+d", ajuste) + "ms"
                 + " | desvio=" + String.format("%+d", desvio) + "ms");
         pausa();
+    }
+
+    static void atenderPar() throws InvalidProtocolBufferException {
+        byte[] tipoBytes = peer.recv(ZMQ.DONTWAIT);
+        if (tipoBytes == null) {
+            return;
+        }
+        String tipo = new String(tipoBytes);
+        byte[] dadosBytes = peer.recv();
+
+        if (tipo.equals("relogio")) {
+            Mensagem.RelogioRequest req = Mensagem.RelogioRequest.parseFrom(dadosBytes);
+            atualizarRelogio(req.getRelogio());
+            System.out.println("[RECEBIDO] relogio | de=" + req.getNome()
+                    + " | timestamp=" + fmt(req.getTimestamp())
+                    + " | relogio=" + req.getRelogio()
+                    + " | local=" + relogio);
+            Mensagem.RelogioResponse resp = Mensagem.RelogioResponse.newBuilder()
+                    .setTimestamp(agora())
+                    .setRelogio(proximoRelogio())
+                    .build();
+            System.out.println("[ENVIADO] relogio | para=" + req.getNome()
+                    + " | timestamp=" + fmt(resp.getTimestamp())
+                    + " | relogio=" + resp.getRelogio());
+            ZMsg r = new ZMsg();
+            r.add("relogio");
+            r.add(resp.toByteArray());
+            r.send(peer);
+        } else if (tipo.equals("eleicao")) {
+            Mensagem.EleicaoRequest req = Mensagem.EleicaoRequest.parseFrom(dadosBytes);
+            atualizarRelogio(req.getRelogio());
+            System.out.println("[RECEBIDO] eleicao | de=" + req.getNome()
+                    + " | rank=" + req.getRank()
+                    + " | timestamp=" + fmt(req.getTimestamp())
+                    + " | relogio=" + req.getRelogio()
+                    + " | local=" + relogio);
+            Mensagem.EleicaoResponse resp = Mensagem.EleicaoResponse.newBuilder()
+                    .setResposta("OK")
+                    .setTimestamp(agora())
+                    .setRelogio(proximoRelogio())
+                    .build();
+            System.out.println("[ENVIADO] eleicao | para=" + req.getNome()
+                    + " | resposta=" + resp.getResposta()
+                    + " | timestamp=" + fmt(resp.getTimestamp())
+                    + " | relogio=" + resp.getRelogio());
+            ZMsg r = new ZMsg();
+            r.add("eleicao");
+            r.add(resp.toByteArray());
+            r.send(peer);
+            if (req.getRank() < meuRank) {
+                iniciarEleicao(); // maior rank assume
+            }
+        } else {
+            System.out.println("tipo de mensagem desconhecido (par): " + tipo);
+            ZMsg r = new ZMsg();
+            r.add(tipo);
+            r.add(new byte[0]);
+            r.send(peer);
+        }
+    }
+
+    static void atenderAnuncio() throws InvalidProtocolBufferException {
+        byte[] topico = sub.recv(ZMQ.DONTWAIT);
+        if (topico == null) {
+            return;
+        }
+        Mensagem.CoordenadorAnuncio anuncio = Mensagem.CoordenadorAnuncio.parseFrom(sub.recv());
+        atualizarRelogio(anuncio.getRelogio());
+        System.out.println("[RECEBIDO] topico=" + TOPICO_SERVERS
+                + " | coordenador=" + anuncio.getNome()
+                + " | timestamp=" + fmt(anuncio.getTimestamp())
+                + " | relogio=" + anuncio.getRelogio()
+                + " | local=" + relogio);
+        definirCoordenador(anuncio.getNome());
+        if (!anuncio.getNome().equals(NOME)) {
+            for (Mensagem.ServidorInfo si : listarServidores()) {
+                if (si.getNome().equals(anuncio.getNome()) && si.getRank() < meuRank) {
+                    System.out.println("[ELEICAO] " + anuncio.getNome() + " tem rank menor que " + NOME + ", nova eleicao");
+                    iniciarEleicao();
+                    break;
+                }
+            }
+        }
     }
 
     public static void main(String[] args) throws Exception {
@@ -180,6 +410,7 @@ public class Servidor {
             ref = novoSocketReferencia();
 
             int rank = obterRank();
+            meuRank = rank;
             System.out.println("servidor " + NOME + " cadastrado com rank " + rank);
             listarServidores();
 
@@ -187,16 +418,34 @@ public class Servidor {
             String broker = System.getenv().getOrDefault("BROKER_ENDERECO", "tcp://localhost:5556");
             socket.connect(broker);
 
-            ZMQ.Socket pub = context.createSocket(SocketType.PUB);
+            pub = context.createSocket(SocketType.PUB);
             String proxyPub = System.getenv().getOrDefault("PROXY_PUB_ENDERECO", "tcp://localhost:5557");
             pub.connect(proxyPub);
 
-            System.out.println("servidor java conectado ao broker em " + broker + " e ao proxy em " + proxyPub);
+            peer = context.createSocket(SocketType.REP);
+            peer.bind(PEER_BIND);
+
+            sub = context.createSocket(SocketType.SUB);
+            sub.connect(PROXY_SUB);
+            sub.subscribe(TOPICO_SERVERS.getBytes());
+
+            socket.setReceiveTimeOut(200);
+
+            System.out.println("servidor java conectado ao broker em " + broker + ", ao proxy em " + proxyPub
+                    + "/" + PROXY_SUB + " e ouvindo servidores em " + PEER_BIND);
 
             Dados dados = carregarDados();
 
+            iniciarEleicao();
+
             while (!Thread.currentThread().isInterrupted()) {
+                atenderAnuncio();
+                atenderPar();
+
                 ZMsg msg = ZMsg.recvMsg(socket);
+                if (msg == null) {
+                    continue;
+                }
                 String tipo = msg.popString();
                 ZFrame dadosFrame = msg.pop();
                 byte[] dadosBytes = dadosFrame.getData();
@@ -383,6 +632,10 @@ public class Servidor {
                 if (mensagensClientes % INTERVALO_HEARTBEAT == 0) {
                     heartbeat();
                     listarServidores();
+                }
+
+                if (mensagensClientes % INTERVALO_SINCRONIZACAO == 0) {
+                    sincronizarRelogio();
                 }
             }
         }

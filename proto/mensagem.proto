@@ -97,9 +97,38 @@ message HeartbeatRequest {
   int64 relogio = 3;
 }
 
-// timestamp aqui e a hora correta do relogio da referencia no momento do envio!!!!!!!!!
 message HeartbeatResponse {
+  reserved 2;
   bool ok = 1;
+  int64 relogio = 3;
+}
+
+message RelogioRequest {
+  string nome = 1;
+  int64 timestamp = 2;
+  int64 relogio = 3;
+}
+
+message RelogioResponse {
+  int64 timestamp = 1;
+  int64 relogio = 2;
+}
+
+message EleicaoRequest {
+  string nome = 1;
+  int32 rank = 2;
+  int64 timestamp = 3;
+  int64 relogio = 4;
+}
+
+message EleicaoResponse {
+  string resposta = 1;
+  int64 timestamp = 2;
+  int64 relogio = 3;
+}
+
+message CoordenadorAnuncio {
+  string nome = 1;
   int64 timestamp = 2;
   int64 relogio = 3;
 }

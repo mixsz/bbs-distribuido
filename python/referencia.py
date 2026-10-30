@@ -118,10 +118,9 @@ while True:
         resposta.ok = req.nome.strip() != ""
         if resposta.ok:
             registrar(req.nome)
-        resposta.timestamp = agora()
         resposta.relogio = proximo_relogio()
 
-        print(f"[ENVIADO] heartbeat | ok={resposta.ok} | timestamp={fmt(resposta.timestamp)} | relogio={resposta.relogio}", flush=True)
+        print(f"[ENVIADO] heartbeat | ok={resposta.ok} | relogio={resposta.relogio}", flush=True)
         socket.send_multipart([b"heartbeat", resposta.SerializeToString()])
 
     else:

@@ -12,14 +12,22 @@ PROXY_PUB = os.environ.get("PROXY_PUB_ENDERECO", "tcp://localhost:5557")
 REFERENCIA = os.environ.get("REFERENCIA_ENDERECO", "tcp://localhost:5559")
 NOME = os.environ.get("NOME_SERVIDOR", "servidor-python")
 PAUSA = int(os.environ.get("PAUSA_MS", "200")) / 1000
+PROXY_SUB = os.environ.get("PROXY_SUB_ENDERECO", "tcp://proxy:5558")
+PEER_PORTA = os.environ.get("PEER_PORTA", "5600")
+PEER_BIND = os.environ.get("PEER_BIND", f"tcp://*:{PEER_PORTA}")
+TOPICO_SERVERS = "servers"
 
 INTERVALO_HEARTBEAT = 10
+INTERVALO_SINCRONIZACAO = 15
 TIMEOUT_MS = 3000
+TIMEOUT_PAR_MS = 2000
 TENTATIVAS = 20
 
 relogio = 0
 desvio = int(os.environ.get("DESVIO_RELOGIO_MS", "0"))
 mensagens_clientes = 0
+meu_rank = 0
+coordenador = None
 
 def agora_sistema():
     return int(time.time() * 1000)
@@ -105,33 +113,173 @@ def listar_servidores():
     atualizar_relogio(resp.relogio)
     lista = [f"{s.nome}:{s.rank}" for s in resp.servidores]
     print(f"[RECEBIDO] list | servidores={lista} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
+    return [(s.nome, s.rank) for s in resp.servidores]
 
 def heartbeat():
-    global desvio
     req = mensagem_pb2.HeartbeatRequest()
     req.nome = NOME
     req.timestamp = agora()
     req.relogio = proximo_relogio()
     print(f"[ENVIADO] heartbeat | nome={req.nome} | timestamp={fmt(req.timestamp)} | relogio={req.relogio}", flush=True)
 
-    t0 = agora_sistema()
     _, dados = pedir_referencia(b"heartbeat", req.SerializeToString())
-    t1 = agora_sistema()
 
     resp = mensagem_pb2.HeartbeatResponse()
     resp.ParseFromString(dados)
     atualizar_relogio(resp.relogio)
-    print(f"[RECEBIDO] heartbeat | ok={resp.ok} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
-
-    estimada = resp.timestamp + (t1 - t0) // 2  # hora CORRETA estimada = hora da referencia + metade do tempo de ida e volta
-    novo_desvio = estimada - t1
-    ajuste = novo_desvio - desvio
-    desvio = novo_desvio
-    print(f"[SINCRONIZACAO] referencia={fmt(resp.timestamp)} | rtt={t1 - t0}ms | ajuste={ajuste:+d}ms | desvio={desvio:+d}ms", flush=True)
+    print(f"[RECEBIDO] heartbeat | ok={resp.ok} | relogio={resp.relogio} | local={relogio}", flush=True)
     pausa()
 
 
+def pedir_servidor(nome, tipo, payload):
+    s = context.socket(zmq.REQ)
+    s.setsockopt(zmq.RCVTIMEO, TIMEOUT_PAR_MS)
+    s.setsockopt(zmq.SNDTIMEO, TIMEOUT_PAR_MS)
+    s.setsockopt(zmq.LINGER, 0)
+    try:
+        s.connect(f"tcp://{nome}:{PEER_PORTA}")
+        s.send_multipart([tipo, payload])
+        _, dados = s.recv_multipart()
+        return dados
+    except zmq.ZMQError:
+        return None
+    finally:
+        s.close()
+
+
+def definir_coordenador(nome):
+    global coordenador
+    coordenador = nome
+    print(f"[COORDENADOR] coordenador={coordenador}", flush=True)
+
+
+def anunciar_coordenador():
+    # espera um pouco por causa do pub/proxy
+    time.sleep(1)
+    anuncio = mensagem_pb2.CoordenadorAnuncio()
+    anuncio.nome = NOME
+    anuncio.timestamp = agora()
+    anuncio.relogio = proximo_relogio()
+    pub.send_multipart([TOPICO_SERVERS.encode(), anuncio.SerializeToString()])
+    print(f"[PUBLICADO] topico={TOPICO_SERVERS} | coordenador={anuncio.nome} | timestamp={fmt(anuncio.timestamp)} | relogio={anuncio.relogio}", flush=True)
+
+
+def iniciar_eleicao():
+    global coordenador
+    coordenador = None
+    print(f"[ELEICAO] iniciada por {NOME} (rank={meu_rank})", flush=True)
+    superiores = sorted([(n, r) for n, r in listar_servidores() if r > meu_rank], key=lambda x: x[1])
+
+    alguem_respondeu = False
+    for nome, rank in superiores:
+        req = mensagem_pb2.EleicaoRequest()
+        req.nome = NOME
+        req.rank = meu_rank
+        req.timestamp = agora()
+        req.relogio = proximo_relogio()
+        print(f"[ENVIADO] eleicao | para={nome} | rank={req.rank} | timestamp={fmt(req.timestamp)} | relogio={req.relogio}", flush=True)
+        dados = pedir_servidor(nome, b"eleicao", req.SerializeToString())
+        if dados is None:
+            print(f"[ELEICAO] {nome} nao respondeu", flush=True)
+            continue
+        resp = mensagem_pb2.EleicaoResponse()
+        resp.ParseFromString(dados)
+        atualizar_relogio(resp.relogio)
+        print(f"[RECEBIDO] eleicao | de={nome} | resposta={resp.resposta} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
+        alguem_respondeu = True
+
+    if alguem_respondeu:
+        # um servidor de rank maior ta vivo = eleicao continua
+        print(f"[ELEICAO] {NOME} aguarda o anuncio do coordenador", flush=True)
+        return
+
+    definir_coordenador(NOME)
+    anunciar_coordenador()
+
+
+def sincronizar_relogio():
+    global desvio
+    if coordenador is None:
+        iniciar_eleicao()
+        return
+    if coordenador == NOME:
+        print(f"[SINCRONIZACAO] {NOME} e o coordenador, mantem o proprio relogio", flush=True)
+        return
+
+    req = mensagem_pb2.RelogioRequest()
+    req.nome = NOME
+    req.timestamp = agora()
+    req.relogio = proximo_relogio()
+    print(f"[ENVIADO] relogio | para={coordenador} | timestamp={fmt(req.timestamp)} | relogio={req.relogio}", flush=True)
+
+    t0 = agora_sistema()
+    dados = pedir_servidor(coordenador, b"relogio", req.SerializeToString())
+    t1 = agora_sistema()
+
+    if dados is None:
+        print(f"[COORDENADOR] {coordenador} indisponivel", flush=True)
+        iniciar_eleicao()
+        return
+
+    resp = mensagem_pb2.RelogioResponse()
+    resp.ParseFromString(dados)
+    atualizar_relogio(resp.relogio)
+    print(f"[RECEBIDO] relogio | de={coordenador} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
+
+    estimada = resp.timestamp + (t1 - t0) // 2
+    novo_desvio = estimada - t1
+    ajuste = novo_desvio - desvio
+    desvio = novo_desvio
+    print(f"[SINCRONIZACAO] coordenador={coordenador} | hora={fmt(resp.timestamp)} | rtt={t1 - t0}ms | ajuste={ajuste:+d}ms | desvio={desvio:+d}ms", flush=True)
+    pausa()
+
+
+def atender_par():
+    tipo, msg_dados = peer.recv_multipart()
+    if tipo == b"relogio":
+        req = mensagem_pb2.RelogioRequest()
+        req.ParseFromString(msg_dados)
+        atualizar_relogio(req.relogio)
+        print(f"[RECEBIDO] relogio | de={req.nome} | timestamp={fmt(req.timestamp)} | relogio={req.relogio} | local={relogio}", flush=True)
+        resp = mensagem_pb2.RelogioResponse()
+        resp.timestamp = agora()
+        resp.relogio = proximo_relogio()
+        print(f"[ENVIADO] relogio | para={req.nome} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio}", flush=True)
+        peer.send_multipart([b"relogio", resp.SerializeToString()])
+    elif tipo == b"eleicao":
+        req = mensagem_pb2.EleicaoRequest()
+        req.ParseFromString(msg_dados)
+        atualizar_relogio(req.relogio)
+        print(f"[RECEBIDO] eleicao | de={req.nome} | rank={req.rank} | timestamp={fmt(req.timestamp)} | relogio={req.relogio} | local={relogio}", flush=True)
+        resp = mensagem_pb2.EleicaoResponse()
+        resp.resposta = "OK"
+        resp.timestamp = agora()
+        resp.relogio = proximo_relogio()
+        print(f"[ENVIADO] eleicao | para={req.nome} | resposta={resp.resposta} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio}", flush=True)
+        peer.send_multipart([b"eleicao", resp.SerializeToString()])
+        if req.rank < meu_rank:
+            iniciar_eleicao()  # maior rank assume..
+    else:
+        print(f"tipo de mensagem desconhecido (par): {tipo}", flush=True)
+        peer.send_multipart([tipo, b""])
+
+
+def atender_anuncio():
+    _, msg_dados = sub.recv_multipart()
+    anuncio = mensagem_pb2.CoordenadorAnuncio()
+    anuncio.ParseFromString(msg_dados)
+    atualizar_relogio(anuncio.relogio)
+    print(f"[RECEBIDO] topico={TOPICO_SERVERS} | coordenador={anuncio.nome} | timestamp={fmt(anuncio.timestamp)} | relogio={anuncio.relogio} | local={relogio}", flush=True)
+    definir_coordenador(anuncio.nome)
+    if anuncio.nome != NOME:
+        rank_anunciado = dict(listar_servidores()).get(anuncio.nome)
+        if rank_anunciado is not None and rank_anunciado < meu_rank:
+            print(f"[ELEICAO] {anuncio.nome} tem rank menor que {NOME}, nova eleicao", flush=True)
+            iniciar_eleicao()
+
+
 rank = obter_rank()
+meu_rank = rank
 print(f"servidor {NOME} cadastrado com rank {rank}", flush=True)
 listar_servidores()
 
@@ -141,11 +289,33 @@ socket.connect(BROKER)
 pub = context.socket(zmq.PUB)
 pub.connect(PROXY_PUB)
 
-print(f"servidor python conectado ao broker em {BROKER} e ao proxy em {PROXY_PUB}", flush=True)
+peer = context.socket(zmq.REP)
+peer.bind(PEER_BIND)
+
+sub = context.socket(zmq.SUB)
+sub.connect(PROXY_SUB)
+sub.setsockopt(zmq.SUBSCRIBE, TOPICO_SERVERS.encode())
+
+poller = zmq.Poller()
+poller.register(socket, zmq.POLLIN)
+poller.register(peer, zmq.POLLIN)
+poller.register(sub, zmq.POLLIN)
+
+print(f"servidor python conectado ao broker em {BROKER}, ao proxy em {PROXY_PUB}/{PROXY_SUB} e ouvindo servidores em {PEER_BIND}", flush=True)
 
 dados = carregar_dados()
 
+iniciar_eleicao()
+
 while True:
+    eventos = dict(poller.poll(1000))
+    if sub in eventos:
+        atender_anuncio()
+    if peer in eventos:
+        atender_par()
+    if socket not in eventos:
+        continue
+
     tipo, msg_dados = socket.recv_multipart()
     mensagens_clientes += 1
 
@@ -261,3 +431,6 @@ while True:
     if mensagens_clientes % INTERVALO_HEARTBEAT == 0:
         heartbeat()
         listar_servidores()
+
+    if mensagens_clientes % INTERVALO_SINCRONIZACAO == 0:
+        sincronizar_relogio()
