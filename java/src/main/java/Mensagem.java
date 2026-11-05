@@ -14382,6 +14382,4986 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
 
   }
 
+  public interface LoginDadoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:LoginDado)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string usuario = 1;</code>
+     * @return The usuario.
+     */
+    java.lang.String getUsuario();
+    /**
+     * <code>string usuario = 1;</code>
+     * @return The bytes for usuario.
+     */
+    com.google.protobuf.ByteString
+        getUsuarioBytes();
+
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+  }
+  /**
+   * Protobuf type {@code LoginDado}
+   */
+  public static final class LoginDado extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:LoginDado)
+      LoginDadoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "LoginDado");
+    }
+    // Use LoginDado.newBuilder() to construct.
+    private LoginDado(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private LoginDado() {
+      usuario_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_LoginDado_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_LoginDado_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_LoginDado_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.LoginDado.class, Mensagem.LoginDado.Builder.class);
+    }
+
+    public static final int USUARIO_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object usuario_ = "";
+    /**
+     * <code>string usuario = 1;</code>
+     * @return The usuario.
+     */
+    @java.lang.Override
+    public java.lang.String getUsuario() {
+      java.lang.Object ref = usuario_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        usuario_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string usuario = 1;</code>
+     * @return The bytes for usuario.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUsuarioBytes() {
+      java.lang.Object ref = usuario_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        usuario_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 2;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(usuario_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, usuario_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(2, timestamp_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(usuario_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, usuario_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, timestamp_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.LoginDado)) {
+        return super.equals(obj);
+      }
+      Mensagem.LoginDado other = (Mensagem.LoginDado) obj;
+
+      if (!getUsuario()
+          .equals(other.getUsuario())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USUARIO_FIELD_NUMBER;
+      hash = (53 * hash) + getUsuario().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.LoginDado parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.LoginDado parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.LoginDado parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.LoginDado parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.LoginDado parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.LoginDado parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.LoginDado parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.LoginDado parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.LoginDado parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.LoginDado parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.LoginDado parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.LoginDado parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.LoginDado prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code LoginDado}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:LoginDado)
+        Mensagem.LoginDadoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_LoginDado_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_LoginDado_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.LoginDado.class, Mensagem.LoginDado.Builder.class);
+      }
+
+      // Construct using Mensagem.LoginDado.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        usuario_ = "";
+        timestamp_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_LoginDado_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.LoginDado getDefaultInstanceForType() {
+        return Mensagem.LoginDado.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.LoginDado build() {
+        Mensagem.LoginDado result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.LoginDado buildPartial() {
+        Mensagem.LoginDado result = new Mensagem.LoginDado(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.LoginDado result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.usuario_ = usuario_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.LoginDado) {
+          return mergeFrom((Mensagem.LoginDado)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.LoginDado other) {
+        if (other == Mensagem.LoginDado.getDefaultInstance()) return this;
+        if (!other.getUsuario().isEmpty()) {
+          usuario_ = other.usuario_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                usuario_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object usuario_ = "";
+      /**
+       * <code>string usuario = 1;</code>
+       * @return The usuario.
+       */
+      public java.lang.String getUsuario() {
+        java.lang.Object ref = usuario_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          usuario_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string usuario = 1;</code>
+       * @return The bytes for usuario.
+       */
+      public com.google.protobuf.ByteString
+          getUsuarioBytes() {
+        java.lang.Object ref = usuario_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          usuario_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string usuario = 1;</code>
+       * @param value The usuario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsuario(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        usuario_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string usuario = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUsuario() {
+        usuario_ = getDefaultInstance().getUsuario();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string usuario = 1;</code>
+       * @param value The bytes for usuario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsuarioBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        usuario_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:LoginDado)
+    }
+
+    // @@protoc_insertion_point(class_scope:LoginDado)
+    private static final Mensagem.LoginDado DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.LoginDado();
+    }
+
+    public static Mensagem.LoginDado getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<LoginDado>
+        PARSER = new com.google.protobuf.AbstractParser<LoginDado>() {
+      @java.lang.Override
+      public LoginDado parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<LoginDado> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LoginDado> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.LoginDado getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PublicacaoDadoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PublicacaoDado)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string canal = 1;</code>
+     * @return The canal.
+     */
+    java.lang.String getCanal();
+    /**
+     * <code>string canal = 1;</code>
+     * @return The bytes for canal.
+     */
+    com.google.protobuf.ByteString
+        getCanalBytes();
+
+    /**
+     * <code>string mensagem = 2;</code>
+     * @return The mensagem.
+     */
+    java.lang.String getMensagem();
+    /**
+     * <code>string mensagem = 2;</code>
+     * @return The bytes for mensagem.
+     */
+    com.google.protobuf.ByteString
+        getMensagemBytes();
+
+    /**
+     * <code>string usuario = 3;</code>
+     * @return The usuario.
+     */
+    java.lang.String getUsuario();
+    /**
+     * <code>string usuario = 3;</code>
+     * @return The bytes for usuario.
+     */
+    com.google.protobuf.ByteString
+        getUsuarioBytes();
+
+    /**
+     * <code>int64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+  }
+  /**
+   * Protobuf type {@code PublicacaoDado}
+   */
+  public static final class PublicacaoDado extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:PublicacaoDado)
+      PublicacaoDadoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "PublicacaoDado");
+    }
+    // Use PublicacaoDado.newBuilder() to construct.
+    private PublicacaoDado(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private PublicacaoDado() {
+      canal_ = "";
+      mensagem_ = "";
+      usuario_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_PublicacaoDado_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_PublicacaoDado_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_PublicacaoDado_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.PublicacaoDado.class, Mensagem.PublicacaoDado.Builder.class);
+    }
+
+    public static final int CANAL_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object canal_ = "";
+    /**
+     * <code>string canal = 1;</code>
+     * @return The canal.
+     */
+    @java.lang.Override
+    public java.lang.String getCanal() {
+      java.lang.Object ref = canal_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        canal_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string canal = 1;</code>
+     * @return The bytes for canal.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCanalBytes() {
+      java.lang.Object ref = canal_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        canal_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MENSAGEM_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object mensagem_ = "";
+    /**
+     * <code>string mensagem = 2;</code>
+     * @return The mensagem.
+     */
+    @java.lang.Override
+    public java.lang.String getMensagem() {
+      java.lang.Object ref = mensagem_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        mensagem_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string mensagem = 2;</code>
+     * @return The bytes for mensagem.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMensagemBytes() {
+      java.lang.Object ref = mensagem_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        mensagem_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int USUARIO_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object usuario_ = "";
+    /**
+     * <code>string usuario = 3;</code>
+     * @return The usuario.
+     */
+    @java.lang.Override
+    public java.lang.String getUsuario() {
+      java.lang.Object ref = usuario_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        usuario_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string usuario = 3;</code>
+     * @return The bytes for usuario.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUsuarioBytes() {
+      java.lang.Object ref = usuario_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        usuario_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 4;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(canal_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, canal_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(mensagem_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, mensagem_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(usuario_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, usuario_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(4, timestamp_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(canal_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, canal_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(mensagem_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, mensagem_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(usuario_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, usuario_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, timestamp_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.PublicacaoDado)) {
+        return super.equals(obj);
+      }
+      Mensagem.PublicacaoDado other = (Mensagem.PublicacaoDado) obj;
+
+      if (!getCanal()
+          .equals(other.getCanal())) return false;
+      if (!getMensagem()
+          .equals(other.getMensagem())) return false;
+      if (!getUsuario()
+          .equals(other.getUsuario())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CANAL_FIELD_NUMBER;
+      hash = (53 * hash) + getCanal().hashCode();
+      hash = (37 * hash) + MENSAGEM_FIELD_NUMBER;
+      hash = (53 * hash) + getMensagem().hashCode();
+      hash = (37 * hash) + USUARIO_FIELD_NUMBER;
+      hash = (53 * hash) + getUsuario().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.PublicacaoDado parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.PublicacaoDado parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.PublicacaoDado parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.PublicacaoDado parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.PublicacaoDado parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.PublicacaoDado parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.PublicacaoDado parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.PublicacaoDado parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.PublicacaoDado parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.PublicacaoDado parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.PublicacaoDado parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.PublicacaoDado parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.PublicacaoDado prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code PublicacaoDado}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:PublicacaoDado)
+        Mensagem.PublicacaoDadoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_PublicacaoDado_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_PublicacaoDado_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.PublicacaoDado.class, Mensagem.PublicacaoDado.Builder.class);
+      }
+
+      // Construct using Mensagem.PublicacaoDado.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        canal_ = "";
+        mensagem_ = "";
+        usuario_ = "";
+        timestamp_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_PublicacaoDado_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.PublicacaoDado getDefaultInstanceForType() {
+        return Mensagem.PublicacaoDado.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.PublicacaoDado build() {
+        Mensagem.PublicacaoDado result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.PublicacaoDado buildPartial() {
+        Mensagem.PublicacaoDado result = new Mensagem.PublicacaoDado(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.PublicacaoDado result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.canal_ = canal_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.mensagem_ = mensagem_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.usuario_ = usuario_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.PublicacaoDado) {
+          return mergeFrom((Mensagem.PublicacaoDado)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.PublicacaoDado other) {
+        if (other == Mensagem.PublicacaoDado.getDefaultInstance()) return this;
+        if (!other.getCanal().isEmpty()) {
+          canal_ = other.canal_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getMensagem().isEmpty()) {
+          mensagem_ = other.mensagem_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (!other.getUsuario().isEmpty()) {
+          usuario_ = other.usuario_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                canal_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                mensagem_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                usuario_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 32: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object canal_ = "";
+      /**
+       * <code>string canal = 1;</code>
+       * @return The canal.
+       */
+      public java.lang.String getCanal() {
+        java.lang.Object ref = canal_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          canal_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string canal = 1;</code>
+       * @return The bytes for canal.
+       */
+      public com.google.protobuf.ByteString
+          getCanalBytes() {
+        java.lang.Object ref = canal_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          canal_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string canal = 1;</code>
+       * @param value The canal to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCanal(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        canal_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string canal = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCanal() {
+        canal_ = getDefaultInstance().getCanal();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string canal = 1;</code>
+       * @param value The bytes for canal to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCanalBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        canal_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object mensagem_ = "";
+      /**
+       * <code>string mensagem = 2;</code>
+       * @return The mensagem.
+       */
+      public java.lang.String getMensagem() {
+        java.lang.Object ref = mensagem_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          mensagem_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string mensagem = 2;</code>
+       * @return The bytes for mensagem.
+       */
+      public com.google.protobuf.ByteString
+          getMensagemBytes() {
+        java.lang.Object ref = mensagem_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          mensagem_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string mensagem = 2;</code>
+       * @param value The mensagem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMensagem(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        mensagem_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string mensagem = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMensagem() {
+        mensagem_ = getDefaultInstance().getMensagem();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string mensagem = 2;</code>
+       * @param value The bytes for mensagem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMensagemBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        mensagem_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object usuario_ = "";
+      /**
+       * <code>string usuario = 3;</code>
+       * @return The usuario.
+       */
+      public java.lang.String getUsuario() {
+        java.lang.Object ref = usuario_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          usuario_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string usuario = 3;</code>
+       * @return The bytes for usuario.
+       */
+      public com.google.protobuf.ByteString
+          getUsuarioBytes() {
+        java.lang.Object ref = usuario_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          usuario_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string usuario = 3;</code>
+       * @param value The usuario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsuario(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        usuario_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string usuario = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUsuario() {
+        usuario_ = getDefaultInstance().getUsuario();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string usuario = 3;</code>
+       * @param value The bytes for usuario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsuarioBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        usuario_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:PublicacaoDado)
+    }
+
+    // @@protoc_insertion_point(class_scope:PublicacaoDado)
+    private static final Mensagem.PublicacaoDado DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.PublicacaoDado();
+    }
+
+    public static Mensagem.PublicacaoDado getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PublicacaoDado>
+        PARSER = new com.google.protobuf.AbstractParser<PublicacaoDado>() {
+      @java.lang.Override
+      public PublicacaoDado parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<PublicacaoDado> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PublicacaoDado> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.PublicacaoDado getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ReplicacaoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Replicacao)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string origem = 1;</code>
+     * @return The origem.
+     */
+    java.lang.String getOrigem();
+    /**
+     * <code>string origem = 1;</code>
+     * @return The bytes for origem.
+     */
+    com.google.protobuf.ByteString
+        getOrigemBytes();
+
+    /**
+     * <code>.LoginDado login = 2;</code>
+     * @return Whether the login field is set.
+     */
+    boolean hasLogin();
+    /**
+     * <code>.LoginDado login = 2;</code>
+     * @return The login.
+     */
+    Mensagem.LoginDado getLogin();
+    /**
+     * <code>.LoginDado login = 2;</code>
+     */
+    Mensagem.LoginDadoOrBuilder getLoginOrBuilder();
+
+    /**
+     * <code>string canal = 3;</code>
+     * @return Whether the canal field is set.
+     */
+    boolean hasCanal();
+    /**
+     * <code>string canal = 3;</code>
+     * @return The canal.
+     */
+    java.lang.String getCanal();
+    /**
+     * <code>string canal = 3;</code>
+     * @return The bytes for canal.
+     */
+    com.google.protobuf.ByteString
+        getCanalBytes();
+
+    /**
+     * <code>.PublicacaoDado publicacao = 4;</code>
+     * @return Whether the publicacao field is set.
+     */
+    boolean hasPublicacao();
+    /**
+     * <code>.PublicacaoDado publicacao = 4;</code>
+     * @return The publicacao.
+     */
+    Mensagem.PublicacaoDado getPublicacao();
+    /**
+     * <code>.PublicacaoDado publicacao = 4;</code>
+     */
+    Mensagem.PublicacaoDadoOrBuilder getPublicacaoOrBuilder();
+
+    /**
+     * <code>int64 timestamp = 5;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 6;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
+
+    Mensagem.Replicacao.DadoCase getDadoCase();
+  }
+  /**
+   * Protobuf type {@code Replicacao}
+   */
+  public static final class Replicacao extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:Replicacao)
+      ReplicacaoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "Replicacao");
+    }
+    // Use Replicacao.newBuilder() to construct.
+    private Replicacao(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Replicacao() {
+      origem_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_Replicacao_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_Replicacao_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_Replicacao_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.Replicacao.class, Mensagem.Replicacao.Builder.class);
+    }
+
+    private int dadoCase_ = 0;
+    @SuppressWarnings("serial")
+    private java.lang.Object dado_;
+    public enum DadoCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      LOGIN(2),
+      CANAL(3),
+      PUBLICACAO(4),
+      DADO_NOT_SET(0);
+      private final int value;
+      private DadoCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static DadoCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static DadoCase forNumber(int value) {
+        switch (value) {
+          case 2: return LOGIN;
+          case 3: return CANAL;
+          case 4: return PUBLICACAO;
+          case 0: return DADO_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public DadoCase
+    getDadoCase() {
+      return DadoCase.forNumber(
+          dadoCase_);
+    }
+
+    public static final int ORIGEM_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object origem_ = "";
+    /**
+     * <code>string origem = 1;</code>
+     * @return The origem.
+     */
+    @java.lang.Override
+    public java.lang.String getOrigem() {
+      java.lang.Object ref = origem_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        origem_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string origem = 1;</code>
+     * @return The bytes for origem.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOrigemBytes() {
+      java.lang.Object ref = origem_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        origem_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int LOGIN_FIELD_NUMBER = 2;
+    /**
+     * <code>.LoginDado login = 2;</code>
+     * @return Whether the login field is set.
+     */
+    @java.lang.Override
+    public boolean hasLogin() {
+      return dadoCase_ == 2;
+    }
+    /**
+     * <code>.LoginDado login = 2;</code>
+     * @return The login.
+     */
+    @java.lang.Override
+    public Mensagem.LoginDado getLogin() {
+      if (dadoCase_ == 2) {
+         return (Mensagem.LoginDado) dado_;
+      }
+      return Mensagem.LoginDado.getDefaultInstance();
+    }
+    /**
+     * <code>.LoginDado login = 2;</code>
+     */
+    @java.lang.Override
+    public Mensagem.LoginDadoOrBuilder getLoginOrBuilder() {
+      if (dadoCase_ == 2) {
+         return (Mensagem.LoginDado) dado_;
+      }
+      return Mensagem.LoginDado.getDefaultInstance();
+    }
+
+    public static final int CANAL_FIELD_NUMBER = 3;
+    /**
+     * <code>string canal = 3;</code>
+     * @return Whether the canal field is set.
+     */
+    public boolean hasCanal() {
+      return dadoCase_ == 3;
+    }
+    /**
+     * <code>string canal = 3;</code>
+     * @return The canal.
+     */
+    public java.lang.String getCanal() {
+      if (dadoCase_ != 3) {
+        return "";
+      }
+      java.lang.Object ref = dado_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dado_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string canal = 3;</code>
+     * @return The bytes for canal.
+     */
+    public com.google.protobuf.ByteString
+        getCanalBytes() {
+      if (dadoCase_ != 3) {
+        return com.google.protobuf.ByteString.copyFromUtf8("");
+      }
+      java.lang.Object ref = dado_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dado_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PUBLICACAO_FIELD_NUMBER = 4;
+    /**
+     * <code>.PublicacaoDado publicacao = 4;</code>
+     * @return Whether the publicacao field is set.
+     */
+    @java.lang.Override
+    public boolean hasPublicacao() {
+      return dadoCase_ == 4;
+    }
+    /**
+     * <code>.PublicacaoDado publicacao = 4;</code>
+     * @return The publicacao.
+     */
+    @java.lang.Override
+    public Mensagem.PublicacaoDado getPublicacao() {
+      if (dadoCase_ == 4) {
+         return (Mensagem.PublicacaoDado) dado_;
+      }
+      return Mensagem.PublicacaoDado.getDefaultInstance();
+    }
+    /**
+     * <code>.PublicacaoDado publicacao = 4;</code>
+     */
+    @java.lang.Override
+    public Mensagem.PublicacaoDadoOrBuilder getPublicacaoOrBuilder() {
+      if (dadoCase_ == 4) {
+         return (Mensagem.PublicacaoDado) dado_;
+      }
+      return Mensagem.PublicacaoDado.getDefaultInstance();
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 5;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 5;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    public static final int RELOGIO_FIELD_NUMBER = 6;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 6;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(origem_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, origem_);
+      }
+      if (dadoCase_ == 2) {
+        output.writeMessage(2, (Mensagem.LoginDado) dado_);
+      }
+      if (dadoCase_ == 3) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, dado_);
+      }
+      if (dadoCase_ == 4) {
+        output.writeMessage(4, (Mensagem.PublicacaoDado) dado_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(5, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        output.writeInt64(6, relogio_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(origem_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, origem_);
+      }
+      if (dadoCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, (Mensagem.LoginDado) dado_);
+      }
+      if (dadoCase_ == 3) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, dado_);
+      }
+      if (dadoCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, (Mensagem.PublicacaoDado) dado_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(6, relogio_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.Replicacao)) {
+        return super.equals(obj);
+      }
+      Mensagem.Replicacao other = (Mensagem.Replicacao) obj;
+
+      if (!getOrigem()
+          .equals(other.getOrigem())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
+      if (!getDadoCase().equals(other.getDadoCase())) return false;
+      switch (dadoCase_) {
+        case 2:
+          if (!getLogin()
+              .equals(other.getLogin())) return false;
+          break;
+        case 3:
+          if (!getCanal()
+              .equals(other.getCanal())) return false;
+          break;
+        case 4:
+          if (!getPublicacao()
+              .equals(other.getPublicacao())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ORIGEM_FIELD_NUMBER;
+      hash = (53 * hash) + getOrigem().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
+      switch (dadoCase_) {
+        case 2:
+          hash = (37 * hash) + LOGIN_FIELD_NUMBER;
+          hash = (53 * hash) + getLogin().hashCode();
+          break;
+        case 3:
+          hash = (37 * hash) + CANAL_FIELD_NUMBER;
+          hash = (53 * hash) + getCanal().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + PUBLICACAO_FIELD_NUMBER;
+          hash = (53 * hash) + getPublicacao().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.Replicacao parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.Replicacao parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.Replicacao parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.Replicacao parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.Replicacao parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.Replicacao parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.Replicacao parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.Replicacao parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.Replicacao parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.Replicacao parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.Replicacao parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.Replicacao parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.Replicacao prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Replicacao}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Replicacao)
+        Mensagem.ReplicacaoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_Replicacao_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_Replicacao_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.Replicacao.class, Mensagem.Replicacao.Builder.class);
+      }
+
+      // Construct using Mensagem.Replicacao.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        origem_ = "";
+        if (loginBuilder_ != null) {
+          loginBuilder_.clear();
+        }
+        if (publicacaoBuilder_ != null) {
+          publicacaoBuilder_.clear();
+        }
+        timestamp_ = 0L;
+        relogio_ = 0L;
+        dadoCase_ = 0;
+        dado_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_Replicacao_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.Replicacao getDefaultInstanceForType() {
+        return Mensagem.Replicacao.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.Replicacao build() {
+        Mensagem.Replicacao result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.Replicacao buildPartial() {
+        Mensagem.Replicacao result = new Mensagem.Replicacao(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        buildPartialOneofs(result);
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.Replicacao result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.origem_ = origem_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.relogio_ = relogio_;
+        }
+      }
+
+      private void buildPartialOneofs(Mensagem.Replicacao result) {
+        result.dadoCase_ = dadoCase_;
+        result.dado_ = this.dado_;
+        if (dadoCase_ == 2 &&
+            loginBuilder_ != null) {
+          result.dado_ = loginBuilder_.build();
+        }
+        if (dadoCase_ == 4 &&
+            publicacaoBuilder_ != null) {
+          result.dado_ = publicacaoBuilder_.build();
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.Replicacao) {
+          return mergeFrom((Mensagem.Replicacao)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.Replicacao other) {
+        if (other == Mensagem.Replicacao.getDefaultInstance()) return this;
+        if (!other.getOrigem().isEmpty()) {
+          origem_ = other.origem_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
+        }
+        switch (other.getDadoCase()) {
+          case LOGIN: {
+            mergeLogin(other.getLogin());
+            break;
+          }
+          case CANAL: {
+            dadoCase_ = 3;
+            dado_ = other.dado_;
+            onChanged();
+            break;
+          }
+          case PUBLICACAO: {
+            mergePublicacao(other.getPublicacao());
+            break;
+          }
+          case DADO_NOT_SET: {
+            break;
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                origem_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                input.readMessage(
+                    internalGetLoginFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                dadoCase_ = 2;
+                break;
+              } // case 18
+              case 26: {
+                dadoCase_ = 3;
+                dado_ = input.readStringRequireUtf8();
+                break;
+              } // case 26
+              case 34: {
+                input.readMessage(
+                    internalGetPublicacaoFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                dadoCase_ = 4;
+                break;
+              } // case 34
+              case 40: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              case 48: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 48
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int dadoCase_ = 0;
+      private java.lang.Object dado_;
+      public DadoCase
+          getDadoCase() {
+        return DadoCase.forNumber(
+            dadoCase_);
+      }
+
+      public Builder clearDado() {
+        dadoCase_ = 0;
+        dado_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int bitField0_;
+
+      private java.lang.Object origem_ = "";
+      /**
+       * <code>string origem = 1;</code>
+       * @return The origem.
+       */
+      public java.lang.String getOrigem() {
+        java.lang.Object ref = origem_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          origem_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string origem = 1;</code>
+       * @return The bytes for origem.
+       */
+      public com.google.protobuf.ByteString
+          getOrigemBytes() {
+        java.lang.Object ref = origem_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          origem_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string origem = 1;</code>
+       * @param value The origem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOrigem(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        origem_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string origem = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOrigem() {
+        origem_ = getDefaultInstance().getOrigem();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string origem = 1;</code>
+       * @param value The bytes for origem to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOrigemBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        origem_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.SingleFieldBuilder<
+          Mensagem.LoginDado, Mensagem.LoginDado.Builder, Mensagem.LoginDadoOrBuilder> loginBuilder_;
+      /**
+       * <code>.LoginDado login = 2;</code>
+       * @return Whether the login field is set.
+       */
+      @java.lang.Override
+      public boolean hasLogin() {
+        return dadoCase_ == 2;
+      }
+      /**
+       * <code>.LoginDado login = 2;</code>
+       * @return The login.
+       */
+      @java.lang.Override
+      public Mensagem.LoginDado getLogin() {
+        if (loginBuilder_ == null) {
+          if (dadoCase_ == 2) {
+            return (Mensagem.LoginDado) dado_;
+          }
+          return Mensagem.LoginDado.getDefaultInstance();
+        } else {
+          if (dadoCase_ == 2) {
+            return loginBuilder_.getMessage();
+          }
+          return Mensagem.LoginDado.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.LoginDado login = 2;</code>
+       */
+      public Builder setLogin(Mensagem.LoginDado value) {
+        if (loginBuilder_ == null) {
+          java.util.Objects.requireNonNull(value);
+          dado_ = value;
+          onChanged();
+        } else {
+          loginBuilder_.setMessage(value);
+        }
+        dadoCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>.LoginDado login = 2;</code>
+       */
+      public Builder setLogin(
+          Mensagem.LoginDado.Builder builderForValue) {
+        if (loginBuilder_ == null) {
+          dado_ = builderForValue.build();
+          onChanged();
+        } else {
+          loginBuilder_.setMessage(builderForValue.build());
+        }
+        dadoCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>.LoginDado login = 2;</code>
+       */
+      public Builder mergeLogin(Mensagem.LoginDado value) {
+        if (loginBuilder_ == null) {
+          if (dadoCase_ == 2 &&
+              dado_ != Mensagem.LoginDado.getDefaultInstance()) {
+            dado_ = Mensagem.LoginDado.newBuilder((Mensagem.LoginDado) dado_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            dado_ = value;
+          }
+          onChanged();
+        } else {
+          if (dadoCase_ == 2) {
+            loginBuilder_.mergeFrom(value);
+          } else {
+            loginBuilder_.setMessage(value);
+          }
+        }
+        dadoCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>.LoginDado login = 2;</code>
+       */
+      public Builder clearLogin() {
+        if (loginBuilder_ == null) {
+          if (dadoCase_ == 2) {
+            dadoCase_ = 0;
+            dado_ = null;
+            onChanged();
+          }
+        } else {
+          if (dadoCase_ == 2) {
+            dadoCase_ = 0;
+            dado_ = null;
+          }
+          loginBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.LoginDado login = 2;</code>
+       */
+      public Mensagem.LoginDado.Builder getLoginBuilder() {
+        return internalGetLoginFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.LoginDado login = 2;</code>
+       */
+      @java.lang.Override
+      public Mensagem.LoginDadoOrBuilder getLoginOrBuilder() {
+        if ((dadoCase_ == 2) && (loginBuilder_ != null)) {
+          return loginBuilder_.getMessageOrBuilder();
+        } else {
+          if (dadoCase_ == 2) {
+            return (Mensagem.LoginDado) dado_;
+          }
+          return Mensagem.LoginDado.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.LoginDado login = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          Mensagem.LoginDado, Mensagem.LoginDado.Builder, Mensagem.LoginDadoOrBuilder> 
+          internalGetLoginFieldBuilder() {
+        if (loginBuilder_ == null) {
+          if (!(dadoCase_ == 2)) {
+            dado_ = Mensagem.LoginDado.getDefaultInstance();
+          }
+          loginBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              Mensagem.LoginDado, Mensagem.LoginDado.Builder, Mensagem.LoginDadoOrBuilder>(
+                  (Mensagem.LoginDado) dado_,
+                  getParentForChildren(),
+                  isClean());
+          dado_ = null;
+        }
+        dadoCase_ = 2;
+        onChanged();
+        return loginBuilder_;
+      }
+
+      /**
+       * <code>string canal = 3;</code>
+       * @return Whether the canal field is set.
+       */
+      @java.lang.Override
+      public boolean hasCanal() {
+        return dadoCase_ == 3;
+      }
+      /**
+       * <code>string canal = 3;</code>
+       * @return The canal.
+       */
+      @java.lang.Override
+      public java.lang.String getCanal() {
+        if (dadoCase_ != 3) {
+          return "";
+        }
+        java.lang.Object ref = dado_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+            dado_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string canal = 3;</code>
+       * @return The bytes for canal.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getCanalBytes() {
+        if (dadoCase_ != 3) {
+          return com.google.protobuf.ByteString.copyFromUtf8(        "");
+        }
+        java.lang.Object ref = dado_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dado_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string canal = 3;</code>
+       * @param value The canal to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCanal(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        dadoCase_ = 3;
+        dado_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string canal = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCanal() {
+        if (dadoCase_ == 3) {
+          dadoCase_ = 0;
+          dado_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string canal = 3;</code>
+       * @param value The bytes for canal to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCanalBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        dadoCase_ = 3;
+        dado_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.SingleFieldBuilder<
+          Mensagem.PublicacaoDado, Mensagem.PublicacaoDado.Builder, Mensagem.PublicacaoDadoOrBuilder> publicacaoBuilder_;
+      /**
+       * <code>.PublicacaoDado publicacao = 4;</code>
+       * @return Whether the publicacao field is set.
+       */
+      @java.lang.Override
+      public boolean hasPublicacao() {
+        return dadoCase_ == 4;
+      }
+      /**
+       * <code>.PublicacaoDado publicacao = 4;</code>
+       * @return The publicacao.
+       */
+      @java.lang.Override
+      public Mensagem.PublicacaoDado getPublicacao() {
+        if (publicacaoBuilder_ == null) {
+          if (dadoCase_ == 4) {
+            return (Mensagem.PublicacaoDado) dado_;
+          }
+          return Mensagem.PublicacaoDado.getDefaultInstance();
+        } else {
+          if (dadoCase_ == 4) {
+            return publicacaoBuilder_.getMessage();
+          }
+          return Mensagem.PublicacaoDado.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.PublicacaoDado publicacao = 4;</code>
+       */
+      public Builder setPublicacao(Mensagem.PublicacaoDado value) {
+        if (publicacaoBuilder_ == null) {
+          java.util.Objects.requireNonNull(value);
+          dado_ = value;
+          onChanged();
+        } else {
+          publicacaoBuilder_.setMessage(value);
+        }
+        dadoCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.PublicacaoDado publicacao = 4;</code>
+       */
+      public Builder setPublicacao(
+          Mensagem.PublicacaoDado.Builder builderForValue) {
+        if (publicacaoBuilder_ == null) {
+          dado_ = builderForValue.build();
+          onChanged();
+        } else {
+          publicacaoBuilder_.setMessage(builderForValue.build());
+        }
+        dadoCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.PublicacaoDado publicacao = 4;</code>
+       */
+      public Builder mergePublicacao(Mensagem.PublicacaoDado value) {
+        if (publicacaoBuilder_ == null) {
+          if (dadoCase_ == 4 &&
+              dado_ != Mensagem.PublicacaoDado.getDefaultInstance()) {
+            dado_ = Mensagem.PublicacaoDado.newBuilder((Mensagem.PublicacaoDado) dado_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            dado_ = value;
+          }
+          onChanged();
+        } else {
+          if (dadoCase_ == 4) {
+            publicacaoBuilder_.mergeFrom(value);
+          } else {
+            publicacaoBuilder_.setMessage(value);
+          }
+        }
+        dadoCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.PublicacaoDado publicacao = 4;</code>
+       */
+      public Builder clearPublicacao() {
+        if (publicacaoBuilder_ == null) {
+          if (dadoCase_ == 4) {
+            dadoCase_ = 0;
+            dado_ = null;
+            onChanged();
+          }
+        } else {
+          if (dadoCase_ == 4) {
+            dadoCase_ = 0;
+            dado_ = null;
+          }
+          publicacaoBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.PublicacaoDado publicacao = 4;</code>
+       */
+      public Mensagem.PublicacaoDado.Builder getPublicacaoBuilder() {
+        return internalGetPublicacaoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.PublicacaoDado publicacao = 4;</code>
+       */
+      @java.lang.Override
+      public Mensagem.PublicacaoDadoOrBuilder getPublicacaoOrBuilder() {
+        if ((dadoCase_ == 4) && (publicacaoBuilder_ != null)) {
+          return publicacaoBuilder_.getMessageOrBuilder();
+        } else {
+          if (dadoCase_ == 4) {
+            return (Mensagem.PublicacaoDado) dado_;
+          }
+          return Mensagem.PublicacaoDado.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.PublicacaoDado publicacao = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          Mensagem.PublicacaoDado, Mensagem.PublicacaoDado.Builder, Mensagem.PublicacaoDadoOrBuilder> 
+          internalGetPublicacaoFieldBuilder() {
+        if (publicacaoBuilder_ == null) {
+          if (!(dadoCase_ == 4)) {
+            dado_ = Mensagem.PublicacaoDado.getDefaultInstance();
+          }
+          publicacaoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              Mensagem.PublicacaoDado, Mensagem.PublicacaoDado.Builder, Mensagem.PublicacaoDadoOrBuilder>(
+                  (Mensagem.PublicacaoDado) dado_,
+                  getParentForChildren(),
+                  isClean());
+          dado_ = null;
+        }
+        dadoCase_ = 4;
+        onChanged();
+        return publicacaoBuilder_;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 5;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 5;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 6;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 6;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:Replicacao)
+    }
+
+    // @@protoc_insertion_point(class_scope:Replicacao)
+    private static final Mensagem.Replicacao DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.Replicacao();
+    }
+
+    public static Mensagem.Replicacao getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Replicacao>
+        PARSER = new com.google.protobuf.AbstractParser<Replicacao>() {
+      @java.lang.Override
+      public Replicacao parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<Replicacao> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Replicacao> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.Replicacao getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DadosRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DadosRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string nome = 1;</code>
+     * @return The nome.
+     */
+    java.lang.String getNome();
+    /**
+     * <code>string nome = 1;</code>
+     * @return The bytes for nome.
+     */
+    com.google.protobuf.ByteString
+        getNomeBytes();
+
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
+  }
+  /**
+   * Protobuf type {@code DadosRequest}
+   */
+  public static final class DadosRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:DadosRequest)
+      DadosRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "DadosRequest");
+    }
+    // Use DadosRequest.newBuilder() to construct.
+    private DadosRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private DadosRequest() {
+      nome_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_DadosRequest_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_DadosRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_DadosRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.DadosRequest.class, Mensagem.DadosRequest.Builder.class);
+    }
+
+    public static final int NOME_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object nome_ = "";
+    /**
+     * <code>string nome = 1;</code>
+     * @return The nome.
+     */
+    @java.lang.Override
+    public java.lang.String getNome() {
+      java.lang.Object ref = nome_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nome_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string nome = 1;</code>
+     * @return The bytes for nome.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNomeBytes() {
+      java.lang.Object ref = nome_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nome_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 2;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    public static final int RELOGIO_FIELD_NUMBER = 3;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 3;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(nome_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, nome_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        output.writeInt64(3, relogio_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(nome_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, nome_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, relogio_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.DadosRequest)) {
+        return super.equals(obj);
+      }
+      Mensagem.DadosRequest other = (Mensagem.DadosRequest) obj;
+
+      if (!getNome()
+          .equals(other.getNome())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NOME_FIELD_NUMBER;
+      hash = (53 * hash) + getNome().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.DadosRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.DadosRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.DadosRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.DadosRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.DadosRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.DadosRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.DadosRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.DadosRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.DadosRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.DadosRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.DadosRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.DadosRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.DadosRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DadosRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DadosRequest)
+        Mensagem.DadosRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_DadosRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_DadosRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.DadosRequest.class, Mensagem.DadosRequest.Builder.class);
+      }
+
+      // Construct using Mensagem.DadosRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        nome_ = "";
+        timestamp_ = 0L;
+        relogio_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_DadosRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.DadosRequest getDefaultInstanceForType() {
+        return Mensagem.DadosRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.DadosRequest build() {
+        Mensagem.DadosRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.DadosRequest buildPartial() {
+        Mensagem.DadosRequest result = new Mensagem.DadosRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(Mensagem.DadosRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.nome_ = nome_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.relogio_ = relogio_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.DadosRequest) {
+          return mergeFrom((Mensagem.DadosRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.DadosRequest other) {
+        if (other == Mensagem.DadosRequest.getDefaultInstance()) return this;
+        if (!other.getNome().isEmpty()) {
+          nome_ = other.nome_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                nome_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object nome_ = "";
+      /**
+       * <code>string nome = 1;</code>
+       * @return The nome.
+       */
+      public java.lang.String getNome() {
+        java.lang.Object ref = nome_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nome_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @return The bytes for nome.
+       */
+      public com.google.protobuf.ByteString
+          getNomeBytes() {
+        java.lang.Object ref = nome_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nome_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @param value The nome to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNome(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        nome_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNome() {
+        nome_ = getDefaultInstance().getNome();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string nome = 1;</code>
+       * @param value The bytes for nome to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNomeBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        nome_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:DadosRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:DadosRequest)
+    private static final Mensagem.DadosRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.DadosRequest();
+    }
+
+    public static Mensagem.DadosRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DadosRequest>
+        PARSER = new com.google.protobuf.AbstractParser<DadosRequest>() {
+      @java.lang.Override
+      public DadosRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<DadosRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DadosRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.DadosRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DadosResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DadosResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .LoginDado logins = 1;</code>
+     */
+    java.util.List<Mensagem.LoginDado> 
+        getLoginsList();
+    /**
+     * <code>repeated .LoginDado logins = 1;</code>
+     */
+    Mensagem.LoginDado getLogins(int index);
+    /**
+     * <code>repeated .LoginDado logins = 1;</code>
+     */
+    int getLoginsCount();
+    /**
+     * <code>repeated .LoginDado logins = 1;</code>
+     */
+    java.util.List<? extends Mensagem.LoginDadoOrBuilder> 
+        getLoginsOrBuilderList();
+    /**
+     * <code>repeated .LoginDado logins = 1;</code>
+     */
+    Mensagem.LoginDadoOrBuilder getLoginsOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated string canais = 2;</code>
+     * @return A list containing the canais.
+     */
+    java.util.List<java.lang.String>
+        getCanaisList();
+    /**
+     * <code>repeated string canais = 2;</code>
+     * @return The count of canais.
+     */
+    int getCanaisCount();
+    /**
+     * <code>repeated string canais = 2;</code>
+     * @param index The index of the element to return.
+     * @return The canais at the given index.
+     */
+    java.lang.String getCanais(int index);
+    /**
+     * <code>repeated string canais = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the canais at the given index.
+     */
+    com.google.protobuf.ByteString
+        getCanaisBytes(int index);
+
+    /**
+     * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+     */
+    java.util.List<Mensagem.PublicacaoDado> 
+        getPublicacoesList();
+    /**
+     * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+     */
+    Mensagem.PublicacaoDado getPublicacoes(int index);
+    /**
+     * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+     */
+    int getPublicacoesCount();
+    /**
+     * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+     */
+    java.util.List<? extends Mensagem.PublicacaoDadoOrBuilder> 
+        getPublicacoesOrBuilderList();
+    /**
+     * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+     */
+    Mensagem.PublicacaoDadoOrBuilder getPublicacoesOrBuilder(
+        int index);
+
+    /**
+     * <code>int64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+
+    /**
+     * <code>int64 relogio = 5;</code>
+     * @return The relogio.
+     */
+    long getRelogio();
+  }
+  /**
+   * Protobuf type {@code DadosResponse}
+   */
+  public static final class DadosResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:DadosResponse)
+      DadosResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 36,
+        /* patch= */ 2,
+        /* suffix= */ "",
+        "DadosResponse");
+    }
+    // Use DadosResponse.newBuilder() to construct.
+    private DadosResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private DadosResponse() {
+      logins_ = java.util.Collections.emptyList();
+      canais_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      publicacoes_ = java.util.Collections.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Mensagem.internal_static_DadosResponse_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return Mensagem.internal_static_DadosResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Mensagem.internal_static_DadosResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Mensagem.DadosResponse.class, Mensagem.DadosResponse.Builder.class);
+    }
+
+    public static final int LOGINS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private java.util.List<Mensagem.LoginDado> logins_;
+    /**
+     * <code>repeated .LoginDado logins = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<Mensagem.LoginDado> getLoginsList() {
+      return logins_;
+    }
+    /**
+     * <code>repeated .LoginDado logins = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends Mensagem.LoginDadoOrBuilder> 
+        getLoginsOrBuilderList() {
+      return logins_;
+    }
+    /**
+     * <code>repeated .LoginDado logins = 1;</code>
+     */
+    @java.lang.Override
+    public int getLoginsCount() {
+      return logins_.size();
+    }
+    /**
+     * <code>repeated .LoginDado logins = 1;</code>
+     */
+    @java.lang.Override
+    public Mensagem.LoginDado getLogins(int index) {
+      return logins_.get(index);
+    }
+    /**
+     * <code>repeated .LoginDado logins = 1;</code>
+     */
+    @java.lang.Override
+    public Mensagem.LoginDadoOrBuilder getLoginsOrBuilder(
+        int index) {
+      return logins_.get(index);
+    }
+
+    public static final int CANAIS_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList canais_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string canais = 2;</code>
+     * @return A list containing the canais.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getCanaisList() {
+      return canais_;
+    }
+    /**
+     * <code>repeated string canais = 2;</code>
+     * @return The count of canais.
+     */
+    public int getCanaisCount() {
+      return canais_.size();
+    }
+    /**
+     * <code>repeated string canais = 2;</code>
+     * @param index The index of the element to return.
+     * @return The canais at the given index.
+     */
+    public java.lang.String getCanais(int index) {
+      return canais_.get(index);
+    }
+    /**
+     * <code>repeated string canais = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the canais at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getCanaisBytes(int index) {
+      return canais_.getByteString(index);
+    }
+
+    public static final int PUBLICACOES_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private java.util.List<Mensagem.PublicacaoDado> publicacoes_;
+    /**
+     * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<Mensagem.PublicacaoDado> getPublicacoesList() {
+      return publicacoes_;
+    }
+    /**
+     * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends Mensagem.PublicacaoDadoOrBuilder> 
+        getPublicacoesOrBuilderList() {
+      return publicacoes_;
+    }
+    /**
+     * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+     */
+    @java.lang.Override
+    public int getPublicacoesCount() {
+      return publicacoes_.size();
+    }
+    /**
+     * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+     */
+    @java.lang.Override
+    public Mensagem.PublicacaoDado getPublicacoes(int index) {
+      return publicacoes_.get(index);
+    }
+    /**
+     * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+     */
+    @java.lang.Override
+    public Mensagem.PublicacaoDadoOrBuilder getPublicacoesOrBuilder(
+        int index) {
+      return publicacoes_.get(index);
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 4;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    public static final int RELOGIO_FIELD_NUMBER = 5;
+    private long relogio_ = 0L;
+    /**
+     * <code>int64 relogio = 5;</code>
+     * @return The relogio.
+     */
+    @java.lang.Override
+    public long getRelogio() {
+      return relogio_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < logins_.size(); i++) {
+        output.writeMessage(1, logins_.get(i));
+      }
+      for (int i = 0; i < canais_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, canais_.getRaw(i));
+      }
+      for (int i = 0; i < publicacoes_.size(); i++) {
+        output.writeMessage(3, publicacoes_.get(i));
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(4, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        output.writeInt64(5, relogio_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+
+          {
+            final int count = logins_.size();
+            for (int i = 0; i < count; i++) {
+              size += com.google.protobuf.CodedOutputStream
+                .computeMessageSizeNoTag(logins_.get(i));
+            }
+            size += 1 * count;
+          }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < canais_.size(); i++) {
+          dataSize += computeStringSizeNoTag(canais_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getCanaisList().size();
+      }
+
+          {
+            final int count = publicacoes_.size();
+            for (int i = 0; i < count; i++) {
+              size += com.google.protobuf.CodedOutputStream
+                .computeMessageSizeNoTag(publicacoes_.get(i));
+            }
+            size += 1 * count;
+          }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, timestamp_);
+      }
+      if (relogio_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, relogio_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Mensagem.DadosResponse)) {
+        return super.equals(obj);
+      }
+      Mensagem.DadosResponse other = (Mensagem.DadosResponse) obj;
+
+      if (!getLoginsList()
+          .equals(other.getLoginsList())) return false;
+      if (!getCanaisList()
+          .equals(other.getCanaisList())) return false;
+      if (!getPublicacoesList()
+          .equals(other.getPublicacoesList())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (getRelogio()
+          != other.getRelogio()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getLoginsCount() > 0) {
+        hash = (37 * hash) + LOGINS_FIELD_NUMBER;
+        hash = (53 * hash) + getLoginsList().hashCode();
+      }
+      if (getCanaisCount() > 0) {
+        hash = (37 * hash) + CANAIS_FIELD_NUMBER;
+        hash = (53 * hash) + getCanaisList().hashCode();
+      }
+      if (getPublicacoesCount() > 0) {
+        hash = (37 * hash) + PUBLICACOES_FIELD_NUMBER;
+        hash = (53 * hash) + getPublicacoesList().hashCode();
+      }
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRelogio());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Mensagem.DadosResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.DadosResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.DadosResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.DadosResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.DadosResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Mensagem.DadosResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Mensagem.DadosResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.DadosResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Mensagem.DadosResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static Mensagem.DadosResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Mensagem.DadosResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static Mensagem.DadosResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Mensagem.DadosResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DadosResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DadosResponse)
+        Mensagem.DadosResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Mensagem.internal_static_DadosResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Mensagem.internal_static_DadosResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Mensagem.DadosResponse.class, Mensagem.DadosResponse.Builder.class);
+      }
+
+      // Construct using Mensagem.DadosResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (loginsBuilder_ == null) {
+          logins_ = java.util.Collections.emptyList();
+        } else {
+          logins_ = null;
+          loginsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        canais_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        if (publicacoesBuilder_ == null) {
+          publicacoes_ = java.util.Collections.emptyList();
+        } else {
+          publicacoes_ = null;
+          publicacoesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        timestamp_ = 0L;
+        relogio_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Mensagem.internal_static_DadosResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public Mensagem.DadosResponse getDefaultInstanceForType() {
+        return Mensagem.DadosResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public Mensagem.DadosResponse build() {
+        Mensagem.DadosResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public Mensagem.DadosResponse buildPartial() {
+        Mensagem.DadosResponse result = new Mensagem.DadosResponse(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(Mensagem.DadosResponse result) {
+        if (loginsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            logins_ = java.util.Collections.unmodifiableList(logins_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.logins_ = logins_;
+        } else {
+          result.logins_ = loginsBuilder_.build();
+        }
+        if (publicacoesBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0)) {
+            publicacoes_ = java.util.Collections.unmodifiableList(publicacoes_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.publicacoes_ = publicacoes_;
+        } else {
+          result.publicacoes_ = publicacoesBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(Mensagem.DadosResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          canais_.makeImmutable();
+          result.canais_ = canais_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.relogio_ = relogio_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Mensagem.DadosResponse) {
+          return mergeFrom((Mensagem.DadosResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Mensagem.DadosResponse other) {
+        if (other == Mensagem.DadosResponse.getDefaultInstance()) return this;
+        if (loginsBuilder_ == null) {
+          if (!other.logins_.isEmpty()) {
+            if (logins_.isEmpty()) {
+              logins_ = other.logins_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureLoginsIsMutable();
+              logins_.addAll(other.logins_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.logins_.isEmpty()) {
+            if (loginsBuilder_.isEmpty()) {
+              loginsBuilder_.dispose();
+              loginsBuilder_ = null;
+              logins_ = other.logins_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              loginsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   internalGetLoginsFieldBuilder() : null;
+            } else {
+              loginsBuilder_.addAllMessages(other.logins_);
+            }
+          }
+        }
+        if (!other.canais_.isEmpty()) {
+          if (canais_.isEmpty()) {
+            canais_ = other.canais_;
+            bitField0_ |= 0x00000002;
+          } else {
+            ensureCanaisIsMutable();
+            canais_.addAll(other.canais_);
+          }
+          onChanged();
+        }
+        if (publicacoesBuilder_ == null) {
+          if (!other.publicacoes_.isEmpty()) {
+            if (publicacoes_.isEmpty()) {
+              publicacoes_ = other.publicacoes_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensurePublicacoesIsMutable();
+              publicacoes_.addAll(other.publicacoes_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.publicacoes_.isEmpty()) {
+            if (publicacoesBuilder_.isEmpty()) {
+              publicacoesBuilder_.dispose();
+              publicacoesBuilder_ = null;
+              publicacoes_ = other.publicacoes_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              publicacoesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   internalGetPublicacoesFieldBuilder() : null;
+            } else {
+              publicacoesBuilder_.addAllMessages(other.publicacoes_);
+            }
+          }
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        if (other.getRelogio() != 0L) {
+          setRelogio(other.getRelogio());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        java.util.Objects.requireNonNull(extensionRegistry);
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                Mensagem.LoginDado m =
+                    input.readMessage(
+                        Mensagem.LoginDado.parser(),
+                        extensionRegistry);
+                if (loginsBuilder_ == null) {
+                  ensureLoginsIsMutable();
+                  logins_.add(m);
+                } else {
+                  loginsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              case 18: {
+                ensureCanaisIsMutable();
+                canais_.add(input.readStringRequireUtf8());
+                break;
+              } // case 18
+              case 26: {
+                Mensagem.PublicacaoDado m =
+                    input.readMessage(
+                        Mensagem.PublicacaoDado.parser(),
+                        extensionRegistry);
+                if (publicacoesBuilder_ == null) {
+                  ensurePublicacoesIsMutable();
+                  publicacoes_.add(m);
+                } else {
+                  publicacoesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 26
+              case 32: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 40: {
+                relogio_ = input.readInt64();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<Mensagem.LoginDado> logins_ =
+        java.util.Collections.emptyList();
+      private void ensureLoginsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          logins_ = new java.util.ArrayList<Mensagem.LoginDado>(logins_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Mensagem.LoginDado, Mensagem.LoginDado.Builder, Mensagem.LoginDadoOrBuilder> loginsBuilder_;
+
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public java.util.List<Mensagem.LoginDado> getLoginsList() {
+        if (loginsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(logins_);
+        } else {
+          return loginsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public int getLoginsCount() {
+        if (loginsBuilder_ == null) {
+          return logins_.size();
+        } else {
+          return loginsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Mensagem.LoginDado getLogins(int index) {
+        if (loginsBuilder_ == null) {
+          return logins_.get(index);
+        } else {
+          return loginsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Builder setLogins(
+          int index, Mensagem.LoginDado value) {
+        if (loginsBuilder_ == null) {
+          java.util.Objects.requireNonNull(value);
+          ensureLoginsIsMutable();
+          logins_.set(index, value);
+          onChanged();
+        } else {
+          loginsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Builder setLogins(
+          int index, Mensagem.LoginDado.Builder builderForValue) {
+        if (loginsBuilder_ == null) {
+          ensureLoginsIsMutable();
+          logins_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          loginsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Builder addLogins(Mensagem.LoginDado value) {
+        if (loginsBuilder_ == null) {
+          java.util.Objects.requireNonNull(value);
+          ensureLoginsIsMutable();
+          logins_.add(value);
+          onChanged();
+        } else {
+          loginsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Builder addLogins(
+          int index, Mensagem.LoginDado value) {
+        if (loginsBuilder_ == null) {
+          java.util.Objects.requireNonNull(value);
+          ensureLoginsIsMutable();
+          logins_.add(index, value);
+          onChanged();
+        } else {
+          loginsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Builder addLogins(
+          Mensagem.LoginDado.Builder builderForValue) {
+        if (loginsBuilder_ == null) {
+          ensureLoginsIsMutable();
+          logins_.add(builderForValue.build());
+          onChanged();
+        } else {
+          loginsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Builder addLogins(
+          int index, Mensagem.LoginDado.Builder builderForValue) {
+        if (loginsBuilder_ == null) {
+          ensureLoginsIsMutable();
+          logins_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          loginsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Builder addAllLogins(
+          java.lang.Iterable<? extends Mensagem.LoginDado> values) {
+        if (loginsBuilder_ == null) {
+          ensureLoginsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, logins_);
+          onChanged();
+        } else {
+          loginsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Builder clearLogins() {
+        if (loginsBuilder_ == null) {
+          logins_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          loginsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Builder removeLogins(int index) {
+        if (loginsBuilder_ == null) {
+          ensureLoginsIsMutable();
+          logins_.remove(index);
+          onChanged();
+        } else {
+          loginsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Mensagem.LoginDado.Builder getLoginsBuilder(
+          int index) {
+        return internalGetLoginsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Mensagem.LoginDadoOrBuilder getLoginsOrBuilder(
+          int index) {
+        if (loginsBuilder_ == null) {
+          return logins_.get(index);  } else {
+          return loginsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public java.util.List<? extends Mensagem.LoginDadoOrBuilder> 
+           getLoginsOrBuilderList() {
+        if (loginsBuilder_ != null) {
+          return loginsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(logins_);
+        }
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Mensagem.LoginDado.Builder addLoginsBuilder() {
+        return internalGetLoginsFieldBuilder().addBuilder(
+            Mensagem.LoginDado.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public Mensagem.LoginDado.Builder addLoginsBuilder(
+          int index) {
+        return internalGetLoginsFieldBuilder().addBuilder(
+            index, Mensagem.LoginDado.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .LoginDado logins = 1;</code>
+       */
+      public java.util.List<Mensagem.LoginDado.Builder> 
+           getLoginsBuilderList() {
+        return internalGetLoginsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Mensagem.LoginDado, Mensagem.LoginDado.Builder, Mensagem.LoginDadoOrBuilder> 
+          internalGetLoginsFieldBuilder() {
+        if (loginsBuilder_ == null) {
+          loginsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              Mensagem.LoginDado, Mensagem.LoginDado.Builder, Mensagem.LoginDadoOrBuilder>(
+                  logins_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          logins_ = null;
+        }
+        return loginsBuilder_;
+      }
+
+      private com.google.protobuf.LazyStringArrayList canais_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureCanaisIsMutable() {
+        if (!canais_.isModifiable()) {
+          canais_ = new com.google.protobuf.LazyStringArrayList(canais_);
+        }
+        bitField0_ |= 0x00000002;
+      }
+      /**
+       * <code>repeated string canais = 2;</code>
+       * @return A list containing the canais.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getCanaisList() {
+        canais_.makeImmutable();
+        return canais_;
+      }
+      /**
+       * <code>repeated string canais = 2;</code>
+       * @return The count of canais.
+       */
+      public int getCanaisCount() {
+        return canais_.size();
+      }
+      /**
+       * <code>repeated string canais = 2;</code>
+       * @param index The index of the element to return.
+       * @return The canais at the given index.
+       */
+      public java.lang.String getCanais(int index) {
+        return canais_.get(index);
+      }
+      /**
+       * <code>repeated string canais = 2;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the canais at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getCanaisBytes(int index) {
+        return canais_.getByteString(index);
+      }
+      /**
+       * <code>repeated string canais = 2;</code>
+       * @param index The index to set the value at.
+       * @param value The canais to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCanais(
+          int index, java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        ensureCanaisIsMutable();
+        canais_.set(index, value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string canais = 2;</code>
+       * @param value The canais to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCanais(
+          java.lang.String value) {
+        java.util.Objects.requireNonNull(value);
+        ensureCanaisIsMutable();
+        canais_.add(value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string canais = 2;</code>
+       * @param values The canais to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllCanais(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureCanaisIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, canais_);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string canais = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCanais() {
+        canais_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string canais = 2;</code>
+       * @param value The bytes of the canais to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCanaisBytes(
+          com.google.protobuf.ByteString value) {
+        java.util.Objects.requireNonNull(value);
+        checkByteStringIsUtf8(value);
+        ensureCanaisIsMutable();
+        canais_.add(value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<Mensagem.PublicacaoDado> publicacoes_ =
+        java.util.Collections.emptyList();
+      private void ensurePublicacoesIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          publicacoes_ = new java.util.ArrayList<Mensagem.PublicacaoDado>(publicacoes_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Mensagem.PublicacaoDado, Mensagem.PublicacaoDado.Builder, Mensagem.PublicacaoDadoOrBuilder> publicacoesBuilder_;
+
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public java.util.List<Mensagem.PublicacaoDado> getPublicacoesList() {
+        if (publicacoesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(publicacoes_);
+        } else {
+          return publicacoesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public int getPublicacoesCount() {
+        if (publicacoesBuilder_ == null) {
+          return publicacoes_.size();
+        } else {
+          return publicacoesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Mensagem.PublicacaoDado getPublicacoes(int index) {
+        if (publicacoesBuilder_ == null) {
+          return publicacoes_.get(index);
+        } else {
+          return publicacoesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Builder setPublicacoes(
+          int index, Mensagem.PublicacaoDado value) {
+        if (publicacoesBuilder_ == null) {
+          java.util.Objects.requireNonNull(value);
+          ensurePublicacoesIsMutable();
+          publicacoes_.set(index, value);
+          onChanged();
+        } else {
+          publicacoesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Builder setPublicacoes(
+          int index, Mensagem.PublicacaoDado.Builder builderForValue) {
+        if (publicacoesBuilder_ == null) {
+          ensurePublicacoesIsMutable();
+          publicacoes_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          publicacoesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Builder addPublicacoes(Mensagem.PublicacaoDado value) {
+        if (publicacoesBuilder_ == null) {
+          java.util.Objects.requireNonNull(value);
+          ensurePublicacoesIsMutable();
+          publicacoes_.add(value);
+          onChanged();
+        } else {
+          publicacoesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Builder addPublicacoes(
+          int index, Mensagem.PublicacaoDado value) {
+        if (publicacoesBuilder_ == null) {
+          java.util.Objects.requireNonNull(value);
+          ensurePublicacoesIsMutable();
+          publicacoes_.add(index, value);
+          onChanged();
+        } else {
+          publicacoesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Builder addPublicacoes(
+          Mensagem.PublicacaoDado.Builder builderForValue) {
+        if (publicacoesBuilder_ == null) {
+          ensurePublicacoesIsMutable();
+          publicacoes_.add(builderForValue.build());
+          onChanged();
+        } else {
+          publicacoesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Builder addPublicacoes(
+          int index, Mensagem.PublicacaoDado.Builder builderForValue) {
+        if (publicacoesBuilder_ == null) {
+          ensurePublicacoesIsMutable();
+          publicacoes_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          publicacoesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Builder addAllPublicacoes(
+          java.lang.Iterable<? extends Mensagem.PublicacaoDado> values) {
+        if (publicacoesBuilder_ == null) {
+          ensurePublicacoesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, publicacoes_);
+          onChanged();
+        } else {
+          publicacoesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Builder clearPublicacoes() {
+        if (publicacoesBuilder_ == null) {
+          publicacoes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          publicacoesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Builder removePublicacoes(int index) {
+        if (publicacoesBuilder_ == null) {
+          ensurePublicacoesIsMutable();
+          publicacoes_.remove(index);
+          onChanged();
+        } else {
+          publicacoesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Mensagem.PublicacaoDado.Builder getPublicacoesBuilder(
+          int index) {
+        return internalGetPublicacoesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Mensagem.PublicacaoDadoOrBuilder getPublicacoesOrBuilder(
+          int index) {
+        if (publicacoesBuilder_ == null) {
+          return publicacoes_.get(index);  } else {
+          return publicacoesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public java.util.List<? extends Mensagem.PublicacaoDadoOrBuilder> 
+           getPublicacoesOrBuilderList() {
+        if (publicacoesBuilder_ != null) {
+          return publicacoesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(publicacoes_);
+        }
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Mensagem.PublicacaoDado.Builder addPublicacoesBuilder() {
+        return internalGetPublicacoesFieldBuilder().addBuilder(
+            Mensagem.PublicacaoDado.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public Mensagem.PublicacaoDado.Builder addPublicacoesBuilder(
+          int index) {
+        return internalGetPublicacoesFieldBuilder().addBuilder(
+            index, Mensagem.PublicacaoDado.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .PublicacaoDado publicacoes = 3;</code>
+       */
+      public java.util.List<Mensagem.PublicacaoDado.Builder> 
+           getPublicacoesBuilderList() {
+        return internalGetPublicacoesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Mensagem.PublicacaoDado, Mensagem.PublicacaoDado.Builder, Mensagem.PublicacaoDadoOrBuilder> 
+          internalGetPublicacoesFieldBuilder() {
+        if (publicacoesBuilder_ == null) {
+          publicacoesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              Mensagem.PublicacaoDado, Mensagem.PublicacaoDado.Builder, Mensagem.PublicacaoDadoOrBuilder>(
+                  publicacoes_,
+                  ((bitField0_ & 0x00000004) != 0),
+                  getParentForChildren(),
+                  isClean());
+          publicacoes_ = null;
+        }
+        return publicacoesBuilder_;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long relogio_ ;
+      /**
+       * <code>int64 relogio = 5;</code>
+       * @return The relogio.
+       */
+      @java.lang.Override
+      public long getRelogio() {
+        return relogio_;
+      }
+      /**
+       * <code>int64 relogio = 5;</code>
+       * @param value The relogio to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRelogio(long value) {
+
+        relogio_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 relogio = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRelogio() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        relogio_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:DadosResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:DadosResponse)
+    private static final Mensagem.DadosResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Mensagem.DadosResponse();
+    }
+
+    public static Mensagem.DadosResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DadosResponse>
+        PARSER = new com.google.protobuf.AbstractParser<DadosResponse>() {
+      @java.lang.Override
+      public DadosResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<DadosResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DadosResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public Mensagem.DadosResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_LoginRequest_descriptor;
   private static final 
@@ -14487,6 +19467,31 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_CoordenadorAnuncio_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_LoginDado_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_LoginDado_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PublicacaoDado_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_PublicacaoDado_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Replicacao_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_Replicacao_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DadosRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_DadosRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DadosResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_DadosResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -14535,7 +19540,19 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       "esponse\022\020\n\010resposta\030\001 \001(\t\022\021\n\ttimestamp\030\002" +
       " \001(\003\022\017\n\007relogio\030\003 \001(\003\"F\n\022CoordenadorAnun" +
       "cio\022\014\n\004nome\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007" +
-      "relogio\030\003 \001(\003b\006proto3"
+      "relogio\030\003 \001(\003\"/\n\tLoginDado\022\017\n\007usuario\030\001 " +
+      "\001(\t\022\021\n\ttimestamp\030\002 \001(\003\"U\n\016PublicacaoDado" +
+      "\022\r\n\005canal\030\001 \001(\t\022\020\n\010mensagem\030\002 \001(\t\022\017\n\007usu" +
+      "ario\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\003\"\235\001\n\nReplic" +
+      "acao\022\016\n\006origem\030\001 \001(\t\022\033\n\005login\030\002 \001(\0132\n.Lo" +
+      "ginDadoH\000\022\017\n\005canal\030\003 \001(\tH\000\022%\n\npublicacao" +
+      "\030\004 \001(\0132\017.PublicacaoDadoH\000\022\021\n\ttimestamp\030\005" +
+      " \001(\003\022\017\n\007relogio\030\006 \001(\003B\006\n\004dado\"@\n\014DadosRe" +
+      "quest\022\014\n\004nome\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\017" +
+      "\n\007relogio\030\003 \001(\003\"\205\001\n\rDadosResponse\022\032\n\006log" +
+      "ins\030\001 \003(\0132\n.LoginDado\022\016\n\006canais\030\002 \003(\t\022$\n" +
+      "\013publicacoes\030\003 \003(\0132\017.PublicacaoDado\022\021\n\tt" +
+      "imestamp\030\004 \001(\003\022\017\n\007relogio\030\005 \001(\003b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -14667,6 +19684,36 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CoordenadorAnuncio_descriptor,
         new java.lang.String[] { "Nome", "Timestamp", "Relogio", });
+    internal_static_LoginDado_descriptor =
+      getDescriptor().getMessageType(21);
+    internal_static_LoginDado_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_LoginDado_descriptor,
+        new java.lang.String[] { "Usuario", "Timestamp", });
+    internal_static_PublicacaoDado_descriptor =
+      getDescriptor().getMessageType(22);
+    internal_static_PublicacaoDado_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_PublicacaoDado_descriptor,
+        new java.lang.String[] { "Canal", "Mensagem", "Usuario", "Timestamp", });
+    internal_static_Replicacao_descriptor =
+      getDescriptor().getMessageType(23);
+    internal_static_Replicacao_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Replicacao_descriptor,
+        new java.lang.String[] { "Origem", "Login", "Canal", "Publicacao", "Timestamp", "Relogio", "Dado", });
+    internal_static_DadosRequest_descriptor =
+      getDescriptor().getMessageType(24);
+    internal_static_DadosRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_DadosRequest_descriptor,
+        new java.lang.String[] { "Nome", "Timestamp", "Relogio", });
+    internal_static_DadosResponse_descriptor =
+      getDescriptor().getMessageType(25);
+    internal_static_DadosResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_DadosResponse_descriptor,
+        new java.lang.String[] { "Logins", "Canais", "Publicacoes", "Timestamp", "Relogio", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

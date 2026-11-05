@@ -133,6 +133,43 @@ message CoordenadorAnuncio {
   int64 relogio = 3;
 }
 
+message LoginDado {
+  string usuario = 1;
+  int64 timestamp = 2;
+}
+
+message PublicacaoDado {
+  string canal = 1;
+  string mensagem = 2;
+  string usuario = 3;
+  int64 timestamp = 4;
+}
+
+message Replicacao {
+  string origem = 1;
+  oneof dado {
+    LoginDado login = 2;
+    string canal = 3;
+    PublicacaoDado publicacao = 4;
+  }
+  int64 timestamp = 5;
+  int64 relogio = 6;
+}
+
+message DadosRequest {
+  string nome = 1;
+  int64 timestamp = 2;
+  int64 relogio = 3;
+}
+
+message DadosResponse {
+  repeated LoginDado logins = 1;
+  repeated string canais = 2;
+  repeated PublicacaoDado publicacoes = 3;
+  int64 timestamp = 4;
+  int64 relogio = 5;
+}
+
 // protoc --proto_path=proto --python_out=python --java_out=java/src/main/java proto/mensagem.proto
 // pip install protobuf
 // pip install pyzmq

@@ -16,9 +16,11 @@ PROXY_SUB = os.environ.get("PROXY_SUB_ENDERECO", "tcp://proxy:5558")
 PEER_PORTA = os.environ.get("PEER_PORTA", "5600")
 PEER_BIND = os.environ.get("PEER_BIND", f"tcp://*:{PEER_PORTA}")
 TOPICO_SERVERS = "servers"
+TOPICO_REPLICACAO = "replicacao"
 
 INTERVALO_HEARTBEAT = 10
 INTERVALO_SINCRONIZACAO = 15
+INTERVALO_REPLICACAO = 20
 TIMEOUT_MS = 3000
 TIMEOUT_PAR_MS = 2000
 TENTATIVAS = 20
@@ -259,13 +261,138 @@ def atender_par():
         peer.send_multipart([b"eleicao", resp.SerializeToString()])
         if req.rank < meu_rank:
             iniciar_eleicao()  # maior rank assume..
+    elif tipo == b"dados":
+        req = mensagem_pb2.DadosRequest()
+        req.ParseFromString(msg_dados)
+        atualizar_relogio(req.relogio)
+        print(f"[RECEBIDO] dados | de={req.nome} | timestamp={fmt(req.timestamp)} | relogio={req.relogio} | local={relogio}", flush=True)
+        resp = montar_dados_response()
+        print(f"[ENVIADO] dados | para={req.nome} | logins={len(resp.logins)} canais={len(resp.canais)} publicacoes={len(resp.publicacoes)} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio}", flush=True)
+        peer.send_multipart([b"dados", resp.SerializeToString()])
     else:
         print(f"tipo de mensagem desconhecido (par): {tipo}", flush=True)
         peer.send_multipart([tipo, b""])
 
 
+chaves_logins = set()
+chaves_publicacoes = set()
+
+
+def indexar_dados():
+    chaves_logins.clear()
+    chaves_publicacoes.clear()
+    for l in dados["logins"]:
+        chaves_logins.add((l["usuario"], l["timestamp"]))
+    for p in dados["publicacoes"]:
+        chaves_publicacoes.add((p["canal"], p["mensagem"], p["usuario"], p["timestamp"]))
+
+def gravar_login(usuario, timestamp):
+    chave = (usuario, timestamp)
+    if chave in chaves_logins:
+        return False
+    chaves_logins.add(chave)
+    dados["logins"].append({"usuario": usuario, "timestamp": timestamp})
+    return True
+
+def gravar_canal(nome_canal):
+    if nome_canal in dados["canais"]:
+        return False
+    dados["canais"].append(nome_canal)
+    return True
+
+def ordenar_publicacoes():
+    dados["publicacoes"].sort(key=lambda x: x["timestamp"])
+
+def gravar_publicacao(canal, mensagem, usuario, timestamp, ordenar=True):
+    chave = (canal, mensagem, usuario, timestamp)
+    if chave in chaves_publicacoes:
+        return False
+    chaves_publicacoes.add(chave)
+    dados["publicacoes"].append({"canal": canal, "mensagem": mensagem, "usuario": usuario, "timestamp": timestamp})
+    if ordenar:
+        ordenar_publicacoes()
+    return True
+
+def replicar(login=None, canal=None, publicacao=None):
+    msg = mensagem_pb2.Replicacao()
+    msg.origem = NOME
+    msg.timestamp = agora()
+    msg.relogio = proximo_relogio()
+    if login is not None:
+        msg.login.usuario, msg.login.timestamp = login
+        detalhe = f"tipo=login | usuario={login[0]}"
+    elif canal is not None:
+        msg.canal = canal
+        detalhe = f"tipo=canal | canal={canal}"
+    else:
+        msg.publicacao.canal, msg.publicacao.mensagem, msg.publicacao.usuario, msg.publicacao.timestamp = publicacao
+        detalhe = f"tipo=publicacao | canal={publicacao[0]} | mensagem='{publicacao[1]}'"
+    pub.send_multipart([TOPICO_REPLICACAO.encode(), msg.SerializeToString()])
+    print(f"[REPLICADO] {detalhe} | timestamp={fmt(msg.timestamp)} | relogio={msg.relogio}", flush=True)
+
+def aplicar_replicacao(msg_dados):
+    rep = mensagem_pb2.Replicacao()
+    rep.ParseFromString(msg_dados)
+    atualizar_relogio(rep.relogio)
+    if rep.origem == NOME:
+        return  # o proprio servidor tambem recebe o que publicou
+    tipo = rep.WhichOneof("dado")
+    if tipo == "login":
+        novo = gravar_login(rep.login.usuario, rep.login.timestamp)
+        detalhe = f"tipo=login | usuario={rep.login.usuario}"
+    elif tipo == "canal":
+        novo = gravar_canal(rep.canal)
+        detalhe = f"tipo=canal | canal={rep.canal}"
+    elif tipo == "publicacao":
+        p = rep.publicacao
+        novo = gravar_publicacao(p.canal, p.mensagem, p.usuario, p.timestamp)
+        detalhe = f"tipo=publicacao | canal={p.canal} | mensagem='{p.mensagem}'"
+    else:
+        return
+    if novo:
+        salvar_dados(dados)
+    print(f"[RECEBIDO] replicacao | origem={rep.origem} | {detalhe} | novo={novo} | timestamp={fmt(rep.timestamp)} | relogio={rep.relogio} | local={relogio}", flush=True)
+
+def montar_dados_response():
+    resp = mensagem_pb2.DadosResponse()
+    for l in dados["logins"]:
+        resp.logins.add(usuario=l["usuario"], timestamp=l["timestamp"])
+    resp.canais.extend(dados["canais"])
+    for p in dados["publicacoes"]:
+        resp.publicacoes.add(canal=p["canal"], mensagem=p["mensagem"], usuario=p["usuario"], timestamp=p["timestamp"])
+    resp.timestamp = agora()
+    resp.relogio = proximo_relogio()
+    return resp
+
+def sincronizar_dados():
+    for nome, _ in listar_servidores():
+        if nome == NOME:
+            continue
+        req = mensagem_pb2.DadosRequest()
+        req.nome = NOME
+        req.timestamp = agora()
+        req.relogio = proximo_relogio()
+        print(f"[ENVIADO] dados | para={nome} | timestamp={fmt(req.timestamp)} | relogio={req.relogio}", flush=True)
+        resposta_bytes = pedir_servidor(nome, b"dados", req.SerializeToString())
+        if resposta_bytes is None:
+            print(f"[REPLICACAO] {nome} nao respondeu ao pedido de dados", flush=True)
+            continue
+        resp = mensagem_pb2.DadosResponse()
+        resp.ParseFromString(resposta_bytes)
+        atualizar_relogio(resp.relogio)
+        novos_logins = sum(gravar_login(l.usuario, l.timestamp) for l in resp.logins)
+        novos_canais = sum(gravar_canal(c) for c in resp.canais)
+        novas_publicacoes = sum(gravar_publicacao(p.canal, p.mensagem, p.usuario, p.timestamp, ordenar=False) for p in resp.publicacoes)
+        if novos_logins or novos_canais or novas_publicacoes:
+            ordenar_publicacoes()
+            salvar_dados(dados)
+        print(f"[RECEBIDO] dados | de={nome} | recebidos: logins={len(resp.logins)} canais={len(resp.canais)} publicacoes={len(resp.publicacoes)} | novos aqui: logins={novos_logins} canais={novos_canais} publicacoes={novas_publicacoes} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
+
 def atender_anuncio():
-    _, msg_dados = sub.recv_multipart()
+    topico, msg_dados = sub.recv_multipart()
+    if topico == TOPICO_REPLICACAO.encode():
+        aplicar_replicacao(msg_dados)
+        return
     anuncio = mensagem_pb2.CoordenadorAnuncio()
     anuncio.ParseFromString(msg_dados)
     atualizar_relogio(anuncio.relogio)
@@ -276,7 +403,6 @@ def atender_anuncio():
         if rank_anunciado is not None and rank_anunciado < meu_rank:
             print(f"[ELEICAO] {anuncio.nome} tem rank menor que {NOME}, nova eleicao", flush=True)
             iniciar_eleicao()
-
 
 rank = obter_rank()
 meu_rank = rank
@@ -295,6 +421,7 @@ peer.bind(PEER_BIND)
 sub = context.socket(zmq.SUB)
 sub.connect(PROXY_SUB)
 sub.setsockopt(zmq.SUBSCRIBE, TOPICO_SERVERS.encode())
+sub.setsockopt(zmq.SUBSCRIBE, TOPICO_REPLICACAO.encode())
 
 poller = zmq.Poller()
 poller.register(socket, zmq.POLLIN)
@@ -304,13 +431,17 @@ poller.register(sub, zmq.POLLIN)
 print(f"servidor python conectado ao broker em {BROKER}, ao proxy em {PROXY_PUB}/{PROXY_SUB} e ouvindo servidores em {PEER_BIND}", flush=True)
 
 dados = carregar_dados()
+indexar_dados()
 
 iniciar_eleicao()
+sincronizar_dados()
 
 while True:
     eventos = dict(poller.poll(1000))
     if sub in eventos:
         atender_anuncio()
+        while sub.poll(0):  # le tudo o que ja chegou no SUB
+            atender_anuncio()
     if peer in eventos:
         atender_par()
     if socket not in eventos:
@@ -333,8 +464,9 @@ while True:
         else:
             resposta.sucesso = True
             resposta.erro = ""
-            dados["logins"].append({"usuario": login_req.usuario, "timestamp": login_req.timestamp})
+            gravar_login(login_req.usuario, login_req.timestamp)
             salvar_dados(dados)
+            replicar(login=(login_req.usuario, login_req.timestamp))
         resposta.timestamp = agora()
         resposta.relogio = proximo_relogio()
 
@@ -357,8 +489,9 @@ while True:
             resposta.sucesso = False
             resposta.erro = "canal ja existe"
         else:
-            dados["canais"].append(canal_req.nome_canal)
+            gravar_canal(canal_req.nome_canal)
             salvar_dados(dados)
+            replicar(canal=canal_req.nome_canal)
             resposta.sucesso = True
             resposta.erro = ""
         resposta.timestamp = agora()
@@ -409,13 +542,9 @@ while True:
             pub.send_multipart([pub_req.canal.encode(), publicacao.SerializeToString()])
             print(f"[PUBLICADO] canal={publicacao.canal} | mensagem='{publicacao.mensagem}' | usuario={publicacao.usuario} | timestamp={fmt(publicacao.timestamp)} | relogio={publicacao.relogio}", flush=True)
 
-            dados["publicacoes"].append({
-                "canal": publicacao.canal,
-                "mensagem": publicacao.mensagem,
-                "usuario": publicacao.usuario,
-                "timestamp": publicacao.timestamp,
-            })
+            gravar_publicacao(publicacao.canal, publicacao.mensagem, publicacao.usuario, publicacao.timestamp)
             salvar_dados(dados)
+            replicar(publicacao=(publicacao.canal, publicacao.mensagem, publicacao.usuario, publicacao.timestamp))
             resposta.sucesso = True
             resposta.erro = ""
         resposta.timestamp = agora()
@@ -434,3 +563,6 @@ while True:
 
     if mensagens_clientes % INTERVALO_SINCRONIZACAO == 0:
         sincronizar_relogio()
+
+    if mensagens_clientes % INTERVALO_REPLICACAO == 0:
+        sincronizar_dados()

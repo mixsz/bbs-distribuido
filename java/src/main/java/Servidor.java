@@ -17,7 +17,10 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 // mvn exec:java "-Dexec.mainClass=Servidor"
 
@@ -30,9 +33,11 @@ public class Servidor {
     static final String PEER_PORTA = System.getenv().getOrDefault("PEER_PORTA", "5600");
     static final String PEER_BIND = System.getenv().getOrDefault("PEER_BIND", "tcp://*:" + PEER_PORTA);
     static final String TOPICO_SERVERS = "servers";
+    static final String TOPICO_REPLICACAO = "replicacao";
 
     static final int INTERVALO_HEARTBEAT = 10;
     static final int INTERVALO_SINCRONIZACAO = 15;
+    static final int INTERVALO_REPLICACAO = 20;
     static final int TIMEOUT_MS = 3000;
     static final int TIMEOUT_PAR_MS = 2000;
     static final int TENTATIVAS = 20;
@@ -52,6 +57,9 @@ public class Servidor {
     static ZMQ.Socket pub;
     static ZMQ.Socket peer;
     static ZMQ.Socket sub;
+    static Dados dados;
+    static final Set<String> chavesLogins = new HashSet<>();
+    static final Set<String> chavesPublicacoes = new HashSet<>();
 
     static long agoraSistema() {
         return System.currentTimeMillis();
@@ -371,6 +379,24 @@ public class Servidor {
             if (req.getRank() < meuRank) {
                 iniciarEleicao(); // maior rank assume
             }
+        } else if (tipo.equals("dados")) {
+            Mensagem.DadosRequest req = Mensagem.DadosRequest.parseFrom(dadosBytes);
+            atualizarRelogio(req.getRelogio());
+            System.out.println("[RECEBIDO] dados | de=" + req.getNome()
+                    + " | timestamp=" + fmt(req.getTimestamp())
+                    + " | relogio=" + req.getRelogio()
+                    + " | local=" + relogio);
+            Mensagem.DadosResponse resp = montarDadosResponse();
+            System.out.println("[ENVIADO] dados | para=" + req.getNome()
+                    + " | logins=" + resp.getLoginsCount()
+                    + " canais=" + resp.getCanaisCount()
+                    + " publicacoes=" + resp.getPublicacoesCount()
+                    + " | timestamp=" + fmt(resp.getTimestamp())
+                    + " | relogio=" + resp.getRelogio());
+            ZMsg r = new ZMsg();
+            r.add("dados");
+            r.add(resp.toByteArray());
+            r.send(peer);
         } else {
             System.out.println("tipo de mensagem desconhecido (par): " + tipo);
             ZMsg r = new ZMsg();
@@ -380,12 +406,207 @@ public class Servidor {
         }
     }
 
-    static void atenderAnuncio() throws InvalidProtocolBufferException {
-        byte[] topico = sub.recv(ZMQ.DONTWAIT);
-        if (topico == null) {
+    static String chaveLogin(String usuario, long timestamp) {
+        return usuario + "\u0001" + timestamp;
+    }
+
+    static String chavePublicacao(String canal, String mensagem, String usuario, long timestamp) {
+        return canal + "\u0001" + mensagem + "\u0001" + usuario + "\u0001" + timestamp;
+    }
+
+    static void indexarDados() {
+        chavesLogins.clear();
+        chavesPublicacoes.clear();
+        for (Dados.LoginSalvo l : dados.logins) {
+            chavesLogins.add(chaveLogin(l.usuario, l.timestamp));
+        }
+        for (Dados.PublicacaoSalva p : dados.publicacoes) {
+            chavesPublicacoes.add(chavePublicacao(p.canal, p.mensagem, p.usuario, p.timestamp));
+        }
+    }
+
+    // so grava se ainda nao existir nessas 3 funcs!!
+    static boolean gravarLogin(String usuario, long timestamp) {
+        if (!chavesLogins.add(chaveLogin(usuario, timestamp))) {
+            return false;
+        }
+        dados.logins.add(new Dados.LoginSalvo(usuario, timestamp));
+        return true;
+    }
+
+    static boolean gravarCanal(String nomeCanal) {
+        if (dados.canais.contains(nomeCanal)) {
+            return false;
+        }
+        dados.canais.add(nomeCanal);
+        return true;
+    }
+
+    static boolean gravarPublicacao(String canal, String mensagem, String usuario, long timestamp, boolean ordenar) {
+        if (!chavesPublicacoes.add(chavePublicacao(canal, mensagem, usuario, timestamp))) {
+            return false;
+        }
+        dados.publicacoes.add(new Dados.PublicacaoSalva(canal, mensagem, usuario, timestamp));
+        if (ordenar) {
+            ordenarPublicacoes();
+        }
+        return true;
+    }
+
+    static void ordenarPublicacoes() {
+        dados.publicacoes.sort(Comparator.comparingLong(p -> p.timestamp));
+    }
+
+    static void publicarReplicacao(Mensagem.Replicacao.Builder builder, String detalhe) {
+        Mensagem.Replicacao rep = builder
+                .setOrigem(NOME)
+                .setTimestamp(agora())
+                .setRelogio(proximoRelogio())
+                .build();
+        ZMsg msg = new ZMsg();
+        msg.add(TOPICO_REPLICACAO);
+        msg.add(rep.toByteArray());
+        msg.send(pub);
+        System.out.println("[REPLICADO] " + detalhe
+                + " | timestamp=" + fmt(rep.getTimestamp())
+                + " | relogio=" + rep.getRelogio());
+    }
+
+    static void replicarLogin(String usuario, long timestamp) {
+        publicarReplicacao(Mensagem.Replicacao.newBuilder()
+                .setLogin(Mensagem.LoginDado.newBuilder().setUsuario(usuario).setTimestamp(timestamp)),
+                "tipo=login | usuario=" + usuario);
+    }
+
+    static void replicarCanal(String nomeCanal) {
+        publicarReplicacao(Mensagem.Replicacao.newBuilder().setCanal(nomeCanal),
+                "tipo=canal | canal=" + nomeCanal);
+    }
+
+    static void replicarPublicacao(String canal, String mensagem, String usuario, long timestamp) {
+        publicarReplicacao(Mensagem.Replicacao.newBuilder()
+                .setPublicacao(Mensagem.PublicacaoDado.newBuilder()
+                        .setCanal(canal).setMensagem(mensagem).setUsuario(usuario).setTimestamp(timestamp)),
+                "tipo=publicacao | canal=" + canal + " | mensagem='" + mensagem + "'");
+    }
+
+    static void aplicarReplicacao(byte[] corpo) throws InvalidProtocolBufferException {
+        Mensagem.Replicacao rep = Mensagem.Replicacao.parseFrom(corpo);
+        atualizarRelogio(rep.getRelogio());
+        if (rep.getOrigem().equals(NOME)) {
             return;
         }
-        Mensagem.CoordenadorAnuncio anuncio = Mensagem.CoordenadorAnuncio.parseFrom(sub.recv());
+        boolean novo;
+        String detalhe;
+        switch (rep.getDadoCase()) {
+            case LOGIN:
+                novo = gravarLogin(rep.getLogin().getUsuario(), rep.getLogin().getTimestamp());
+                detalhe = "tipo=login | usuario=" + rep.getLogin().getUsuario();
+                break;
+            case CANAL:
+                novo = gravarCanal(rep.getCanal());
+                detalhe = "tipo=canal | canal=" + rep.getCanal();
+                break;
+            case PUBLICACAO:
+                Mensagem.PublicacaoDado p = rep.getPublicacao();
+                novo = gravarPublicacao(p.getCanal(), p.getMensagem(), p.getUsuario(), p.getTimestamp(), true);
+                detalhe = "tipo=publicacao | canal=" + p.getCanal() + " | mensagem='" + p.getMensagem() + "'";
+                break;
+            default:
+                return;
+        }
+        if (novo) {
+            salvarDados(dados);
+        }
+        System.out.println("[RECEBIDO] replicacao | origem=" + rep.getOrigem()
+                + " | " + detalhe
+                + " | novo=" + novo
+                + " | timestamp=" + fmt(rep.getTimestamp())
+                + " | relogio=" + rep.getRelogio()
+                + " | local=" + relogio);
+    }
+
+    static Mensagem.DadosResponse montarDadosResponse() {
+        Mensagem.DadosResponse.Builder b = Mensagem.DadosResponse.newBuilder();
+        for (Dados.LoginSalvo l : dados.logins) {
+            b.addLogins(Mensagem.LoginDado.newBuilder().setUsuario(l.usuario).setTimestamp(l.timestamp));
+        }
+        b.addAllCanais(dados.canais);
+        for (Dados.PublicacaoSalva p : dados.publicacoes) {
+            b.addPublicacoes(Mensagem.PublicacaoDado.newBuilder()
+                    .setCanal(p.canal).setMensagem(p.mensagem).setUsuario(p.usuario).setTimestamp(p.timestamp));
+        }
+        b.setTimestamp(agora());
+        b.setRelogio(proximoRelogio());
+        return b.build();
+    }
+
+    static void sincronizarDados() throws InvalidProtocolBufferException {
+        for (Mensagem.ServidorInfo s : listarServidores()) {
+            if (s.getNome().equals(NOME)) {
+                continue;
+            }
+            Mensagem.DadosRequest req = Mensagem.DadosRequest.newBuilder()
+                    .setNome(NOME)
+                    .setTimestamp(agora())
+                    .setRelogio(proximoRelogio())
+                    .build();
+            System.out.println("[ENVIADO] dados | para=" + s.getNome()
+                    + " | timestamp=" + fmt(req.getTimestamp())
+                    + " | relogio=" + req.getRelogio());
+            byte[] resposta = pedirServidor(s.getNome(), "dados", req.toByteArray());
+            if (resposta == null) {
+                System.out.println("[REPLICACAO] " + s.getNome() + " nao respondeu ao pedido de dados");
+                continue;
+            }
+            Mensagem.DadosResponse resp = Mensagem.DadosResponse.parseFrom(resposta);
+            atualizarRelogio(resp.getRelogio());
+            int novosLogins = 0;
+            int novosCanais = 0;
+            int novasPublicacoes = 0;
+            for (Mensagem.LoginDado l : resp.getLoginsList()) {
+                if (gravarLogin(l.getUsuario(), l.getTimestamp())) {
+                    novosLogins++;
+                }
+            }
+            for (String c : resp.getCanaisList()) {
+                if (gravarCanal(c)) {
+                    novosCanais++;
+                }
+            }
+            for (Mensagem.PublicacaoDado p : resp.getPublicacoesList()) {
+                if (gravarPublicacao(p.getCanal(), p.getMensagem(), p.getUsuario(), p.getTimestamp(), false)) {
+                    novasPublicacoes++;
+                }
+            }
+            if (novosLogins > 0 || novosCanais > 0 || novasPublicacoes > 0) {
+                ordenarPublicacoes();
+                salvarDados(dados);
+            }
+            System.out.println("[RECEBIDO] dados | de=" + s.getNome()
+                    + " | recebidos: logins=" + resp.getLoginsCount()
+                    + " canais=" + resp.getCanaisCount()
+                    + " publicacoes=" + resp.getPublicacoesCount()
+                    + " | novos aqui: logins=" + novosLogins
+                    + " canais=" + novosCanais
+                    + " publicacoes=" + novasPublicacoes
+                    + " | timestamp=" + fmt(resp.getTimestamp())
+                    + " | relogio=" + resp.getRelogio()
+                    + " | local=" + relogio);
+        }
+    }
+
+    static boolean atenderAnuncio() throws InvalidProtocolBufferException {
+        byte[] topico = sub.recv(ZMQ.DONTWAIT);
+        if (topico == null) {
+            return false;
+        }
+        byte[] corpo = sub.recv();
+        if (new String(topico).equals(TOPICO_REPLICACAO)) {
+            aplicarReplicacao(corpo);
+            return true;
+        }
+        Mensagem.CoordenadorAnuncio anuncio = Mensagem.CoordenadorAnuncio.parseFrom(corpo);
         atualizarRelogio(anuncio.getRelogio());
         System.out.println("[RECEBIDO] topico=" + TOPICO_SERVERS
                 + " | coordenador=" + anuncio.getNome()
@@ -402,6 +623,7 @@ public class Servidor {
                 }
             }
         }
+        return true;
     }
 
     public static void main(String[] args) throws Exception {
@@ -428,18 +650,23 @@ public class Servidor {
             sub = context.createSocket(SocketType.SUB);
             sub.connect(PROXY_SUB);
             sub.subscribe(TOPICO_SERVERS.getBytes());
+            sub.subscribe(TOPICO_REPLICACAO.getBytes());
 
             socket.setReceiveTimeOut(200);
 
             System.out.println("servidor java conectado ao broker em " + broker + ", ao proxy em " + proxyPub
                     + "/" + PROXY_SUB + " e ouvindo servidores em " + PEER_BIND);
 
-            Dados dados = carregarDados();
+            dados = carregarDados();
+            indexarDados();
 
             iniciarEleicao();
+            sincronizarDados();
 
             while (!Thread.currentThread().isInterrupted()) {
-                atenderAnuncio();
+                while (atenderAnuncio()) {
+                    // le tudo q chegou no sub
+                }
                 atenderPar();
 
                 ZMsg msg = ZMsg.recvMsg(socket);
@@ -468,8 +695,9 @@ public class Servidor {
                         } else {
                             resposta.setSucesso(true);
                             resposta.setErro("");
-                            dados.logins.add(new Dados.LoginSalvo(loginReq.getUsuario(), loginReq.getTimestamp()));
+                            gravarLogin(loginReq.getUsuario(), loginReq.getTimestamp());
                             salvarDados(dados);
+                            replicarLogin(loginReq.getUsuario(), loginReq.getTimestamp());
                         }
                         resposta.setTimestamp(agora());
                         resposta.setRelogio(proximoRelogio());
@@ -507,8 +735,9 @@ public class Servidor {
                             resposta.setSucesso(false);
                             resposta.setErro("canal ja existe");
                         } else {
-                            dados.canais.add(canalReq.getNomeCanal());
+                            gravarCanal(canalReq.getNomeCanal());
                             salvarDados(dados);
+                            replicarCanal(canalReq.getNomeCanal());
                             resposta.setSucesso(true);
                             resposta.setErro("");
                         }
@@ -597,10 +826,11 @@ public class Servidor {
                                     + " | timestamp=" + fmt(publicacao.getTimestamp())
                                     + " | relogio=" + publicacao.getRelogio());
 
-                            dados.publicacoes.add(new Dados.PublicacaoSalva(
-                                    publicacao.getCanal(), publicacao.getMensagem(),
-                                    publicacao.getUsuario(), publicacao.getTimestamp()));
+                            gravarPublicacao(publicacao.getCanal(), publicacao.getMensagem(),
+                                    publicacao.getUsuario(), publicacao.getTimestamp(), true);
                             salvarDados(dados);
+                            replicarPublicacao(publicacao.getCanal(), publicacao.getMensagem(),
+                                    publicacao.getUsuario(), publicacao.getTimestamp());
                             resposta.setSucesso(true);
                             resposta.setErro("");
                         }
@@ -636,6 +866,10 @@ public class Servidor {
 
                 if (mensagensClientes % INTERVALO_SINCRONIZACAO == 0) {
                     sincronizarRelogio();
+                }
+
+                if (mensagensClientes % INTERVALO_REPLICACAO == 0) {
+                    sincronizarDados();
                 }
             }
         }
