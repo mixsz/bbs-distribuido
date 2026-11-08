@@ -129,7 +129,7 @@ def heartbeat():
     resp = mensagem_pb2.HeartbeatResponse()
     resp.ParseFromString(dados)
     atualizar_relogio(resp.relogio)
-    print(f"[RECEBIDO] heartbeat | ok={resp.ok} | relogio={resp.relogio} | local={relogio}", flush=True)
+    print(f"[RECEBIDO] heartbeat | ok={resp.ok} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
     pausa()
 
 

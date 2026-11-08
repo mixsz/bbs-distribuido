@@ -10639,6 +10639,12 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
     boolean getOk();
 
     /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+
+    /**
      * <code>int64 relogio = 3;</code>
      * @return The relogio.
      */
@@ -10697,6 +10703,17 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       return ok_;
     }
 
+    public static final int TIMESTAMP_FIELD_NUMBER = 2;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 2;</code>
+     * @return The timestamp.
+     */
+    @java.lang.Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
     public static final int RELOGIO_FIELD_NUMBER = 3;
     private long relogio_ = 0L;
     /**
@@ -10725,6 +10742,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (ok_ != false) {
         output.writeBool(1, ok_);
       }
+      if (timestamp_ != 0L) {
+        output.writeInt64(2, timestamp_);
+      }
       if (relogio_ != 0L) {
         output.writeInt64(3, relogio_);
       }
@@ -10735,6 +10755,10 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       if (ok_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(1, ok_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, timestamp_);
       }
       if (relogio_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -10766,6 +10790,8 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
 
       if (getOk()
           != other.getOk()) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
       if (getRelogio()
           != other.getRelogio()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -10782,6 +10808,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       hash = (37 * hash) + OK_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getOk());
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
       hash = (37 * hash) + RELOGIO_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getRelogio());
@@ -10917,6 +10946,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         super.clear();
         bitField0_ = 0;
         ok_ = false;
+        timestamp_ = 0L;
         relogio_ = 0L;
         return this;
       }
@@ -10955,6 +10985,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
           result.ok_ = ok_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
           result.relogio_ = relogio_;
         }
       }
@@ -10973,6 +11006,9 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         if (other == Mensagem.HeartbeatResponse.getDefaultInstance()) return this;
         if (other.getOk() != false) {
           setOk(other.getOk());
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
         }
         if (other.getRelogio() != 0L) {
           setRelogio(other.getRelogio());
@@ -11006,9 +11042,14 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000001;
                 break;
               } // case 8
+              case 16: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
               case 24: {
                 relogio_ = input.readInt64();
-                bitField0_ |= 0x00000002;
+                bitField0_ |= 0x00000004;
                 break;
               } // case 24
               default: {
@@ -11060,6 +11101,38 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
         return this;
       }
 
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return The timestamp.
+       */
+      @java.lang.Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
       private long relogio_ ;
       /**
        * <code>int64 relogio = 3;</code>
@@ -11077,7 +11150,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       public Builder setRelogio(long value) {
 
         relogio_ = value;
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -11086,7 +11159,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
        * @return This builder for chaining.
        */
       public Builder clearRelogio() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         relogio_ = 0L;
         onChanged();
         return this;
@@ -19530,29 +19603,30 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
       "\030\001 \003(\0132\r.ServidorInfo\022\021\n\ttimestamp\030\002 \001(\003" +
       "\022\017\n\007relogio\030\003 \001(\003\"D\n\020HeartbeatRequest\022\014\n" +
       "\004nome\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007relogi" +
-      "o\030\003 \001(\003\"6\n\021HeartbeatResponse\022\n\n\002ok\030\001 \001(\010" +
-      "\022\017\n\007relogio\030\003 \001(\003J\004\010\002\020\003\"B\n\016RelogioReques" +
-      "t\022\014\n\004nome\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007re" +
-      "logio\030\003 \001(\003\"5\n\017RelogioResponse\022\021\n\ttimest" +
-      "amp\030\001 \001(\003\022\017\n\007relogio\030\002 \001(\003\"P\n\016EleicaoReq" +
-      "uest\022\014\n\004nome\030\001 \001(\t\022\014\n\004rank\030\002 \001(\005\022\021\n\ttime" +
-      "stamp\030\003 \001(\003\022\017\n\007relogio\030\004 \001(\003\"G\n\017EleicaoR" +
-      "esponse\022\020\n\010resposta\030\001 \001(\t\022\021\n\ttimestamp\030\002" +
-      " \001(\003\022\017\n\007relogio\030\003 \001(\003\"F\n\022CoordenadorAnun" +
-      "cio\022\014\n\004nome\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007" +
-      "relogio\030\003 \001(\003\"/\n\tLoginDado\022\017\n\007usuario\030\001 " +
-      "\001(\t\022\021\n\ttimestamp\030\002 \001(\003\"U\n\016PublicacaoDado" +
-      "\022\r\n\005canal\030\001 \001(\t\022\020\n\010mensagem\030\002 \001(\t\022\017\n\007usu" +
-      "ario\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\003\"\235\001\n\nReplic" +
-      "acao\022\016\n\006origem\030\001 \001(\t\022\033\n\005login\030\002 \001(\0132\n.Lo" +
-      "ginDadoH\000\022\017\n\005canal\030\003 \001(\tH\000\022%\n\npublicacao" +
-      "\030\004 \001(\0132\017.PublicacaoDadoH\000\022\021\n\ttimestamp\030\005" +
-      " \001(\003\022\017\n\007relogio\030\006 \001(\003B\006\n\004dado\"@\n\014DadosRe" +
-      "quest\022\014\n\004nome\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\017" +
-      "\n\007relogio\030\003 \001(\003\"\205\001\n\rDadosResponse\022\032\n\006log" +
-      "ins\030\001 \003(\0132\n.LoginDado\022\016\n\006canais\030\002 \003(\t\022$\n" +
-      "\013publicacoes\030\003 \003(\0132\017.PublicacaoDado\022\021\n\tt" +
-      "imestamp\030\004 \001(\003\022\017\n\007relogio\030\005 \001(\003b\006proto3"
+      "o\030\003 \001(\003\"C\n\021HeartbeatResponse\022\n\n\002ok\030\001 \001(\010" +
+      "\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007relogio\030\003 \001(\003\"B\n\016" +
+      "RelogioRequest\022\014\n\004nome\030\001 \001(\t\022\021\n\ttimestam" +
+      "p\030\002 \001(\003\022\017\n\007relogio\030\003 \001(\003\"5\n\017RelogioRespo" +
+      "nse\022\021\n\ttimestamp\030\001 \001(\003\022\017\n\007relogio\030\002 \001(\003\"" +
+      "P\n\016EleicaoRequest\022\014\n\004nome\030\001 \001(\t\022\014\n\004rank\030" +
+      "\002 \001(\005\022\021\n\ttimestamp\030\003 \001(\003\022\017\n\007relogio\030\004 \001(" +
+      "\003\"G\n\017EleicaoResponse\022\020\n\010resposta\030\001 \001(\t\022\021" +
+      "\n\ttimestamp\030\002 \001(\003\022\017\n\007relogio\030\003 \001(\003\"F\n\022Co" +
+      "ordenadorAnuncio\022\014\n\004nome\030\001 \001(\t\022\021\n\ttimest" +
+      "amp\030\002 \001(\003\022\017\n\007relogio\030\003 \001(\003\"/\n\tLoginDado\022" +
+      "\017\n\007usuario\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\"U\n\016P" +
+      "ublicacaoDado\022\r\n\005canal\030\001 \001(\t\022\020\n\010mensagem" +
+      "\030\002 \001(\t\022\017\n\007usuario\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001" +
+      "(\003\"\235\001\n\nReplicacao\022\016\n\006origem\030\001 \001(\t\022\033\n\005log" +
+      "in\030\002 \001(\0132\n.LoginDadoH\000\022\017\n\005canal\030\003 \001(\tH\000\022" +
+      "%\n\npublicacao\030\004 \001(\0132\017.PublicacaoDadoH\000\022\021" +
+      "\n\ttimestamp\030\005 \001(\003\022\017\n\007relogio\030\006 \001(\003B\006\n\004da" +
+      "do\"@\n\014DadosRequest\022\014\n\004nome\030\001 \001(\t\022\021\n\ttime" +
+      "stamp\030\002 \001(\003\022\017\n\007relogio\030\003 \001(\003\"\205\001\n\rDadosRe" +
+      "sponse\022\032\n\006logins\030\001 \003(\0132\n.LoginDado\022\016\n\006ca" +
+      "nais\030\002 \003(\t\022$\n\013publicacoes\030\003 \003(\0132\017.Public" +
+      "acaoDado\022\021\n\ttimestamp\030\004 \001(\003\022\017\n\007relogio\030\005" +
+      " \001(\003b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -19653,7 +19727,7 @@ public final class Mensagem extends com.google.protobuf.GeneratedFile {
     internal_static_HeartbeatResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_HeartbeatResponse_descriptor,
-        new java.lang.String[] { "Ok", "Relogio", });
+        new java.lang.String[] { "Ok", "Timestamp", "Relogio", });
     internal_static_RelogioRequest_descriptor =
       getDescriptor().getMessageType(16);
     internal_static_RelogioRequest_fieldAccessorTable = new

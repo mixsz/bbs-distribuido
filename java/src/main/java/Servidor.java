@@ -176,6 +176,7 @@ public class Servidor {
         Mensagem.HeartbeatResponse resp = Mensagem.HeartbeatResponse.parseFrom(dados);
         atualizarRelogio(resp.getRelogio());
         System.out.println("[RECEBIDO] heartbeat | ok=" + resp.getOk()
+                + " | timestamp=" + fmt(resp.getTimestamp())
                 + " | relogio=" + resp.getRelogio()
                 + " | local=" + relogio);
         pausa();
@@ -202,8 +203,6 @@ public class Servidor {
             return resposta.pop().getData();
         } catch (Exception e) {
             return null;
-        } finally {
-            context.destroySocket(s);
         }
     }
 
