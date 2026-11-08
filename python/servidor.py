@@ -30,6 +30,11 @@ desvio = int(os.environ.get("DESVIO_RELOGIO_MS", "0"))
 mensagens_clientes = 0
 meu_rank = 0
 coordenador = None
+eleicao_pendente = False
+primeiro_anuncio = True
+TTL_LISTA_S = 3
+cache_lista = []
+cache_hora = 0.0
 
 def agora_sistema():
     return int(time.time() * 1000)
@@ -104,7 +109,10 @@ def obter_rank():
     print(f"[RECEBIDO] rank | rank={resp.rank} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
     return resp.rank
 
-def listar_servidores():
+def listar_servidores(usar_cache=False):
+    global cache_lista, cache_hora
+    if usar_cache and time.time() - cache_hora < TTL_LISTA_S:
+        return cache_lista
     req = mensagem_pb2.ListaServidoresRequest()
     req.timestamp = agora()
     req.relogio = proximo_relogio()
@@ -115,7 +123,9 @@ def listar_servidores():
     atualizar_relogio(resp.relogio)
     lista = [f"{s.nome}:{s.rank}" for s in resp.servidores]
     print(f"[RECEBIDO] list | servidores={lista} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
-    return [(s.nome, s.rank) for s in resp.servidores]
+    cache_lista = [(s.nome, s.rank) for s in resp.servidores]
+    cache_hora = time.time()
+    return cache_lista
 
 def heartbeat():
     req = mensagem_pb2.HeartbeatRequest()
@@ -134,15 +144,29 @@ def heartbeat():
 
 
 def pedir_servidor(nome, tipo, payload):
+    global eleicao_pendente
     s = context.socket(zmq.REQ)
-    s.setsockopt(zmq.RCVTIMEO, TIMEOUT_PAR_MS)
     s.setsockopt(zmq.SNDTIMEO, TIMEOUT_PAR_MS)
     s.setsockopt(zmq.LINGER, 0)
     try:
         s.connect(f"tcp://{nome}:{PEER_PORTA}")
         s.send_multipart([tipo, payload])
-        _, dados = s.recv_multipart()
-        return dados
+        espera = zmq.Poller()
+        espera.register(s, zmq.POLLIN)
+        espera.register(peer, zmq.POLLIN)
+        fim = time.time() + TIMEOUT_PAR_MS / 1000
+        while True:
+            restante = int((fim - time.time()) * 1000)
+            if restante <= 0:
+                return None
+            eventos = dict(espera.poll(restante))
+            if peer in eventos:
+                if atender_par():
+                    eleicao_pendente = True
+                continue
+            if s in eventos:
+                _, resposta = s.recv_multipart()
+                return resposta
     except zmq.ZMQError:
         return None
     finally:
@@ -156,8 +180,11 @@ def definir_coordenador(nome):
 
 
 def anunciar_coordenador():
-    # espera um pouco por causa do pub/proxy
-    time.sleep(1)
+    global primeiro_anuncio
+    # espera um pouco por causa do pub/proxy (so no primeiro anuncio quando a conexao e nova tb)
+    if primeiro_anuncio:
+        time.sleep(1)
+        primeiro_anuncio = False
     anuncio = mensagem_pb2.CoordenadorAnuncio()
     anuncio.nome = NOME
     anuncio.timestamp = agora()
@@ -170,7 +197,7 @@ def iniciar_eleicao():
     global coordenador
     coordenador = None
     print(f"[ELEICAO] iniciada por {NOME} (rank={meu_rank})", flush=True)
-    superiores = sorted([(n, r) for n, r in listar_servidores() if r > meu_rank], key=lambda x: x[1])
+    superiores = sorted([(n, r) for n, r in listar_servidores(usar_cache=True) if r > meu_rank], key=lambda x: x[1])
 
     alguem_respondeu = False
     for nome, rank in superiores:
@@ -259,8 +286,7 @@ def atender_par():
         resp.relogio = proximo_relogio()
         print(f"[ENVIADO] eleicao | para={req.nome} | resposta={resp.resposta} | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio}", flush=True)
         peer.send_multipart([b"eleicao", resp.SerializeToString()])
-        if req.rank < meu_rank:
-            iniciar_eleicao()  # maior rank assume..
+        return req.rank < meu_rank  # qm tem rank maior assume
     elif tipo == b"dados":
         req = mensagem_pb2.DadosRequest()
         req.ParseFromString(msg_dados)
@@ -365,7 +391,7 @@ def montar_dados_response():
     return resp
 
 def sincronizar_dados():
-    for nome, _ in listar_servidores():
+    for nome, _ in listar_servidores(usar_cache=True):
         if nome == NOME:
             continue
         req = mensagem_pb2.DadosRequest()
@@ -397,12 +423,18 @@ def atender_anuncio():
     anuncio.ParseFromString(msg_dados)
     atualizar_relogio(anuncio.relogio)
     print(f"[RECEBIDO] topico={TOPICO_SERVERS} | coordenador={anuncio.nome} | timestamp={fmt(anuncio.timestamp)} | relogio={anuncio.relogio} | local={relogio}", flush=True)
+    era_coordenador = coordenador == NOME
     definir_coordenador(anuncio.nome)
     if anuncio.nome != NOME:
-        rank_anunciado = dict(listar_servidores()).get(anuncio.nome)
+        rank_anunciado = dict(listar_servidores(usar_cache=True)).get(anuncio.nome)
         if rank_anunciado is not None and rank_anunciado < meu_rank:
-            print(f"[ELEICAO] {anuncio.nome} tem rank menor que {NOME}, nova eleicao", flush=True)
-            iniciar_eleicao()
+            if era_coordenador:
+                print(f"[ELEICAO] {anuncio.nome} tem rank menor que {NOME}, reafirmando coordenacao", flush=True)
+                definir_coordenador(NOME)
+                anunciar_coordenador()
+            else:
+                print(f"[ELEICAO] {anuncio.nome} tem rank menor que {NOME}, nova eleicao", flush=True)
+                iniciar_eleicao()
 
 rank = obter_rank()
 meu_rank = rank
@@ -443,7 +475,11 @@ while True:
         while sub.poll(0):  # le tudo o que ja chegou no SUB
             atender_anuncio()
     if peer in eventos:
-        atender_par()
+        if atender_par():
+            eleicao_pendente = True
+    if eleicao_pendente:
+        iniciar_eleicao()
+        eleicao_pendente = False
     if socket not in eventos:
         continue
 

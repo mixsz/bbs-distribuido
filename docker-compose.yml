@@ -37,6 +37,24 @@ services:
       - proxy
       - referencia
 
+  servidor-python-2:
+    build: ./python
+    environment:
+      TZ: America/Sao_Paulo
+      NOME_SERVIDOR: servidor-python-2
+      DESVIO_RELOGIO_MS: "0"
+      PAUSA_MS: "200"
+      DADOS_PATH: /data/dados.json
+      BROKER_ENDERECO: tcp://broker:5556
+      PROXY_PUB_ENDERECO: tcp://proxy:5557
+      REFERENCIA_ENDERECO: tcp://referencia:5559
+    volumes:
+      - ./dados/python-2:/data
+    depends_on:
+      - broker
+      - proxy
+      - referencia
+
   servidor-java:
     build: ./java
     environment:
@@ -55,6 +73,24 @@ services:
       - proxy
       - referencia
 
+  servidor-java-2:
+    build: ./java
+    environment:
+      TZ: America/Sao_Paulo
+      NOME_SERVIDOR: servidor-java-2
+      DESVIO_RELOGIO_MS: "4000"
+      PAUSA_MS: "200"
+      DADOS_PATH: /data/dados.json
+      BROKER_ENDERECO: tcp://broker:5556
+      PROXY_PUB_ENDERECO: tcp://proxy:5557
+      REFERENCIA_ENDERECO: tcp://referencia:5559
+    volumes:
+      - ./dados/java-2:/data
+    depends_on:
+      - broker
+      - proxy
+      - referencia
+
   bot-python:
     build: ./python
     command: python bot.py
@@ -67,7 +103,25 @@ services:
       - broker
       - proxy
       - servidor-python
+      - servidor-python-2
       - servidor-java
+      - servidor-java-2
+
+  bot-python-2:
+    build: ./python
+    command: python bot.py
+    environment:
+      TZ: America/Sao_Paulo
+      SERVIDOR_ENDERECO: tcp://broker:5555
+      PROXY_SUB_ENDERECO: tcp://proxy:5558
+      USUARIO: bot-python-2
+    depends_on:
+      - broker
+      - proxy
+      - servidor-python
+      - servidor-python-2
+      - servidor-java
+      - servidor-java-2
 
   bot-java:
     build: ./java
@@ -81,4 +135,22 @@ services:
       - broker
       - proxy
       - servidor-python
+      - servidor-python-2
       - servidor-java
+      - servidor-java-2
+
+  bot-java-2:
+    build: ./java
+    command: ["java", "-cp", "target/classes:target/lib/*", "Bot"]
+    environment:
+      TZ: America/Sao_Paulo
+      SERVIDOR_ENDERECO: tcp://broker:5555
+      PROXY_SUB_ENDERECO: tcp://proxy:5558
+      USUARIO: bot-java-2
+    depends_on:
+      - broker
+      - proxy
+      - servidor-python
+      - servidor-python-2
+      - servidor-java
+      - servidor-java-2

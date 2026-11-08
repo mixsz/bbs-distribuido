@@ -51,6 +51,11 @@ public class Servidor {
     static int mensagensClientes = 0;
     static int meuRank = 0;
     static String coordenador = null; // nome do serv q sera coodenador
+    static boolean eleicaoPendente = false;
+    static boolean primeiroAnuncio = true;
+    static final long TTL_LISTA_MS = 3000;
+    static List<Mensagem.ServidorInfo> cacheLista = new ArrayList<>();
+    static long cacheHora = 0;
 
     static ZContext context;
     static ZMQ.Socket ref;
@@ -141,6 +146,13 @@ public class Servidor {
     }
 
     static List<Mensagem.ServidorInfo> listarServidores() throws InvalidProtocolBufferException {
+        return listarServidores(false);
+    }
+
+    static List<Mensagem.ServidorInfo> listarServidores(boolean usarCache) throws InvalidProtocolBufferException {
+        if (usarCache && System.currentTimeMillis() - cacheHora < TTL_LISTA_MS) {
+            return cacheLista;
+        }
         Mensagem.ListaServidoresRequest req = Mensagem.ListaServidoresRequest.newBuilder()
                 .setTimestamp(agora())
                 .setRelogio(proximoRelogio())
@@ -158,7 +170,9 @@ public class Servidor {
                 + " | timestamp=" + fmt(resp.getTimestamp())
                 + " | relogio=" + resp.getRelogio()
                 + " | local=" + relogio);
-        return resp.getServidoresList();
+        cacheLista = resp.getServidoresList();
+        cacheHora = System.currentTimeMillis();
+        return cacheLista;
     }
 
     static void heartbeat() throws InvalidProtocolBufferException {
@@ -184,7 +198,6 @@ public class Servidor {
 
     static byte[] pedirServidor(String nome, String tipo, byte[] payload) {
         ZMQ.Socket s = context.createSocket(SocketType.REQ);
-        s.setReceiveTimeOut(TIMEOUT_PAR_MS);
         s.setSendTimeOut(TIMEOUT_PAR_MS);
         s.setLinger(0);
         try {
@@ -195,12 +208,19 @@ public class Servidor {
             if (!msg.send(s)) {
                 return null;
             }
-            ZMsg resposta = ZMsg.recvMsg(s);
-            if (resposta == null) {
-                return null;
+            long fim = System.currentTimeMillis() + TIMEOUT_PAR_MS;
+            while (System.currentTimeMillis() < fim) {
+                // enquanto espera, continua atendendo os outros servers
+                if (atenderPar()) {
+                    eleicaoPendente = true;
+                }
+                byte[] tipoResposta = s.recv(ZMQ.DONTWAIT);
+                if (tipoResposta != null) {
+                    return s.recv();
+                }
+                Thread.sleep(5);
             }
-            resposta.popString();
-            return resposta.pop().getData();
+            return null;
         } catch (Exception e) {
             return null;
         }
@@ -212,11 +232,14 @@ public class Servidor {
     }
 
     static void anunciarCoordenador() {
-        // espera um pouco por causa do pub/proxy
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        // espera um pouco por causa do pub/proxy (so no primeiro anuncio quando a conexao e nova agr)
+        if (primeiroAnuncio) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            primeiroAnuncio = false;
         }
         Mensagem.CoordenadorAnuncio anuncio = Mensagem.CoordenadorAnuncio.newBuilder()
                 .setNome(NOME)
@@ -237,7 +260,7 @@ public class Servidor {
         coordenador = null;
         System.out.println("[ELEICAO] iniciada por " + NOME + " (rank=" + meuRank + ")");
         List<Mensagem.ServidorInfo> superiores = new ArrayList<>();
-        for (Mensagem.ServidorInfo s : listarServidores()) {
+        for (Mensagem.ServidorInfo s : listarServidores(true)) {
             if (s.getRank() > meuRank) {
                 superiores.add(s);
             }
@@ -328,10 +351,10 @@ public class Servidor {
         pausa();
     }
 
-    static void atenderPar() throws InvalidProtocolBufferException {
+    static boolean atenderPar() throws InvalidProtocolBufferException {
         byte[] tipoBytes = peer.recv(ZMQ.DONTWAIT);
         if (tipoBytes == null) {
-            return;
+            return false;
         }
         String tipo = new String(tipoBytes);
         byte[] dadosBytes = peer.recv();
@@ -375,9 +398,7 @@ public class Servidor {
             r.add("eleicao");
             r.add(resp.toByteArray());
             r.send(peer);
-            if (req.getRank() < meuRank) {
-                iniciarEleicao(); // maior rank assume
-            }
+            return req.getRank() < meuRank; // maior rank assume
         } else if (tipo.equals("dados")) {
             Mensagem.DadosRequest req = Mensagem.DadosRequest.parseFrom(dadosBytes);
             atualizarRelogio(req.getRelogio());
@@ -403,6 +424,7 @@ public class Servidor {
             r.add(new byte[0]);
             r.send(peer);
         }
+        return false;
     }
 
     static String chaveLogin(String usuario, long timestamp) {
@@ -541,7 +563,7 @@ public class Servidor {
     }
 
     static void sincronizarDados() throws InvalidProtocolBufferException {
-        for (Mensagem.ServidorInfo s : listarServidores()) {
+        for (Mensagem.ServidorInfo s : listarServidores(true)) {
             if (s.getNome().equals(NOME)) {
                 continue;
             }
@@ -612,12 +634,19 @@ public class Servidor {
                 + " | timestamp=" + fmt(anuncio.getTimestamp())
                 + " | relogio=" + anuncio.getRelogio()
                 + " | local=" + relogio);
+        boolean eraCoordenador = NOME.equals(coordenador);
         definirCoordenador(anuncio.getNome());
         if (!anuncio.getNome().equals(NOME)) {
-            for (Mensagem.ServidorInfo si : listarServidores()) {
+            for (Mensagem.ServidorInfo si : listarServidores(true)) {
                 if (si.getNome().equals(anuncio.getNome()) && si.getRank() < meuRank) {
-                    System.out.println("[ELEICAO] " + anuncio.getNome() + " tem rank menor que " + NOME + ", nova eleicao");
-                    iniciarEleicao();
+                    if (eraCoordenador) {
+                        System.out.println("[ELEICAO] " + anuncio.getNome() + " tem rank menor que " + NOME + ", reafirmando coordenacao");
+                        definirCoordenador(NOME);
+                        anunciarCoordenador();
+                    } else {
+                        System.out.println("[ELEICAO] " + anuncio.getNome() + " tem rank menor que " + NOME + ", nova eleicao");
+                        iniciarEleicao();
+                    }
                     break;
                 }
             }
@@ -666,7 +695,13 @@ public class Servidor {
                 while (atenderAnuncio()) {
                     // le tudo q chegou no sub
                 }
-                atenderPar();
+                if (atenderPar()) {
+                    eleicaoPendente = true;
+                }
+                if (eleicaoPendente) {
+                    iniciarEleicao();
+                    eleicaoPendente = false;
+                }
 
                 ZMsg msg = ZMsg.recvMsg(socket);
                 if (msg == null) {

@@ -18,7 +18,8 @@ public class Bot {
     static final String USUARIO = System.getenv().getOrDefault("USUARIO", "bot-java");
 
     static final int TIMEOUT_MS = 3000;
-    static final int TENTATIVAS = 10;
+    static final int TENTATIVAS = 40;
+    static final int TENTATIVAS_LOGIN = 10;
     static final int MIN_CANAIS = 5;
     static final int MIN_INSCRICOES = 3;
     static final int MENSAGENS_POR_RODADA = 10;
@@ -121,7 +122,7 @@ public class Bot {
         }
     }
 
-    static void login() throws Exception {
+    static boolean tentarLogin() throws Exception {
         Mensagem.LoginRequest req = Mensagem.LoginRequest.newBuilder()
                 .setUsuario(USUARIO)
                 .setTimestamp(System.currentTimeMillis())
@@ -138,6 +139,19 @@ public class Bot {
                 + "' | timestamp=" + fmt(resp.getTimestamp())
                 + " | relogio=" + resp.getRelogio()
                 + " | local=" + relogio);
+        return resp.getSucesso();
+    }
+
+    static void login() throws Exception {
+        for (int t = 1; t <= TENTATIVAS_LOGIN; t++) {
+            if (tentarLogin()) {
+                return;
+            }
+            System.out.println("[LOGIN] erro no login, repetindo (tentativa " + t + "/" + TENTATIVAS_LOGIN + ")");
+            Thread.sleep(1000);
+        }
+        System.out.println("login nao concluido, encerrando");
+        System.exit(1);
     }
 
     static List<String> listarCanais() throws Exception {

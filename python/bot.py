@@ -11,7 +11,8 @@ PROXY_SUB = os.environ.get("PROXY_SUB_ENDERECO", "tcp://localhost:5558")
 USUARIO = os.environ.get("USUARIO", "bot-python")
 
 TIMEOUT_MS = 3000
-TENTATIVAS = 10
+TENTATIVAS = 40
+TENTATIVAS_LOGIN = 10
 MIN_CANAIS = 5
 MIN_INSCRICOES = 3
 MENSAGENS_POR_RODADA = 10
@@ -90,7 +91,7 @@ def esperar(segundos):
         if sub.poll(int(restante * 1000) + 1):
             processar_publicacoes()
 
-def login():
+def tentar_login():
     req = mensagem_pb2.LoginRequest()
     req.usuario = USUARIO
     req.timestamp = agora()
@@ -101,6 +102,15 @@ def login():
     resp.ParseFromString(dados)
     atualizar_relogio(resp.relogio)
     print(f"[RECEBIDO] login | sucesso={resp.sucesso} | erro='{resp.erro}' | timestamp={fmt(resp.timestamp)} | relogio={resp.relogio} | local={relogio}", flush=True)
+    return resp.sucesso
+
+def login():
+    for tentativa in range(1, TENTATIVAS_LOGIN + 1):
+        if tentar_login():
+            return
+        print(f"[LOGIN] erro no login, repetindo (tentativa {tentativa}/{TENTATIVAS_LOGIN})", flush=True)
+        time.sleep(1)
+    raise SystemExit("login nao concluido, encerrando")
 
 def listar_canais():
     req = mensagem_pb2.ListarCanaisRequest()
