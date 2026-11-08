@@ -1,17 +1,20 @@
 services:
   broker:
+    container_name: broker
     build: ./python
     command: python broker.py
     environment:
       TZ: America/Sao_Paulo
 
   proxy:
+    container_name: proxy
     build: ./python
     command: python proxy.py
     environment:
       TZ: America/Sao_Paulo
 
   referencia:
+    container_name: referencia
     build: ./python
     command: python referencia.py
     environment:
@@ -20,6 +23,7 @@ services:
       PAUSA_MS: "200"
 
   servidor-python:
+    container_name: servidor-python
     build: ./python
     environment:
       TZ: America/Sao_Paulo
@@ -38,6 +42,7 @@ services:
       - referencia
 
   servidor-python-2:
+    container_name: servidor-python-2
     build: ./python
     environment:
       TZ: America/Sao_Paulo
@@ -56,6 +61,7 @@ services:
       - referencia
 
   servidor-java:
+    container_name: servidor-java
     build: ./java
     environment:
       TZ: America/Sao_Paulo
@@ -74,6 +80,7 @@ services:
       - referencia
 
   servidor-java-2:
+    container_name: servidor-java-2
     build: ./java
     environment:
       TZ: America/Sao_Paulo
@@ -92,6 +99,7 @@ services:
       - referencia
 
   bot-python:
+    container_name: bot-python
     build: ./python
     command: python bot.py
     environment:
@@ -108,6 +116,7 @@ services:
       - servidor-java-2
 
   bot-python-2:
+    container_name: bot-python-2
     build: ./python
     command: python bot.py
     environment:
@@ -124,6 +133,7 @@ services:
       - servidor-java-2
 
   bot-java:
+    container_name: bot-java
     build: ./java
     command: ["java", "-cp", "target/classes:target/lib/*", "Bot"]
     environment:
@@ -140,6 +150,7 @@ services:
       - servidor-java-2
 
   bot-java-2:
+    container_name: bot-java-2
     build: ./java
     command: ["java", "-cp", "target/classes:target/lib/*", "Bot"]
     environment:
