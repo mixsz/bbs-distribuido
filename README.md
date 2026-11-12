@@ -78,4 +78,4 @@ Para testar a reeleição, derrube o coordenador com `docker stop servidor-x` (t
 - **O coordenador não é réplica primária:** a eleição continua servindo só ao relógio.
 - **Servidores atendem os pares enquanto esperam resposta:** com 4 servidores, quem esperava deixava de atender os demais e os timeouts os davam como mortos. A lista de servidores da referência também passou a ser guardada por 3 segundos.
 
-**Limitações:** há uma janela curta entre a gravação e a chegada nos outros em que os dados diferem; a cópia completa cresce com o histórico; dois canais criados com o mesmo nome ao mesmo tempo viram um só após a junção; e o `PAUSA_MS` não deve passar de cerca de 200 ms com 4 servidores e 4 bots.
+**Limitações:** há uma janela curta entre a gravação e a chegada nos outros em que os dados diferem; a cópia completa cresce com o histórico; dois canais criados com o mesmo nome ao mesmo tempo viram um só após a junção; e o `PAUSA_MS` não deve passar de cerca de 400 ms com 4 servidores e 4 bots.
